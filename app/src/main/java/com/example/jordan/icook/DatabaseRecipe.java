@@ -13,6 +13,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseRecipe extends SQLiteOpenHelper {
     public static final String DATABASE_NAME= "Recipe.db";
     public static final String TABLE_NAME = "recipe_table";
+    public static final String COL_1 = "ID";
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "INGREDIENT1";
     public static final String COL_4 = "QUANTITY1";
@@ -30,22 +31,24 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+ TABLE_NAME + " ( NAME TEXT, INGREDIENT1 TEXT, QUANTITY1 INTEGER, " +
+        db.execSQL("create table "+ TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, INGREDIENT1 TEXT, QUANTITY1 INTEGER, " +
                 "INGREDIENT2 TEXT, QUANTITY2 INTEGER," +
                 "INGREDIENT3 TEXT, QUANTITY3 INTEGER," +
                 "INGREDIENT4 TEXT, QUANTITY4 INTEGER," +
                 "INGREDIENT5 TEXT, QUANTITY5 INTEGER," +
-                " INSTRUCTION TEXT)");
+                "INSTRUCTION TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
         onCreate(db);
     }
 
+    // Inserts data into specified columns
     public boolean insertData(String name, String ingredient1, int quantity1,
                               String ingredient2, int quantity2,
                               String ingredient3, int quantity3,
@@ -73,6 +76,7 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
             return true;
     }
 
+    // Deletes recipes based on the NAME of the recipe
     public Integer deleteData (String name){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, "NAME = ?", new String[] {name});
