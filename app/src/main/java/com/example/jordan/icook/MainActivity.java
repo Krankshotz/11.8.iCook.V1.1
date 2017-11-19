@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         pantryButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pantrywindow = new Intent(MainActivity.this, PantryActivity.class);
+                Intent pantrywindow = new Intent(MainActivity.this, ListPantry.class);
                 startActivity(pantrywindow);
             }
         });

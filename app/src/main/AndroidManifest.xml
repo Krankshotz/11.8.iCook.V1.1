@@ -29,6 +29,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".RecipeActivity" />
+        <activity android:name=".ListPantry" />
         <activity android:name=".PreferencesActivity"></activity>
     </application>
 
