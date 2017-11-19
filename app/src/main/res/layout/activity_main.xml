@@ -96,14 +96,15 @@
 
     <ImageView
         android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_width="410dp"
+        android:layout_height="100dp"
         android:layout_marginTop="0dp"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:cropToPadding="true"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/banner" />
+        app:srcCompat="@drawable/banner"
+        app:layout_constraintHorizontal_bias="0.3" />
 
     <ImageButton
         android:id="@+id/Button5Help"
