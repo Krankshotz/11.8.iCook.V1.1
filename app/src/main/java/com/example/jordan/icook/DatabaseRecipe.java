@@ -49,11 +49,11 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
     }
 
     // Inserts data into specified columns
-    public boolean insertData(String name, String ingredient1, String quantity1,
-                              String ingredient2, String quantity2,
-                              String ingredient3, String quantity3,
-                              String ingredient4, String quantity4,
-                              String ingredient5, String quantity5,
+    public boolean insertData(String name, String ingredient1, int quantity1,
+                              String ingredient2, int quantity2,
+                              String ingredient3, int quantity3,
+                              String ingredient4, int quantity4,
+                              String ingredient5, int quantity5,
                               String instruction){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

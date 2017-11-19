@@ -2,16 +2,11 @@ package com.example.jordan.icook;
 
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,8 +16,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 1001);
+        }
 
-        //Creates Listener to Open new Activity
         ImageButton receiptButton1 = (ImageButton)(findViewById(R.id.receiptButton1));
         receiptButton1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         pantryButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pantrywindow = new Intent(MainActivity.this, PantryActivity.class);
+                Intent pantrywindow = new Intent(MainActivity.this, ListPantry.class);
                 startActivity(pantrywindow);
             }
         });

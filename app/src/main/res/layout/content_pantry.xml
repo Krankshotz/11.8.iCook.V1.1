@@ -2,56 +2,102 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="100">
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
 
-
-    <ListView
-        android:id="@+id/ListView2"
-        android:layout_width="104dp"
-        android:layout_height="480dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <LinearLayout
+        android:id="@+id/viewA"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1">
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="6dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="3dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="3dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    </ListView>
+        <LinearLayout
+            android:id="@+id/Header"
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/Food"
+                android:layout_width="127dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/food_Header"
+                    android:layout_width="367dp"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:text="Food"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/quantity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/quantity_header"
+                    android:layout_width="137dp"
+                    android:layout_height="match_parent"
+                    android:ems="10"
+                    android:inputType="none"
+                    android:text="Quantity"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/listViewPantry"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="7dp"
-        android:layout_marginRight="152dp"
+        android:id="@+id/btn_AddItems"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:clickable="true"
-        android:tint="@android:color/background_light"
-        app:backgroundTint="@android:color/holo_orange_dark"
         app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/ListView2"
-        app:rippleColor="@android:color/background_light"
         app:srcCompat="@android:drawable/ic_input_add"
-        android:layout_marginEnd="152dp" />
-
-    <ListView
-        android:id="@+id/ListView"
-        android:layout_width="0dp"
-        android:layout_height="480dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="32dp"
-        android:background="@android:color/holo_orange_light"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/ListView2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
+        app:layout_anchor="@id/viewA"
+        app:layout_anchorGravity="bottom|right|end"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
-
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="16dp" />
 
 </android.support.constraint.ConstraintLayout>
