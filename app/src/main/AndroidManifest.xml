@@ -27,6 +27,8 @@
         <activity android:name=".HelpActivity" />
         <activity android:name=".ListPantry" />
         <activity android:name=".RecipeActivity" />
+        <activity android:name=".ListPantry" />
+        <activity android:name=".PreferencesActivity"></activity>
         <activity android:name=".PreferencesActivity"/>
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCES"
             android:value="ocr"/>
