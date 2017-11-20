@@ -9,6 +9,8 @@ import android.widget.Button;
 public class PreferencesActivity extends AppCompatActivity {
     DatabaseHelper myDb;
     int defaultAmount = 999;
+    static int click = 0; //once you click, you can't click multiple times
+                          // which adds a bunch to the pantry
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,20 +22,23 @@ public class PreferencesActivity extends AppCompatActivity {
             @Override
             //upon click, pantry will be filled and list of items will be shown
             public void onClick(View view) {
-                //Default for Anybody
-                myDb.insertData("Extra-Virgin Olive Oil", defaultAmount);
-                myDb.insertData("Garlic", defaultAmount);
-                myDb.insertData("Beef", defaultAmount);
-                myDb.insertData("Eggs", defaultAmount);
-                myDb.insertData("Sea Salt", defaultAmount);
-                myDb.insertData("Oatmeal", defaultAmount);
-                myDb.insertData("Chicken", defaultAmount);
-                myDb.insertData("Cilantro", defaultAmount);
-                myDb.insertData("Basil", defaultAmount);
-                myDb.insertData("Rosemary", defaultAmount);
+                if(click == 0) {
+                    //Default for Anybody
+                    myDb.insertData("Extra-Virgin Olive Oil", defaultAmount);
+                    myDb.insertData("Garlic", defaultAmount);
+                    myDb.insertData("Beef", defaultAmount);
+                    myDb.insertData("Eggs", defaultAmount);
+                    myDb.insertData("Sea Salt", defaultAmount);
+                    myDb.insertData("Oatmeal", defaultAmount);
+                    myDb.insertData("Chicken", defaultAmount);
+                    myDb.insertData("Cilantro", defaultAmount);
+                    myDb.insertData("Basil", defaultAmount);
+                    myDb.insertData("Rosemary", defaultAmount);
 
-                Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
-                startActivity(normalwindow);
+                    Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
+                    startActivity(normalwindow);
+                    click++;
+                }
             }
         });
         Button veganButton = (Button)(findViewById(R.id.button2));
@@ -41,20 +46,23 @@ public class PreferencesActivity extends AppCompatActivity {
             @Override
             //upon click, pantry will be filled and list of items will be shown
             public void onClick(View view) {
-                //Default for Vegans
-                myDb.insertData("Pasta", defaultAmount);
-                myDb.insertData("Rice", defaultAmount);
-                myDb.insertData("Oats", defaultAmount);
-                myDb.insertData("Cornmeal", defaultAmount);
-                myDb.insertData("Peanuts", defaultAmount);
-                myDb.insertData("Cashews", defaultAmount);
-                myDb.insertData("Legumes", defaultAmount);
-                myDb.insertData("Chick Peas", defaultAmount);
-                myDb.insertData("Almonds", defaultAmount);
-                myDb.insertData("Millet", defaultAmount);
+                if(click == 0) {
+                    //Default for Vegans
+                    myDb.insertData("Pasta", defaultAmount);
+                    myDb.insertData("Rice", defaultAmount);
+                    myDb.insertData("Oats", defaultAmount);
+                    myDb.insertData("Cornmeal", defaultAmount);
+                    myDb.insertData("Peanuts", defaultAmount);
+                    myDb.insertData("Cashews", defaultAmount);
+                    myDb.insertData("Legumes", defaultAmount);
+                    myDb.insertData("Chick Peas", defaultAmount);
+                    myDb.insertData("Almonds", defaultAmount);
+                    myDb.insertData("Millet", defaultAmount);
 
-                Intent veganwindow = new Intent(PreferencesActivity.this,  VeganUser.class);
-                startActivity(veganwindow);
+                    Intent veganwindow = new Intent(PreferencesActivity.this, VeganUser.class);
+                    startActivity(veganwindow);
+                    click++;
+                }
             }
         });
         Button vegButton = (Button)(findViewById(R.id.button3));
@@ -62,20 +70,23 @@ public class PreferencesActivity extends AppCompatActivity {
             @Override
             //upon click, pantry will be filled and list of items will be shown
             public void onClick(View view) {
-                //default for Vegitarians
-                myDb.insertData("Bread", defaultAmount);
-                myDb.insertData("Pasta", defaultAmount);
-                myDb.insertData("Rice", defaultAmount);
-                myDb.insertData("Eggs", defaultAmount);
-                myDb.insertData("Greek Yogurt", defaultAmount);
-                myDb.insertData("Broccoli", defaultAmount);
-                myDb.insertData("Olive Oil", defaultAmount);
-                myDb.insertData("Canola Oil", defaultAmount);
-                myDb.insertData("Lettuce", defaultAmount);
-                myDb.insertData("Carrots", defaultAmount);
+                if(click == 0) {
+                    //default for Vegitarians
+                    myDb.insertData("Bread", defaultAmount);
+                    myDb.insertData("Pasta", defaultAmount);
+                    myDb.insertData("Rice", defaultAmount);
+                    myDb.insertData("Eggs", defaultAmount);
+                    myDb.insertData("Greek Yogurt", defaultAmount);
+                    myDb.insertData("Broccoli", defaultAmount);
+                    myDb.insertData("Olive Oil", defaultAmount);
+                    myDb.insertData("Canola Oil", defaultAmount);
+                    myDb.insertData("Lettuce", defaultAmount);
+                    myDb.insertData("Carrots", defaultAmount);
 
-                Intent vegwindow = new Intent(PreferencesActivity.this,  VegUser.class);
-                startActivity(vegwindow);
+                    Intent vegwindow = new Intent(PreferencesActivity.this, VegUser.class);
+                    startActivity(vegwindow);
+                    click++;
+                }
             }
         });
     }
