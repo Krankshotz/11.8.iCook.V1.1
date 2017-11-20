@@ -6,10 +6,13 @@ updated: 11/18/17
 package com.example.jordan.icook;
 
 import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
@@ -32,6 +35,8 @@ import static com.google.android.gms.vision.CameraSource.Builder;
 import static com.google.android.gms.vision.CameraSource.CAMERA_FACING_BACK;
 import static com.google.android.gms.vision.CameraSource.PictureCallback;
 import static com.google.android.gms.vision.CameraSource.ShutterCallback;
+
+
 
 public class receipt_Scanner extends AppCompatActivity {
     SurfaceView cameraView;
@@ -135,10 +140,14 @@ public class receipt_Scanner extends AppCompatActivity {
                                     myDb.insertData(itemName, Integer.parseInt(itemQuant));
                                 }
                             } catch (FileNotFoundException e){e.printStackTrace();}
-                            Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
+
                         }
                     }
             );//on capture screen press
         }
+        //the following is a test
+
     }
+
 }
