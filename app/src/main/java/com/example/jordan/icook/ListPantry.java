@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -41,9 +42,18 @@ public class ListPantry extends AppCompatActivity {
         text2.setEnabled(false);
         myDb = new DatabaseHelper(this);
         btnAdd = (FloatingActionButton) findViewById(R.id.btn_AddItems);
+        ImageButton homebtn = (ImageButton)(findViewById(R.id.homeButton));
+        homebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainwindow = new Intent(ListPantry.this, MainActivity.class);
+                startActivity(mainwindow);
+            }
+        });
         addItem();
         populateListViewFromDB();
         listViewItemLongClick();
+
     }
 
     private void populateListViewFromDB(){
