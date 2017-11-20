@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/11.8.iCook.V1.0.iml" filepath="$PROJECT_DIR$/11.8.iCook.V1.0.iml" />
-      <module fileurl="file://C:\Users\PeanutbutterPaul\AndroidStudioProjects\11.8.iCook.V1.0\11.8.iCook.V1.0.iml" filepath="C:\Users\PeanutbutterPaul\AndroidStudioProjects\11.8.iCook.V1.0\11.8.iCook.V1.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\PeanutbutterPaul\AndroidStudioProjects\11.8.iCook.V1.0\app\app.iml" filepath="C:\Users\PeanutbutterPaul\AndroidStudioProjects\11.8.iCook.V1.0\app\app.iml" />
-      <module fileurl="file://C:\Users\PeanutbutterPaul\AndroidStudioProjects\11.8.iCook.V1.0\iCookUI-master-UI-Branch.iml" filepath="C:\Users\PeanutbutterPaul\AndroidStudioProjects\11.8.iCook.V1.0\iCookUI-master-UI-Branch.iml" />
     </modules>
   </component>
 </project>
