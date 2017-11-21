@@ -31,6 +31,7 @@ public class PantryActivity extends AppCompatActivity {
         btnViewAll = (Button) findViewById(R.id.btn_View);
         addData();
         viewAll();
+
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -20,6 +20,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.vision.CameraSource;
@@ -57,6 +58,7 @@ public class receipt_Scanner extends AppCompatActivity {
         cameraView = (SurfaceView) findViewById(R.id.surface_view);
         textView = (TextView) findViewById(R.id.text_view);
         final Button takePicButt = (Button) findViewById(R.id.picButt);
+
         myDb = new DatabaseHelper(this);
         //show path of downloads for testing purposes
         Toast.makeText(getBaseContext(), path.toString()+"hello",Toast.LENGTH_SHORT).show();
@@ -140,13 +142,35 @@ public class receipt_Scanner extends AppCompatActivity {
                                     myDb.insertData(itemName, Integer.parseInt(itemQuant));
                                 }
                             } catch (FileNotFoundException e){e.printStackTrace();}
-                            //Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
 
                         }
                     }
             );//on capture screen press
         }
         //the following is a test
+        new AlertDialog.Builder(this)  //creates a popup window, for ease of use for app
+                .setTitle("Importing Receipts")
+                .setMessage("Please ensure your image is clear properly lit")
+                .setNegativeButton("Continue", null)
+                .setPositiveButton("View Pantry", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent pantrywindow = new Intent(receipt_Scanner.this, ListPantry.class);
+                        startActivity(pantrywindow);
+                    }
+                }).create().show();
+
+        //Shortucts to create Home
+        ImageButton homebtn = (ImageButton)(findViewById(R.id.homeButton));
+        homebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent manwindow = new Intent(receipt_Scanner.this, MainActivity.class);
+                startActivity(manwindow);
+            }
+        });
+
 
     }
 

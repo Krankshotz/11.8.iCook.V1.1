@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
@@ -42,6 +43,7 @@ public class ListPantry extends AppCompatActivity {
         text2.setEnabled(false);
         myDb = new DatabaseHelper(this);
         btnAdd = (FloatingActionButton) findViewById(R.id.btn_AddItems);
+        //shortcut to home
         ImageButton homebtn = (ImageButton)(findViewById(R.id.homeButton));
         homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
