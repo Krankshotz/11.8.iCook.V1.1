@@ -1,4 +1,5 @@
 # iCook
+----------------------------------------------------------------------------------
 
 Please read the following before making any changes to the repositories:
 
@@ -37,3 +38,12 @@ installation of the program:
 http://athena.ecs.csus.edu/~icook131/ 
 
 -------------------------------------------------------------------------------------
+
+11/20 notes:
+
+Use cases 1 and 2 are functional and completed. 
+
+This indicates that the scanner and pantry features are operational. Further releases will implement the comparison functions between
+the pantry and recipes.
+
+----------------------------------------------------------------------------------
