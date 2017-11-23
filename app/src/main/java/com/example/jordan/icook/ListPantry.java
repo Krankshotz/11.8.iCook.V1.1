@@ -50,6 +50,16 @@ public class ListPantry extends AppCompatActivity {
                 startActivity(mainwindow);
             }
         });
+
+/////////////////////
+/// TEST CASE////////
+/////////////////////
+        if(MainActivity.test == 1) {
+            myDb.insertData("eggs", 12);
+            MainActivity.test++;
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
         addItem();
         populateListViewFromDB();
         listViewItemLongClick();

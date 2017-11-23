@@ -27,8 +27,8 @@
         android:scaleType="fitCenter"
         android:tint="@android:color/background_light"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:srcCompat="@drawable/home"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:id="@+id/viewA"

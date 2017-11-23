@@ -34,6 +34,7 @@
             android:parentActivityName=".PreferencesActivity"></activity>
         <activity android:name=".RecipeActivity" />
         <activity android:name=".ListPantry" />
+        <activity android:name=".ListRecipe"/>
         <activity android:name=".PreferencesActivity"></activity>
         <activity android:name=".PreferencesActivity"/>
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCES"

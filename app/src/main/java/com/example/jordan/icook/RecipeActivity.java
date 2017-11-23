@@ -1,5 +1,6 @@
 package com.example.jordan.icook;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -52,15 +53,15 @@ public class RecipeActivity extends AppCompatActivity {
                         // Will insert data if there is data input in the text fields
                         boolean isInserted = myDb.insertData(editName.getText().toString(),
                                 editIngredient1.getText().toString(),
-                                editQuantity1.getText().toString(),
+                                Integer.parseInt(editQuantity1.getText().toString()),
                                 editIngredient2.getText().toString(),
-                                editQuantity2.getText().toString(),
+                                Integer.parseInt(editQuantity2.getText().toString()),
                                 editIngredient3.getText().toString(),
-                                editQuantity3.getText().toString(),
+                                Integer.parseInt(editQuantity3.getText().toString()),
                                 editIngredient4.getText().toString(),
-                                editQuantity4.getText().toString(),
+                                Integer.parseInt(editQuantity4.getText().toString()),
                                 editIngredient5.getText().toString(),
-                                editQuantity5.getText().toString(),
+                                Integer.parseInt(editQuantity5.getText().toString()),
                                 editInstruction.getText().toString());
                         if (isInserted = true) {
                             Toast.makeText(RecipeActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
@@ -111,7 +112,9 @@ public class RecipeActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Cursor res = myDb.getAllData();
+                        Intent RecipeList = new Intent(RecipeActivity.this, ListRecipe.class);
+                        startActivity(RecipeList);
+                        /*Cursor res = myDb.getAllData();
                         if(res.getCount() == 0) {
                             // show message
                             showMessage("Error","Nothing found");
@@ -141,7 +144,7 @@ public class RecipeActivity extends AppCompatActivity {
                         }
 
                         // Show all data
-                        showMessage("Recipes",buffer.toString());
+                        showMessage("Recipes",buffer.toString());*/
                     }
                 }
         );
