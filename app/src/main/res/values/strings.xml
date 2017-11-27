@@ -59,6 +59,38 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+    <string-array
+        name="approved_food_list">
+        <item>Almonds</item>
+        <item>bananas</item>
+        <item>Basil</item>
+        <item>beef</item>
+        <item>beer</item>
+        <item>bread</item>
+        <item>carrots</item>
+        <item>Cashews</item>
+        <item>Cheese</item>
+        <item>chicken</item>
+        <item>Cilantro</item>
+        <item>Cornmeal</item>
+        <item>eggs</item>
+        <item>Garlic</item>
+        <item>Legumes</item>
+        <item>Lettuce</item>
+        <item>milk</item>
+        <item>Millet</item>
+        <item>oatmeal</item>
+        <item>olives</item>
+        <item>onion</item>
+        <item>paprika</item>
+        <item>Pasta</item>
+        <item>Peanuts</item>
+        <item>pepperoni</item>
+        <item>Rosemary</item>
+        <item>salt</item>
+        <item>tuna</item>
+        <item>tomato</item>
+    </string-array>
 
     <string-array name="multi_select_list_preference_default_value" />
 

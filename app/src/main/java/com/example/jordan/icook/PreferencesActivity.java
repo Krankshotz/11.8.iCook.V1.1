@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class PreferencesActivity extends AppCompatActivity {
     DatabaseHelper myDb;
-    int defaultAmount = 999;
+    int defaultAmount = 1;
     static int click = 0; //once you click, you can't click multiple times
                           // which adds a bunch to the pantry
     @Override
