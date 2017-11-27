@@ -11,17 +11,7 @@
         android:layout_width="344dp"
         android:layout_height="495dp"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="3dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="160dp"
-            android:id="@+id/relativeLayout">
-
-        </RelativeLayout>
+        tools:layout_editor_absoluteY="56dp">
 
         <TextView
             android:id="@+id/Item"
@@ -56,28 +46,26 @@
             android:layout_height="41dp"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText_Item"
+            android:layout_toEndOf="@+id/textView11"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:layout_toEndOf="@+id/textView11" />
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/btn_Add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="133dp"
-            android:layout_marginStart="93dp"
-            android:text="Add Item" />
+            android:layout_marginTop="9dp"
+            android:text="Add Item"
+            android:layout_below="@+id/editText_Quantity"
+            android:layout_alignParentEnd="true" />
 
         <Button
             android:id="@+id/btn_View"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/btn_Add"
-            android:layout_alignBottom="@+id/btn_Add"
-            android:layout_toEndOf="@+id/btn_Add"
-            android:text="VIEW ALL" />
+            android:text="VIEW PANTRY"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

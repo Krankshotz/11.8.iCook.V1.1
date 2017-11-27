@@ -1,4 +1,5 @@
 # iCook
+----------------------------------------------------------------------------------
 
 Please read the following before making any changes to the repositories:
 
@@ -31,9 +32,20 @@ Android Studio - https://source.android.com/source/code-style
 
 ------------------------------------------------------------------------------------
 
-Reference the following link for assistance with the use and 
-installation of the program:
+Reference the following link for assistance with the use of the program as well as the
+documentation associated with this application:
 
 http://athena.ecs.csus.edu/~icook131/ 
 
 -------------------------------------------------------------------------------------
+
+11/20 notes:
+
+Design changes and rationale located on iCook website.
+
+Use cases 1 and 2 are functional and completed. 
+
+This indicates that the scanner and pantry features are operational. Additionally, the recipe database has been created but
+needs more elegant data handling. Further releases will implement the comparison functions between the pantry and recipes.
+
+----------------------------------------------------------------------------------

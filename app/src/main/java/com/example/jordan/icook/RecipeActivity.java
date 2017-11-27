@@ -1,6 +1,7 @@
 package com.example.jordan.icook;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,6 +50,7 @@ public class RecipeActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // Will insert data if there is data input in the text fields
                         boolean isInserted = myDb.insertData(editName.getText().toString(),
                                 editIngredient1.getText().toString(),
                                 Integer.parseInt(editQuantity1.getText().toString()),
@@ -63,6 +65,8 @@ public class RecipeActivity extends AppCompatActivity {
                                 editInstruction.getText().toString());
                         if (isInserted = true) {
                             Toast.makeText(RecipeActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+
+                            // This following block of code sets text field to blank after user inputs data
                             editName.setText("");
                             editIngredient1.setText("");
                             editQuantity1.setText("");
@@ -83,6 +87,7 @@ public class RecipeActivity extends AppCompatActivity {
         );
     }
 
+
     public void DeleteData(){
         btnDelete.setOnClickListener(
                 new View.OnClickListener(){
@@ -102,32 +107,49 @@ public class RecipeActivity extends AppCompatActivity {
     }
 
     public void viewAll(){
+
         btnView.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent RecipeList = new Intent(RecipeActivity.this, ListRecipe.class);
                         startActivity(RecipeList);
-                    }
                         /*Cursor res = myDb.getAllData();
-                            if(res.getCount() == 0){
-                                //show message
-                                showMessage("Error", "Nothing found");
-                                return;
-                            }
+                        if(res.getCount() == 0) {
+                            // show message
+                            showMessage("Error","Nothing found");
+                            return;
+                        }
 
-                            StringBuffer buffer = new StringBuffer();
-                            while(res.moveToNext()){
-                                buffer.append("Name :"+ res.getString(0)+"\n");
-                                buffer.append("Ingredient :"+ res.getString(1)+"\n");
-                                buffer.append("Quantity :"+ res.getString(2)+"\n");
-                                buffer.append("Instruction :"+res.getString(3)+"\n\n");
-                            }
-                            //show all data
-                            showMessage("Data", buffer.toString());
-                    }*/
+                        // Displays all recipes
+                        StringBuffer buffer = new StringBuffer();
+                        while (res.moveToNext()) {
+                            // ID is optional to keep track of recipe number
+                            //buffer.append("ID : "+ res.getString(0)+"\n\);
+                            buffer.append("Recipe Name : "+ res.getString(1)+"\n\n");
+                            buffer.append("Ingredient1 : "+ res.getString(2)+"\n");
+                            buffer.append("Quantity1 : "+ res.getString(3)+"\n");
+                            buffer.append("Ingredient2 : "+ res.getString(4)+"\n");
+                            buffer.append("Quantity2 : "+ res.getString(5)+"\n");
+                            buffer.append("Ingredient3 : "+ res.getString(6)+"\n");
+                            buffer.append("Quantity3 : "+ res.getString(7)+"\n");
+                            buffer.append("Ingredient4 : "+ res.getString(8)+"\n");
+                            buffer.append("Quantity4 : "+ res.getString(9)+"\n");
+                            buffer.append("Ingredient5 : "+ res.getString(10)+"\n");
+                            buffer.append("Quantity5 : "+ res.getString(11)+"\n\n");
+
+                            // If user sets instructions to null (empty field)
+                            // will result in app that will crash due to error on line 140
+                            buffer.append("Instructions : " + res.getString(12) + "\n\n\n\n");
+                        }
+
+                        // Show all data
+                        showMessage("Recipes",buffer.toString());*/
+                    }
                 }
         );
+
+
     }
 
     public void showMessage (String title, String Message){

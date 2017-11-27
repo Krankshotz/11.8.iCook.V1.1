@@ -11,8 +11,9 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class DatabaseRecipe extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME= "Recipe.db";
+    public static final String DATABASE_NAME= "ha.db";
     public static final String TABLE_NAME = "recipe_table";
+    public static final String COL_1 = "_id";
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "INGREDIENT1";
     public static final String COL_4 = "QUANTITY1";
@@ -26,26 +27,33 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
     public static final String COL_12 = "QUANTITY5";
     public static final String COL_13 = "INSTRUCTION";
 
+    public static final String[] All_Keys = new String[] {COL_1, COL_2, COL_3, COL_4,
+                                                          COL_5, COL_6, COL_7, COL_8,
+                                                          COL_9, COL_10, COL_11, COL_12,
+                                                          COL_13};
+
     public DatabaseRecipe(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+ TABLE_NAME + " ( NAME TEXT, INGREDIENT1 TEXT, QUANTITY1 INTEGER, " +
+        db.execSQL("create table "+ TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, INGREDIENT1 TEXT, QUANTITY1 INTEGER, " +
                 "INGREDIENT2 TEXT, QUANTITY2 INTEGER," +
                 "INGREDIENT3 TEXT, QUANTITY3 INTEGER," +
                 "INGREDIENT4 TEXT, QUANTITY4 INTEGER," +
                 "INGREDIENT5 TEXT, QUANTITY5 INTEGER," +
-                " INSTRUCTION TEXT)");
+                "INSTRUCTION TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXIST "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
         onCreate(db);
     }
 
+    // Inserts data into specified columns
     public boolean insertData(String name, String ingredient1, int quantity1,
                               String ingredient2, int quantity2,
                               String ingredient3, int quantity3,
@@ -73,6 +81,7 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
             return true;
     }
 
+    // Deletes recipes based on the NAME of the recipe
     public Integer deleteData (String name){
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, "NAME = ?", new String[] {name});
@@ -80,7 +89,24 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
 
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME, null);
+        String where = null;
+        Cursor res = db.query(true, TABLE_NAME, All_Keys, where,
+                              null, null, null ,null, null);
+        if(res != null){
+            res.moveToFirst();
+        }
+
         return res;
+    }
+    public Cursor fetchGroup() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * from" + TABLE_NAME;
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor fetchChildren(String Site_Name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * from " + Site_Name + "'";
+        return db.rawQuery(query, null);
     }
 }

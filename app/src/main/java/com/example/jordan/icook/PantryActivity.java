@@ -5,10 +5,13 @@ import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class PantryActivity extends AppCompatActivity {
@@ -42,19 +45,22 @@ public class PantryActivity extends AppCompatActivity {
                 new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
-                        boolean isInserted = myDb.insertData(editItem.getText().toString(),
-                                Integer.parseInt(editQuantity.getText().toString()));
-                        if(isInserted = true){
-                            Toast.makeText(PantryActivity.this,"Data Inserted",Toast.LENGTH_LONG).show();
+                        if((!TextUtils.isEmpty(editItem.getText().toString())) && (!TextUtils.isEmpty(editQuantity.getText().toString()))){
+                            myDb.insertData(editItem.getText().toString(),
+                                    Integer.parseInt(editQuantity.getText().toString()));
                             editItem.setText("");
                             editQuantity.setText("");
+                            Toast.makeText(PantryActivity.this,"Data Inserted",Toast.LENGTH_LONG).show();
+
                         }else{
                             Toast.makeText(PantryActivity.this,"Data Not Inserted",Toast.LENGTH_LONG).show();
                         }
+
                     }
                 }
         );
     }
+
     public void viewAll(){
         btnViewAll.setOnClickListener(
                 new View.OnClickListener(){

@@ -26,8 +26,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".ListPantry" />
+        <activity android:name=".NormalUser"
+                  android:parentActivityName=".PreferencesActivity"></activity>
+        <activity android:name=".VeganUser"
+                  android:parentActivityName=".PreferencesActivity"></activity>
+        <activity android:name=".VegUser"
+            android:parentActivityName=".PreferencesActivity"></activity>
         <activity android:name=".RecipeActivity" />
         <activity android:name=".ListPantry" />
+        <activity android:name=".ListRecipe"/>
         <activity android:name=".PreferencesActivity"></activity>
         <activity android:name=".PreferencesActivity"/>
         <meta-data android:name="com.google.android.gms.vision.DEPENDENCES"

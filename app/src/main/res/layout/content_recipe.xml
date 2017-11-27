@@ -1,27 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="100">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#f4f4f4">
 
-
-    <ListView
-        android:id="@+id/ListView"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content" />
-    <LinearLayout
-        android:orientation="vertical"
+    <ExpandableListView
+        android:id="@+id/lvExp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="501dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRecipe" />
 
-        <ListView
-            android:id="@+id/ListView2"
-            android:layout_width="120dp"
-            android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/myRecipe"
+        android:layout_width="366dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="6dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="My Recipe"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/lvExp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        </ListView>
-
-    </LinearLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
