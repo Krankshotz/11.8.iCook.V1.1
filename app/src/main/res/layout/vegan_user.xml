@@ -4,23 +4,71 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bckg">
+    android:background="@drawable/jordansgirlfriendleaked">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:padding="10dp"
-        android:text="We Assume that these are always in your panty:\n
-        Pasta\n
-        Rice\n
-        Oats\n
-        Cornmeal\n
-        Cashews\n
-        Peanuts\n
-        Legumes\n
-        Chick Peas\n
-        Almonds\n
-        Millet\n"></TextView>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <CheckBox android:id="@+id/CB0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pasta"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/CB1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rice"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/CB2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oats"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/CB3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cornmeal"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox
+            android:id="@+id/CB4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCheckboxClicked"
+            android:text="Peanuts" />
+        <CheckBox android:id="@+id/CB5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cashews"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/CB6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Legumes"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/CB7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peas"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/CB8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Almonds"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/CB9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Millet"
+            android:onClick="onCheckboxClicked"/>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Please check what is accurate" />
+    </LinearLayout>
 </RelativeLayout>

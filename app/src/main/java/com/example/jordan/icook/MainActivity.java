@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         //Creates Listener to Open new Activity
         ImageButton ButtonPref = (ImageButton)(findViewById(R.id.preferencesButton4));
         ButtonPref.setOnClickListener(new View.OnClickListener() {

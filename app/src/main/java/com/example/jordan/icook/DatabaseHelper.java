@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
+
 
 /**
  * Created by Henry on 10/21/2017.
@@ -100,6 +102,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             c.moveToFirst();
         }
         return c;
+    }
+    boolean isEmpty(){
+        if(COL_1 != NULL)
+            return false;
+        else
+            return true;
     }
     /*public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
