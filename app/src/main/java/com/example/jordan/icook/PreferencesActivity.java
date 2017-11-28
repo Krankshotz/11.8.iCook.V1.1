@@ -15,7 +15,9 @@ public class PreferencesActivity extends AppCompatActivity {
 
     private GestureDetectorCompat gestureObject; //for Gestre class
     DatabaseHelper myDb;
-
+    int defaultAmount = 1;
+    static int click = 0; //once you click, you can't click multiple times
+                          // which adds a bunch to the pantry
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
