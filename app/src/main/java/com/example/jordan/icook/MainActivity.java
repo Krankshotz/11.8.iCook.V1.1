@@ -9,14 +9,18 @@ import android.view.View;
 import android.widget.ImageButton;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "";
     public static int test = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //check if first run
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
@@ -60,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         //Creates Listener to Open new Activity
         ImageButton ButtonPref = (ImageButton)(findViewById(R.id.preferencesButton4));
         ButtonPref.setOnClickListener(new View.OnClickListener() {

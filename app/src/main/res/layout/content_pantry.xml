@@ -30,6 +30,7 @@
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints" />
 
+
     <LinearLayout
         android:id="@+id/viewA"
         android:layout_width="0dp"

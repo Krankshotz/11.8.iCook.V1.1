@@ -6,13 +6,10 @@ updated: 11/18/17
 package com.example.jordan.icook;
 
 import android.Manifest;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
@@ -22,15 +19,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
+
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 import static com.google.android.gms.vision.CameraSource.Builder;
 import static com.google.android.gms.vision.CameraSource.CAMERA_FACING_BACK;
 import static com.google.android.gms.vision.CameraSource.PictureCallback;
@@ -42,9 +45,10 @@ public class receipt_Scanner extends AppCompatActivity {
     SurfaceView cameraView;
     TextView textView;
     CameraSource cameraSource;
-    String fileName="Saved Receipt",stringTotal,itemName, itemQuant;
-    String[] parts;
+    String fileName="Saved Receipt", stringTotal, itemName="", itemQuant="";
+    String[] parts,foods;
     final int RequestCameraPermissionID = 1001;
+    int foodID;
     File path=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     File file=new File(path,fileName);
     public receipt_Scanner() throws FileNotFoundException {}
@@ -58,8 +62,11 @@ public class receipt_Scanner extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.text_view);
         final Button takePicButt = (Button) findViewById(R.id.picButt);
         myDb = new DatabaseHelper(this);
+        foods = getResources().getStringArray(R.array.approved_food_list); //creates food list to check for pantry input
+
+
         //show path of downloads for testing purposes
-        Toast.makeText(getBaseContext(), path.toString()+"hello",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Save path: "+path.toString(),Toast.LENGTH_SHORT).show();
 
         final CameraSource.ShutterCallback shutter = new ShutterCallback() {
             @Override
@@ -102,6 +109,7 @@ public class receipt_Scanner extends AppCompatActivity {
                 }
             });
             //updates screen on detections
+
             textRecognizer.setProcessor(new Detector.Processor<TextBlock>() {
                 @Override
                 public void release(){}
@@ -134,13 +142,18 @@ public class receipt_Scanner extends AppCompatActivity {
                             //try inputting file to scanner for parsing
                             try (Scanner scanner=new Scanner(file)){
                                 while (scanner.hasNextLine()) {//while not eof input into pantry db
-                                    parts = scanner.nextLine().split(" ");//here is where it should check before adding items
+                                    parts = scanner.nextLine().split("\\s+");//here is where it should check before adding items
+                                    //check if in approved foods list
+
                                     itemName = parts[0];
-                                    itemQuant = parts[1];
-                                    myDb.insertData(itemName, Integer.parseInt(itemQuant));
+                                    if(!Objects.equals(parts[1], NULL)) itemQuant = parts[1];//CRASHES HERE WHEN ITEM DOESNT HAVE QTY
+                                    else itemQuant="1";
+                                    if((Arrays.asList(foods).contains(itemName) && !Objects.equals(itemQuant, NULL))||//if food is on the list and has a quantity
+                                            Arrays.asList(foods).contains(itemName) && itemQuant.equals("0"))//if food is on the list but no quantity (single item)
+                                        myDb.insertData(itemName, Integer.parseInt(itemQuant)); //here we would implement  food id //Arrays.asList(foods).indexOf(itemName)
                                 }
                             } catch (FileNotFoundException e){e.printStackTrace();}
-                            //Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
 
                         }
                     }
