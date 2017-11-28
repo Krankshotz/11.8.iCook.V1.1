@@ -53,7 +53,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     startActivity(vegwindow);
                 }
             }
-        });
+        );
 
         Button pantryInfo = findViewById(R.id.infoPantryLoadout);
         pantryInfo.setOnClickListener(new View.OnClickListener() {
