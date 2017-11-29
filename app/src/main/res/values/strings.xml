@@ -61,32 +61,32 @@
     </string-array>
     <string-array
         name="approved_food_list">
-        <item>Almonds</item>
+        <item>almonds</item>
         <item>bananas</item>
-        <item>Basil</item>
+        <item>basil</item>
         <item>beef</item>
         <item>beer</item>
         <item>bread</item>
         <item>carrots</item>
-        <item>Cashews</item>
-        <item>Cheese</item>
+        <item>cashews</item>
+        <item>cheese</item>
         <item>chicken</item>
-        <item>Cilantro</item>
-        <item>Cornmeal</item>
+        <item>cilantro</item>
+        <item>cornmeal</item>
         <item>eggs</item>
-        <item>Garlic</item>
-        <item>Legumes</item>
-        <item>Lettuce</item>
+        <item>garlic</item>
+        <item>legumes</item>
+        <item>lettuce</item>
         <item>milk</item>
-        <item>Millet</item>
+        <item>millet</item>
         <item>oatmeal</item>
         <item>olives</item>
         <item>onion</item>
         <item>paprika</item>
-        <item>Pasta</item>
-        <item>Peanuts</item>
+        <item>pasta</item>
+        <item>peanuts</item>
         <item>pepperoni</item>
-        <item>Rosemary</item>
+        <item>rosemary</item>
         <item>salt</item>
         <item>tuna</item>
         <item>tomato</item>
