@@ -58,9 +58,9 @@ public class receipt_Scanner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt__scanner);
-        cameraView = (SurfaceView) findViewById(R.id.surface_view);
-        textView = (TextView) findViewById(R.id.text_view);
-        final Button takePicButt = (Button) findViewById(R.id.picButt);
+        cameraView = findViewById(R.id.surface_view);
+        textView =  findViewById(R.id.text_view);
+        final Button takePicButt =  findViewById(R.id.picButt);
         myDb = new DatabaseHelper(this);
         foods = getResources().getStringArray(R.array.approved_food_list); //creates food list to check for pantry input
 
@@ -146,7 +146,7 @@ public class receipt_Scanner extends AppCompatActivity {
                                     //check if in approved foods list
 
                                     itemName = parts[0];
-                                    if(!Objects.equals(parts[1], NULL)) itemQuant = parts[1];//CRASHES HERE WHEN ITEM DOESNT HAVE QTY
+                                    if(!Objects.equals(parts[1], NULL)) itemQuant = parts[1];//CRASHES HERE WHEN ITEM DOESN'T HAVE QTY
                                     else itemQuant="1";
                                     if((Arrays.asList(foods).contains(itemName) && !Objects.equals(itemQuant, NULL))||//if food is on the list and has a quantity
                                             Arrays.asList(foods).contains(itemName) && itemQuant.equals("0"))//if food is on the list but no quantity (single item)
