@@ -20,7 +20,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/bcgrdcropwhite"
         tools:ignore="RtlHardcoded" />
 
@@ -28,33 +28,29 @@
         android:id="@+id/preferencesButton4"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="28dp"
         android:layout_marginTop="336dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline4"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/btton41" />
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btton4p1" />
 
     <ImageButton
         android:id="@+id/recipesButton3"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="336dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintLeft_toLeftOf="@+id/guideline2"
-        app:layout_constraintRight_toLeftOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/btton31" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btton3p1" />
 
     <ImageButton
         android:id="@+id/receiptButton1"
@@ -62,43 +58,45 @@
         android:layout_height="140dp"
         android:layout_marginLeft="28dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="196dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:tint="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@+id/guideline2"
         app:layout_constraintRight_toLeftOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/btton11" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btton1p1" />
 
     <ImageButton
         android:id="@+id/pantryButton2"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="32dp"
         android:layout_marginTop="196dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline4"
         app:layout_constraintRight_toLeftOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/btton21"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/btton2p1"
         tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/banner"
         android:layout_width="410dp"
         android:layout_height="100dp"
-        android:layout_marginTop="0dp"
         android:cropToPadding="true"
+        app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/banner"
-        app:layout_constraintHorizontal_bias="0.3" />
+        app:srcCompat="@drawable/banner4" />
 
     <ImageButton
         android:id="@+id/Button5Help"
@@ -136,12 +134,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.505" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.495" />
 
 </android.support.constraint.ConstraintLayout>

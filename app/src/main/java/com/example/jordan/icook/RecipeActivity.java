@@ -32,21 +32,21 @@ public class RecipeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipe);
         myDb = new DatabaseRecipe(this);
 
-        editName = (EditText)findViewById(R.id.editText_Name);
-        editIngredient1 = (EditText)findViewById(R.id.editText_Ingredient1);
-        editQuantity1 = (EditText)findViewById(R.id.editText_Quantity1);
-        editIngredient2 = (EditText)findViewById(R.id.editText_Ingredient2);
-        editQuantity2 = (EditText)findViewById(R.id.editText_Quantity2);
-        editIngredient3 = (EditText)findViewById(R.id.editText_Ingredient3);
-        editQuantity3 = (EditText)findViewById(R.id.editText_Quantity3);
-        editIngredient4 = (EditText)findViewById(R.id.editText_Ingredient4);
-        editQuantity4 = (EditText)findViewById(R.id.editText_Quantity4);
-        editIngredient5 = (EditText)findViewById(R.id.editText_Ingredient5);
-        editQuantity5 = (EditText)findViewById(R.id.editText_Quantity5);
-        editInstruction = (EditText)findViewById(R.id.editText_Instruction);
-        btnAdd = (Button)findViewById(R.id.button_Add);
-        btnView = (Button)findViewById(R.id.button_View);
-        btnDelete = (Button)findViewById(R.id.button_Delete);
+        editName = findViewById(R.id.editText_Name);
+        editIngredient1 = findViewById(R.id.editText_Ingredient1);
+        editQuantity1 = findViewById(R.id.editText_Quantity1);
+        editIngredient2 = findViewById(R.id.editText_Ingredient2);
+        editQuantity2 = findViewById(R.id.editText_Quantity2);
+        editIngredient3 = findViewById(R.id.editText_Ingredient3);
+        editQuantity3 = findViewById(R.id.editText_Quantity3);
+        editIngredient4 = findViewById(R.id.editText_Ingredient4);
+        editQuantity4 = findViewById(R.id.editText_Quantity4);
+        editIngredient5 = findViewById(R.id.editText_Ingredient5);
+        editQuantity5 = findViewById(R.id.editText_Quantity5);
+        editInstruction = findViewById(R.id.editText_Instruction);
+        btnAdd = findViewById(R.id.button_Add);
+        btnView = findViewById(R.id.button_View);
+        btnDelete = findViewById(R.id.button_Delete);
         AddData();
         viewAll();
         DeleteData();
@@ -165,6 +165,8 @@ public class RecipeActivity extends AppCompatActivity {
         builder.setMessage(Message);
         builder.show();
     }
+
+
     //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
     @Override
     public boolean onTouchEvent(MotionEvent event){
