@@ -33,7 +33,6 @@ public class PreferencesActivity extends AppCompatActivity {
             });
 
         Button veganButton = (findViewById(R.id.button2));
-
         veganButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,8 +49,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     Intent vegwindow = new Intent(PreferencesActivity.this, VegUser.class);
                     startActivity(vegwindow);
                 }
-            }
-        });
+            });
 
         Button pantryInfo = findViewById(R.id.infoPantryLoadout);
         pantryInfo.setOnClickListener(new View.OnClickListener() {
