@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#1048ff</color>
     <color name="CustomBackdropText">#40464646</color>
+    <color name="white_Clear">#bfffffff</color>
+    <color name="Cucumber">#eaaffb8a</color>
 </resources>

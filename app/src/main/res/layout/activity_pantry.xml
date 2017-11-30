@@ -7,65 +7,226 @@
     tools:context="com.example.henry.mypantrydb.MainActivity">
 
 
-    <RelativeLayout
-        android:layout_width="344dp"
-        android:layout_height="495dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="56dp">
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/kitcheb_blur" />
 
-        <TextView
-            android:id="@+id/Item"
-            android:layout_width="150dp"
-            android:layout_height="41dp"
-            android:layout_alignEnd="@+id/textView11"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="ITEM:"
-            android:textSize="23sp" />
+    <ImageView
+        android:id="@+id/addGroceryBackdrop"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="-15dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginStart="4dp"
+        android:src="@color/common_google_signin_btn_text_light_focused"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_Add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoadDefaults" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="150dp"
-            android:layout_height="41dp"
-            android:layout_below="@+id/Item"
-            android:text="QUANTITY:"
-            android:textSize="23sp" />
+    <TextView
+        android:id="@+id/Item"
+        android:layout_width="125dp"
+        android:layout_height="25dp"
+        android:layout_alignEnd="@+id/textView11"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="ITEM:"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <EditText
-            android:id="@+id/editText_Item"
-            android:layout_width="wrap_content"
-            android:layout_height="41dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/Item"
-            android:ems="10"
-            android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/LoadDefaults"
+        android:layout_width="0dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="52dp"
+        android:background="@color/CustomBackdropText"
+        android:text="Add Grocery item to Pantry"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editText_Quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="41dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/editText_Item"
-            android:layout_toEndOf="@+id/textView11"
-            android:ems="10"
-            android:inputType="textPersonName" />
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Item"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="152dp"
+        android:text="QUANTITY:"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_Add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:text="Add Item"
-            android:layout_below="@+id/editText_Quantity"
-            android:layout_alignParentEnd="true" />
+    <EditText
+        android:id="@+id/editText_Item"
+        android:layout_width="175dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="116dp"
+        android:layout_toEndOf="@+id/Item"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/Item"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_View"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VIEW PANTRY"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+    <EditText
+        android:id="@+id/editText_Quantity"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/editText_Item"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="152dp"
+        android:layout_toEndOf="@+id/textView11"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+    <Button
+        android:id="@+id/btn_Add"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignStart="@+id/button_viewPantry"
+        android:layout_below="@+id/editText_Quantity"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="160dp"
+        android:background="@drawable/addbox"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="@android:color/white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_viewPantry"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/ic_kitchen_black_48dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageButton
+        android:id="@+id/scanReceipt_button"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="48dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/background_light"
+        android:scaleType="centerCrop"
+        android:src="@drawable/addphoto"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageButton
+        android:id="@+id/prefenceButton"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dining"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/pref"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="PREFERENCES"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prefenceButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="RECEIPT"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scanReceipt_button"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/pantry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="16dp"
+        android:text="PANTRY"
+        android:textColor="@android:color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_viewPantry"
+        app:layout_constraintVertical_bias="0.0" /><![CDATA[
+
+
+
+
+
+    "
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+]]>
 </android.support.constraint.ConstraintLayout>

@@ -8,8 +8,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +34,7 @@ public class ListPantry extends AppCompatActivity {
     EditText text1;
     EditText text2;
     FloatingActionButton btnAdd;
+    private GestureDetectorCompat gestureObject; //for Gestre class
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,9 @@ public class ListPantry extends AppCompatActivity {
         text1.setEnabled(false);
         text2.setEnabled(false);
         myDb = new DatabaseHelper(this);
+        //For Gestures
+        gestureObject = new GestureDetectorCompat(this, new LearnGesture());
+        //End for Gestures
         btnAdd = (FloatingActionButton) findViewById(R.id.btn_AddItems);
         ImageButton homebtn = (ImageButton)(findViewById(R.id.homeButton));
         homebtn.setOnClickListener(new View.OnClickListener() {
@@ -117,5 +124,34 @@ public class ListPantry extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
+    }
+
+    //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        this.gestureObject.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+    //For Gesture Object Class
+    class LearnGesture extends GestureDetector.SimpleOnGestureListener{
+        //Simple Gesture Listener for what we want to do, this opens the pantry
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY){
+            if(event2.getX() > event1.getX()){
+                //Here is the code for what you want the swipe to do for Left to Right
+                Intent openPantry = new Intent(ListPantry.this, MainActivity.class);
+                finish(); //Ends current activities Actions
+                startActivity(openPantry);
+            }
+            else
+            if(event2.getX() < event1.getX()){
+                //Here is the code for what you want the swipe to do for Right to Left
+                Intent openPantry = new Intent(ListPantry.this, RecipeActivity.class);
+                finish(); //Ends current activities Actions
+                startActivity(openPantry);
+            }
+            return true;
+        }
+
     }
 }

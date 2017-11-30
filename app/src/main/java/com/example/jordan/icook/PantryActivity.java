@@ -1,7 +1,6 @@
 package com.example.jordan.icook;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,9 +8,6 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class PantryActivity extends AppCompatActivity {
@@ -28,7 +24,7 @@ public class PantryActivity extends AppCompatActivity {
         editItem = (EditText) findViewById(R.id.editText_Item);
         editQuantity = (EditText) findViewById(R.id.editText_Quantity);
         btnAddData = (Button) findViewById(R.id.btn_Add);
-        btnViewAll = (Button) findViewById(R.id.btn_View);
+        btnViewAll = (Button) findViewById(R.id.button_viewPantry);
         addData();
         viewAll();
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

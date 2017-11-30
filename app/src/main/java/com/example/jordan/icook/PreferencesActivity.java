@@ -82,14 +82,16 @@ public class PreferencesActivity extends AppCompatActivity {
         public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY){
         if(event2.getX() > event1.getX()){
              //Here is the code for what you want the swipe to do for Left to Right
-            Intent openPantry = new Intent(PreferencesActivity.this, ListPantry.class);
+            Intent openPantry = new Intent(PreferencesActivity.this, MainActivity.class);
             finish(); //Ends current activities Actions
             startActivity(openPantry);
         }
         else
             if(event2.getX() < event1.getX()){
                 //Here is the code for what you want the swipe to do for Right to Left
-
+                Intent openPantry = new Intent(PreferencesActivity.this, ListPantry.class);
+                finish(); //Ends current activities Actions
+                startActivity(openPantry);
             }
             return true;
         }
