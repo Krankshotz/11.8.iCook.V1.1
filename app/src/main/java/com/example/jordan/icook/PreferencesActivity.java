@@ -70,7 +70,7 @@ public class PreferencesActivity extends AppCompatActivity {
         });
     }
 //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
-    @Override
+    /*@Override
     public boolean onTouchEvent(MotionEvent event){
         this.gestureObject.onTouchEvent(event);
         return super.onTouchEvent(event);
@@ -96,6 +96,6 @@ public class PreferencesActivity extends AppCompatActivity {
             return true;
         }
 
-    }
+    }*/
 
 }

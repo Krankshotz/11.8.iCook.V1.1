@@ -49,6 +49,13 @@ public class ListPantry extends AppCompatActivity {
         text2.setEnabled(false);
         editQuantity = findViewById(R.id.editText_Quantity);  //copied from pantryActivity
         myDb = new DatabaseHelper(this);
+        String[] array = new String[400];   //This is to memorize what has been tested, and wipes data after every pantry compare call
+        int x = 0;
+        boolean flag = false;
+        while(flag == false){//this deletes duplicates in DB pantry
+            flag = pantryCompare(array, x);  //returns false if something is changed else true, means all duplicates are gone.
+            x++;
+        }
         //For Gestures
         gestureObject = new GestureDetectorCompat(this, new LearnGesture());
         //End for Gestures
@@ -58,15 +65,14 @@ public class ListPantry extends AppCompatActivity {
 /// TEST CASE////////
 /////////////////////
         if(MainActivity.test == 1) {
-            myDb.insertData("eggs", 12);
+            myDb.insertData("eggs", 2);
             MainActivity.test++;
         }
 //////////////////////////////////////////////////////////////////////////////////////////////////
-        //pantryCompare(); //this deletes duplicates in DB pantry
+
         addItem();
         populateListViewFromDB();
 
-        //TEST();
         listViewItemLongClick();
 
     }
@@ -107,10 +113,8 @@ public class ListPantry extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int arg2, long id){
-
                 myDb.deleteRow(id);
                 populateListViewFromDB();
-
                 return false;
             }
         });
@@ -126,36 +130,25 @@ public class ListPantry extends AppCompatActivity {
 
 
     //Creates Pantry Comparisons, if items have == Names, merge the quantity
-    private void pantryCompare(){
+    private boolean pantryCompare(String[] array, int x) {
         Cursor cursor = myDb.getAllRows();  //creates a placement to iterate through all pantry items
-        Cursor cursor2 = myDb.getAllRows(); //for comparing the same pantry against same pantry
-        while(cursor.moveToNext()){         //goes to next item until hits null
-            if(cursor2.moveToFirst() == false)  //Cursor2 moves through the entire pantry for every move to next of cursor1, if null break
-                break;
-                while(cursor2.moveToNext()){
-                   if(cursor.getInt(1) == cursor2.getInt(1))  //if same ID, we don't compare, because cursors are at the same place
-                        cursor2.moveToNext();
-                    if(cursor.getString(2).equals(cursor2.getString(2))){  //if item names are delete cursor2 location from DB, add quantites
-                        int updateQuantity = cursor2.getInt(3) + cursor.getInt(3);  //add quantities together
-                        String itemName = cursor.getString(2);   //gets item name, both DB entries are deleted and a new one is added with both quanities
-                        int idLocation = cursor2.getInt(3);      //grabs id to delete it from DB
-                        myDb.deleteRow(idLocation);                //this may stop the iteration of the loop because it creates a null value?
-                        populateListViewFromDB();
-                        idLocation = cursor.getInt(3);            //find location of cursor 1 location to update quanity to DB
-                        myDb.deleteRow(idLocation);                 //delete second copy from DB
-                        populateListViewFromDB();
-                        //Now Insert a new value into database with updated quantity and matching item Name
-                        myDb.insertData(itemName, updateQuantity);
-                        Toast.makeText(ListPantry.this, "Just a Test", Toast.LENGTH_LONG).show();
 
-                        //reset cursors because DBs items were deleted
-                        cursor = myDb.getAllRows();
-                        cursor2 = myDb.getAllRows();
-
-                    }
+        if (cursor.moveToFirst()) {
+            for (int q = 0; q < x; q++) {
+                while (array[q] == cursor.getString(1).toString()) { //does not test same string twice
+                    if (cursor.moveToNext() == false)
+                        return true;  //ends the while loop
+                    //else
+                      //  cursor.moveToNext();
                 }
-        }
+            }
+                    String holder = cursor.getString(1).toString();  //place holder to reinsert because all of these strings will be deleted
+                    int qtyHolder = cursor.getInt(2);
+                    array[x] = myDb.deleteDuplicates(cursor.getString(1).toString()); //if array
+                    myDb.insertData(holder, qtyHolder);  //re insert one of the strings
 
+        }
+            return false; //returns false if it did a delete duplicate
     }
     //--------------End of Pantry Comparison-------------------------------
 
@@ -179,7 +172,7 @@ public class ListPantry extends AppCompatActivity {
             else
             if(event2.getX() < event1.getX()){
                 //Here is the code for what you want the swipe to do for Right to Left
-                Intent openPantry = new Intent(ListPantry.this, RecipeActivity.class);
+                Intent openPantry = new Intent(ListPantry.this, ListRecipe.class);
                 finish(); //Ends current activities Actions
                 startActivity(openPantry);
             }

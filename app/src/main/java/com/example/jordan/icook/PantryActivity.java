@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class PantryActivity extends AppCompatActivity {
@@ -21,10 +22,10 @@ public class PantryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantry);
         myDb = new DatabaseHelper(this);
-        editItem = (EditText) findViewById(R.id.editText_Item);
-        editQuantity = (EditText) findViewById(R.id.editText_Quantity);
-        btnAddData = (Button) findViewById(R.id.btn_Add);
-        btnViewAll = (Button) findViewById(R.id.button_viewPantry);
+        editItem = findViewById(R.id.editText_Item);
+        editQuantity = findViewById(R.id.editText_Quantity);
+        btnAddData = findViewById(R.id.btn_Add);
+        btnViewAll = findViewById(R.id.button_viewPantry);
         addData();
         viewAll();
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -35,6 +36,24 @@ public class PantryActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
+        //click preference button to open preference activity
+        final ImageButton scanRe = findViewById(R.id.scanReceipt_button);
+        scanRe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent receiptswindow = new Intent(PantryActivity.this, receipt_Scanner.class);
+                startActivity(receiptswindow);
+            }
+        });
+        //Creates Listener to Open new Activity
+        ImageButton ButtonPref = findViewById(R.id.prefenceButton);
+        ButtonPref.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent prefwindow = new Intent(PantryActivity.this, PreferencesActivity.class);
+                startActivity(prefwindow);
+            }
+        });
     }
     public void addData(){
         btnAddData.setOnClickListener(

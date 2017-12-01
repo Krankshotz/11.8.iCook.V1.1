@@ -78,7 +78,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean deleteRow(long rowId){
         SQLiteDatabase db = this.getWritableDatabase();
         String where = ROW_ID + "=" + rowId;
-        return db.delete(TABLE_PANTRY, where, null)!= 0;
+        return db.delete(TABLE_PANTRY, where, null) != 1;
+    }
+
+    public String deleteDuplicates(String string){     //Delete matching name, insert another name at the bottom
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = getAllRows();
+        String where =  COL_1 + "=" + string;
+        if (c.moveToFirst()) {
+            do{
+                db.delete(TABLE_PANTRY, where, null);  //deletes matching strings
+            }while (c.moveToNext());
+        }
+        c.close();
+        return string;  //this string will go into an array that holds strings (Pantry items that have already been tested
     }
 
     public void deleteAll(){
@@ -104,10 +117,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return c;
     }
     boolean isEmpty(){
-        if(COL_1 != NULL)
-            return false;
-        else
-            return true;
+        return COL_1 == NULL;
     }
     /*public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
