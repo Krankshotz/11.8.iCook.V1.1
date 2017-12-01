@@ -6,7 +6,10 @@ updated: 11/18/17
 package com.example.jordan.icook;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -143,14 +146,13 @@ public class receipt_Scanner extends AppCompatActivity {
                             try (Scanner scanner=new Scanner(file)){
                                 while (scanner.hasNextLine()) {//while not eof input into pantry db
                                     parts = scanner.nextLine().split("\\s+");//here is where it should check before adding items
-                                    //check if in approved foods list
-
-                                    itemName = parts[0];
-                                    if(!Objects.equals(parts[1], NULL)) itemQuant = parts[1];//CRASHES HERE WHEN ITEM DOESN'T HAVE QTY
-                                    else itemQuant="1";
-                                    if((Arrays.asList(foods).contains(itemName) && !Objects.equals(itemQuant, NULL))||//if food is on the list and has a quantity
-                                            Arrays.asList(foods).contains(itemName) && itemQuant.equals("0"))//if food is on the list but no quantity (single item)
-                                        myDb.insertData(itemName, Integer.parseInt(itemQuant)); //here we would implement  food id //Arrays.asList(foods).indexOf(itemName)
+                                    if(Arrays.asList(foods).contains(parts[0])) {  //check if in approved foods list
+                                        itemName = parts[0];
+                                        itemName.replaceAll("[^A-Za-z]+", "").toLowerCase();//remove all but alpha chars and
+                                        itemName=itemName.substring(0, 1).toUpperCase()+itemName.substring(1); //capitalizes first letter
+                                        itemQuant =  parts[1];
+                                        myDb.insertUpdate(itemName, Integer.parseInt(itemQuant));
+                                    }
                                 }
                             } catch (FileNotFoundException e){e.printStackTrace();}
                             Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
