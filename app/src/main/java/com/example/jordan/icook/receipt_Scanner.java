@@ -6,10 +6,7 @@ updated: 12/1/17
 package com.example.jordan.icook;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -33,10 +30,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Objects;
 import java.util.Scanner;
 
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 import static com.google.android.gms.vision.CameraSource.Builder;
 import static com.google.android.gms.vision.CameraSource.CAMERA_FACING_BACK;
 import static com.google.android.gms.vision.CameraSource.PictureCallback;
