@@ -1,7 +1,7 @@
 /*
 Text scanner applet
 Paul Figueroa
-updated: 11/18/17
+updated: 12/1/17
  */
 package com.example.jordan.icook;
 
@@ -148,8 +148,8 @@ public class receipt_Scanner extends AppCompatActivity {
                                     parts = scanner.nextLine().split("\\s+");//here is where it should check before adding items
                                     if(Arrays.asList(foods).contains(parts[0])) {  //check if in approved foods list
                                         itemName = parts[0];
-                                        itemName.replaceAll("[^A-Za-z]+", "").toLowerCase();//remove all but alpha chars and
-                                        itemName=itemName.substring(0, 1).toUpperCase()+itemName.substring(1); //capitalizes first letter
+                                        itemName=itemName.replaceAll("[^A-Za-z]+", "");//remove all but alpha chars
+                                        itemName=itemName.substring(0, 1).toUpperCase()+itemName.substring(1).toLowerCase(); //capitalizes first letter and lower rest
                                         itemQuant =  parts[1];
                                         myDb.insertUpdate(itemName, Integer.parseInt(itemQuant));
                                     }
