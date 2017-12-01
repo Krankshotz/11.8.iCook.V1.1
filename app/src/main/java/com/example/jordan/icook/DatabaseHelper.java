@@ -88,7 +88,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         initialValues.put(COL_1, item); //get values ready to insert
         initialValues.put(COL_2, quantity);
 
-        int id = (int) db.update(TABLE_PANTRY, initialValues, "ITEM=?", new String[] {item}); //try doing an update on values
+        int id = db.update(TABLE_PANTRY, initialValues, "ITEM=?", new String[] {item}); //try doing an update on values
         if (id == 0) { //if update not successful ==0 then do an insert
             db.insertWithOnConflict(TABLE_PANTRY, null, initialValues, SQLiteDatabase.CONFLICT_IGNORE);
             return 1;
@@ -102,17 +102,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_PANTRY, where, null) != 1;
     }
 
-    public String deleteDuplicates(String string){     //Delete matching name, insert another name at the bottom
+    public int deleteDuplicates(String string, int idposition){     //Delete matching name, insert another name at the bottom
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = getAllRows();
         String where =  COL_1 + "=" + string;
-        if (c.moveToFirst()) {
+        //int check = 0; //if db.delete passes back a number we will return if it deletes 0;
+        if (c.moveToPosition(idposition+1)) {
             do{
                 db.delete(TABLE_PANTRY, where, null);  //deletes matching strings
             }while (c.moveToNext());
+        return 0;
         }
         c.close();
-        return string;  //this string will go into an array that holds strings (Pantry items that have already been tested
+        return 999;
+
+
     }
 
     public void deleteAll(){

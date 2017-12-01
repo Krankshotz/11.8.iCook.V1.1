@@ -49,13 +49,13 @@ public class ListPantry extends AppCompatActivity {
         text2.setEnabled(false);
         editQuantity = findViewById(R.id.editText_Quantity);  //copied from pantryActivity
         myDb = new DatabaseHelper(this);
-        String[] array = new String[400];   //This is to memorize what has been tested, and wipes data after every pantry compare call
-        int x = 0;
-        boolean flag = false;
-        while(flag == false){//this deletes duplicates in DB pantry
-            flag = pantryCompare(array, x);  //returns false if something is changed else true, means all duplicates are gone.
-            x++;
+        int jmpTo = 0;
+        boolean flagg = false;
+        while(flagg == false){//this deletes duplicates in DB pantry
+            flagg = pantryCompare(jmpTo);  //returns false if something is changed else true, means all duplicates are gone.
+            jmpTo++;
         }
+        jmpTo = 0;
         //For Gestures
         gestureObject = new GestureDetectorCompat(this, new LearnGesture());
         //End for Gestures
@@ -130,25 +130,21 @@ public class ListPantry extends AppCompatActivity {
 
 
     //Creates Pantry Comparisons, if items have == Names, merge the quantity
-    private boolean pantryCompare(String[] array, int x) {
+    private boolean pantryCompare(int jmpTo) {
+        int flag = 0;
         Cursor cursor = myDb.getAllRows();  //creates a placement to iterate through all pantry items
-
-        if (cursor.moveToFirst()) {
-            for (int q = 0; q < x; q++) {
-                while (array[q] == cursor.getString(1).toString()) { //does not test same string twice
-                    if (cursor.moveToNext() == false)
-                        return true;  //ends the while loop
-                    //else
-                      //  cursor.moveToNext();
-                }
-            }
-                    String holder = cursor.getString(1).toString();  //place holder to reinsert because all of these strings will be deleted
-                    int qtyHolder = cursor.getInt(2);
-                    array[x] = myDb.deleteDuplicates(cursor.getString(1).toString()); //if array
-                    myDb.insertData(holder, qtyHolder);  //re insert one of the strings
-
+        if (cursor.moveToPosition(jmpTo));       //jumps to last position
+            flag = myDb.deleteDuplicates(cursor.getString(1), cursor.getInt(2)); //if array
+        if(flag == 999)  //if 999 we have reached the end of the array
+        {
+            jmpTo = 0; //reset jumping for delete duplicates
+             cursor.close();
+            return true;
         }
-            return false; //returns false if it did a delete duplicate
+        else{
+            //cursor.close();
+            return false;
+        }
     }
     //--------------End of Pantry Comparison-------------------------------
 
