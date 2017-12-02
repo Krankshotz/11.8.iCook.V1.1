@@ -6,6 +6,7 @@ updated: 12/1/17
 package com.example.jordan.icook;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
@@ -62,6 +63,15 @@ public class receipt_Scanner extends AppCompatActivity {
         myDb = new DatabaseHelper(this);
         foods = getResources().getStringArray(R.array.approved_food_list); //creates food list to check for pantry input
 
+//Shortcut to Enter Manually Brings to PAntry acitiviyy
+        Button addMan = findViewById(R.id.button_additem);
+        addMan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pantrywindow = new Intent(receipt_Scanner.this, PantryActivity.class);
+                startActivity(pantrywindow);
+            }
+        });
 
         //show path of downloads for testing purposes
         Toast.makeText(getBaseContext(), "Save path: "+path.toString(),Toast.LENGTH_SHORT).show();

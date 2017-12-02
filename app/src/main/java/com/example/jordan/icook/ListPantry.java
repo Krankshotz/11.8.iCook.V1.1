@@ -49,13 +49,15 @@ public class ListPantry extends AppCompatActivity {
         text2.setEnabled(false);
         editQuantity = findViewById(R.id.editText_Quantity);  //copied from pantryActivity
         myDb = new DatabaseHelper(this);
-        int jmpTo = 0;
+        /*int jmpTo = 0;
         boolean flagg = false;
         while(flagg == false){//this deletes duplicates in DB pantry
             flagg = pantryCompare(jmpTo);  //returns false if something is changed else true, means all duplicates are gone.
             jmpTo++;
         }
         jmpTo = 0;
+        //The above code is for the pantry compare to remove duplicates
+        */
         //For Gestures
         gestureObject = new GestureDetectorCompat(this, new LearnGesture());
         //End for Gestures

@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RecipeActivity extends AppCompatActivity {
@@ -22,12 +24,12 @@ public class RecipeActivity extends AppCompatActivity {
             editIngredient4, editQuantity4,
             editIngredient5, editQuantity5,
             editInstruction;
-    Button btnAdd, btnView, btnDelete;
+    Button btnAdd, btnView, btnDelete,btnAddList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //For Gestures
-        gestureObject = new GestureDetectorCompat(this, new LearnGesture());
+        //gestureObject = new GestureDetectorCompat(this, new LearnGesture());
         //Class File
         setContentView(R.layout.activity_recipe);
         myDb = new DatabaseRecipe(this);
@@ -47,10 +49,27 @@ public class RecipeActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.button_Add);
         btnView = findViewById(R.id.button_View);
         btnDelete = findViewById(R.id.button_Delete);
+        btnAddList = findViewById(R.id.ingredient_btn);
+
+        //listener to add more ingredients
+        final Button showMoreIng = findViewById(R.id.ingredient_btn);
+        showMoreIng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editIngredient4.setVisibility(View.VISIBLE);
+                editIngredient5.setVisibility(View.VISIBLE);
+                editQuantity4.setVisibility(View.VISIBLE);
+                editQuantity5.setVisibility(View.VISIBLE);
+                showMoreIng.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        //End of hides ingredients until needed
         AddData();
         viewAll();
         DeleteData();
     }
+
 
     public void AddData(){
         btnAdd.setOnClickListener(
@@ -72,6 +91,12 @@ public class RecipeActivity extends AppCompatActivity {
                                 editInstruction.getText().toString());
                         if (isInserted = true) {
                             Toast.makeText(RecipeActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                            //Hide buttons after added a list of ingredients
+                            editIngredient4.setVisibility(View.INVISIBLE);
+                            editIngredient5.setVisibility(View.INVISIBLE);
+                            editQuantity4.setVisibility(View.INVISIBLE);
+                            editQuantity5.setVisibility(View.INVISIBLE);
+                            btnAddList.setVisibility(View.VISIBLE);
 
                             // This following block of code sets text field to blank after user inputs data
                             editName.setText("");
@@ -90,8 +115,12 @@ public class RecipeActivity extends AppCompatActivity {
                             Toast.makeText(RecipeActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
                         }
                     }
+
                 }
+
         );
+
+
     }
 
 
@@ -167,7 +196,7 @@ public class RecipeActivity extends AppCompatActivity {
     }
 
 
-    //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
+  /*  //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
     @Override
     public boolean onTouchEvent(MotionEvent event){
         this.gestureObject.onTouchEvent(event);
@@ -194,6 +223,6 @@ public class RecipeActivity extends AppCompatActivity {
             return true;
         }
 
-    }
+    }*/
 }
 

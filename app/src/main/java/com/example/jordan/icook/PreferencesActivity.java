@@ -30,7 +30,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
-                    startActivity(normalwindow);
+                    //startActivity(normalwindow);
                 }
             });
 
