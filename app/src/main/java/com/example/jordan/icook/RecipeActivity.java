@@ -2,48 +2,74 @@ package com.example.jordan.icook;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class RecipeActivity extends AppCompatActivity {
     DatabaseRecipe myDb;
+    private GestureDetectorCompat gestureObject; //for Gestre class
     EditText editName, editIngredient1, editQuantity1,
             editIngredient2, editQuantity2,
             editIngredient3, editQuantity3,
             editIngredient4, editQuantity4,
             editIngredient5, editQuantity5,
             editInstruction;
-    Button btnAdd, btnView, btnDelete;
+    Button btnAdd, btnView, btnDelete,btnAddList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //For Gestures
+        //gestureObject = new GestureDetectorCompat(this, new LearnGesture());
+        //Class File
         setContentView(R.layout.activity_recipe);
         myDb = new DatabaseRecipe(this);
 
-        editName = (EditText)findViewById(R.id.editText_Name);
-        editIngredient1 = (EditText)findViewById(R.id.editText_Ingredient1);
-        editQuantity1 = (EditText)findViewById(R.id.editText_Quantity1);
-        editIngredient2 = (EditText)findViewById(R.id.editText_Ingredient2);
-        editQuantity2 = (EditText)findViewById(R.id.editText_Quantity2);
-        editIngredient3 = (EditText)findViewById(R.id.editText_Ingredient3);
-        editQuantity3 = (EditText)findViewById(R.id.editText_Quantity3);
-        editIngredient4 = (EditText)findViewById(R.id.editText_Ingredient4);
-        editQuantity4 = (EditText)findViewById(R.id.editText_Quantity4);
-        editIngredient5 = (EditText)findViewById(R.id.editText_Ingredient5);
-        editQuantity5 = (EditText)findViewById(R.id.editText_Quantity5);
-        editInstruction = (EditText)findViewById(R.id.editText_Instruction);
-        btnAdd = (Button)findViewById(R.id.button_Add);
-        btnView = (Button)findViewById(R.id.button_View);
-        btnDelete = (Button)findViewById(R.id.button_Delete);
+        editName = findViewById(R.id.editText_Name);
+        editIngredient1 = findViewById(R.id.editText_Ingredient1);
+        editQuantity1 = findViewById(R.id.editText_Quantity1);
+        editIngredient2 = findViewById(R.id.editText_Ingredient2);
+        editQuantity2 = findViewById(R.id.editText_Quantity2);
+        editIngredient3 = findViewById(R.id.editText_Ingredient3);
+        editQuantity3 = findViewById(R.id.editText_Quantity3);
+        editIngredient4 = findViewById(R.id.editText_Ingredient4);
+        editQuantity4 = findViewById(R.id.editText_Quantity4);
+        editIngredient5 = findViewById(R.id.editText_Ingredient5);
+        editQuantity5 = findViewById(R.id.editText_Quantity5);
+        editInstruction = findViewById(R.id.editText_Instruction);
+        btnAdd = findViewById(R.id.button_Add);
+        btnView = findViewById(R.id.button_View);
+        btnDelete = findViewById(R.id.button_Delete);
+        btnAddList = findViewById(R.id.ingredient_btn);
+
+        //listener to add more ingredients
+        final Button showMoreIng = findViewById(R.id.ingredient_btn);
+        showMoreIng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editIngredient4.setVisibility(View.VISIBLE);
+                editIngredient5.setVisibility(View.VISIBLE);
+                editQuantity4.setVisibility(View.VISIBLE);
+                editQuantity5.setVisibility(View.VISIBLE);
+                showMoreIng.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        //End of hides ingredients until needed
         AddData();
         viewAll();
         DeleteData();
     }
+
 
     public void AddData(){
         btnAdd.setOnClickListener(
@@ -65,6 +91,12 @@ public class RecipeActivity extends AppCompatActivity {
                                 editInstruction.getText().toString());
                         if (isInserted = true) {
                             Toast.makeText(RecipeActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                            //Hide buttons after added a list of ingredients
+                            editIngredient4.setVisibility(View.INVISIBLE);
+                            editIngredient5.setVisibility(View.INVISIBLE);
+                            editQuantity4.setVisibility(View.INVISIBLE);
+                            editQuantity5.setVisibility(View.INVISIBLE);
+                            btnAddList.setVisibility(View.VISIBLE);
 
                             // This following block of code sets text field to blank after user inputs data
                             editName.setText("");
@@ -83,8 +115,12 @@ public class RecipeActivity extends AppCompatActivity {
                             Toast.makeText(RecipeActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
                         }
                     }
+
                 }
+
         );
+
+
     }
 
 
@@ -149,7 +185,6 @@ public class RecipeActivity extends AppCompatActivity {
                 }
         );
 
-
     }
 
     public void showMessage (String title, String Message){
@@ -159,5 +194,35 @@ public class RecipeActivity extends AppCompatActivity {
         builder.setMessage(Message);
         builder.show();
     }
+
+
+  /*  //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        this.gestureObject.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+    //For Gesture Object Class
+    class LearnGesture extends GestureDetector.SimpleOnGestureListener{
+        //Simple Gesture Listener for what we want to do, this opens the pantry
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY){
+            if(event2.getX() > event1.getX()){
+                //Here is the code for what you want the swipe to do for Left to Right
+                Intent openPantry = new Intent(RecipeActivity.this, MainActivity.class);
+                finish(); //Ends current activities Actions
+                startActivity(openPantry);
+            }
+            else
+            if(event2.getX() < event1.getX()){
+                //Here is the code for what you want the swipe to do for Right to Left
+                Intent openPantry = new Intent(RecipeActivity.this, ListPantry.class);
+                finish(); //Ends current activities Actions
+                startActivity(openPantry);
+            }
+            return true;
+        }
+
+    }*/
 }
 
