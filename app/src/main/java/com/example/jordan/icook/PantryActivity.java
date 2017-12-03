@@ -25,9 +25,7 @@ public class PantryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantry);
-        //For Gestures
-        gestureObject = new GestureDetectorCompat(this, new PantryActivity.LearnGesture());
-        //Class File
+
         myDb = new DatabaseHelper(this);
         editItem = findViewById(R.id.editText_Item);
         editQuantity = findViewById(R.id.editText_Quantity);
@@ -61,6 +59,9 @@ public class PantryActivity extends AppCompatActivity {
                 startActivity(prefwindow);
             }
         });
+        //For Gestures
+        gestureObject = new GestureDetectorCompat(this, new PantryActivity.LearnGesture());
+        //Class File
     }
     public void addData(){
         btnAddData.setOnClickListener(
