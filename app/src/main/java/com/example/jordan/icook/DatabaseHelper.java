@@ -102,7 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_PANTRY, where, null) != 1;
     }
 
-    public int deleteDuplicates(String string, int idposition){     //Delete matching name, insert another name at the bottom
+   /* public int deleteDuplicates(String string, int idposition){     //Delete matching name, insert another name at the bottom
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = getAllRows();
         String where =  COL_1 + "=" + string;
@@ -115,9 +115,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         c.close();
         return 999;
-
-
     }
+    */
 
     public void deleteAll(){
         Cursor c = getAllRows();

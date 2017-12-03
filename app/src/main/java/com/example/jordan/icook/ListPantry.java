@@ -131,6 +131,7 @@ public class ListPantry extends AppCompatActivity {
     }
 
 
+    /*
     //Creates Pantry Comparisons, if items have == Names, merge the quantity
     private boolean pantryCompare(int jmpTo) {
         int flag = 0;
@@ -147,7 +148,7 @@ public class ListPantry extends AppCompatActivity {
             //cursor.close();
             return false;
         }
-    }
+    }*/
     //--------------End of Pantry Comparison-------------------------------
 
     //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
