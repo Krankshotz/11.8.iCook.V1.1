@@ -10,6 +10,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class PreferencesActivity extends AppCompatActivity {
 
@@ -65,15 +66,14 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
         }
-        else
-        {
+        else {
             Button normalButton = (findViewById(R.id.button));
             normalButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
-                    //startActivity(normalwindow);
+                    Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -82,7 +82,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent veganwindow = new Intent(PreferencesActivity.this, VeganUser.class);
-                   // startActivity(veganwindow);
+                    Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
                 }
             });
 
@@ -92,7 +92,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Intent vegwindow = new Intent(PreferencesActivity.this, VegUser.class);
-                   // startActivity(vegwindow);
+                    Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
                 }
             });
 
