@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 /**
  * Created by Oscar Esparza on 11/19/2017.\
- * Last Updated on 11/24/17
+ * Last Updated on 12.3.17
  */
 
 public class NormalUser extends Activity {
@@ -26,52 +27,62 @@ public class NormalUser extends Activity {
         switch(view.getId()) {
             case R.id.CB0:
                 if(checked) {
-                    myDb.insertData("Olive Oil", defaultAmount);
+                    myDb.insertData("olive oil", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Olive Oil Inserted",Toast.LENGTH_LONG).show();
                     break;
                 }
             case R.id.CB1:
                 if (checked) {
-                    myDb.insertData("Garlic", defaultAmount);
+                    myDb.insertData("garlic", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Garlic Inserted",Toast.LENGTH_LONG).show();
                     break;
                 }
             case R.id.CB2:
                 if(checked) {
-                    myDb.insertData("Beef", defaultAmount);
+                    myDb.insertData("beef", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Beef Inserted",Toast.LENGTH_LONG).show();
                     break;
                 }
             case R.id.CB3:
                 if (checked){
-                    myDb.insertData("Eggs", defaultAmount);
+                    myDb.insertData("eggs", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Eggs Inserted",Toast.LENGTH_LONG).show();
                     break;
             }
             case R.id.CB4:
                 if (checked){
-                    myDb.insertData("Salt", defaultAmount);
+                    myDb.insertData("salt", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Salt Inserted",Toast.LENGTH_LONG).show();
                     break;
             }
             case R.id.CB5:
                 if (checked) {
-                    myDb.insertData("Oatmeal", defaultAmount);
+                    myDb.insertData("oatmeal", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Oatmeal Inserted",Toast.LENGTH_LONG).show();
                     break;
             }
             case R.id.CB6:
                 if (checked) {
-                    myDb.insertData("Chicken", defaultAmount);
+                    myDb.insertData("chicken", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Chicken Inserted",Toast.LENGTH_LONG).show();
                     break;
             }
             case R.id.CB7:
                 if (checked) {
-                    myDb.insertData("Cilantro", defaultAmount);
+                    myDb.insertData("cilantro", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Cilantro Inserted",Toast.LENGTH_LONG).show();
                     break;
             }
             case R.id.CB8:
                 if (checked) {
-                    myDb.insertData("Basil", defaultAmount);
+                    myDb.insertData("basil", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Basil",Toast.LENGTH_LONG).show();
                     break;
             }
             case R.id.CB9:
                 if (checked) {
-                    myDb.insertData("Rosemary", defaultAmount);
+                    myDb.insertData("rosemary", defaultAmount);
+                    Toast.makeText(NormalUser.this,"Rosemary Inserted",Toast.LENGTH_LONG).show();
                     break;
             }
 

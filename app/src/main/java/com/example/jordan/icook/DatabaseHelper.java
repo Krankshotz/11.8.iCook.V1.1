@@ -124,19 +124,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return c;
     }
-    boolean isEmpty(){
-        return COL_1 == NULL;
-    }
 
-    public static synchronized DatabaseHelper getInstance(Context context) {
+    public boolean isEmpty(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor mCursor = db.rawQuery("SELECT * FROM " + TABLE_PANTRY, null);
+        Boolean rowExists;
 
-        // Use the application context, which will ensure that you
-        // don't accidentally leak an Activity's context.
-        // See this article for more information: http://bit.ly/6LRzfx
-        if (sInstance == null) {
-            sInstance = new DatabaseHelper(context.getApplicationContext());
+        if (mCursor.moveToFirst())
+        {
+            // DO SOMETHING WITH CURSOR
+            rowExists = false;
+
+        } else
+        {
+            // I AM EMPTY
+            rowExists = true;
         }
-        return sInstance;
+        return rowExists;
+
     }
     /*public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
