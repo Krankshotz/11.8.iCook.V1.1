@@ -76,7 +76,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
-                    //startActivity(normalwindow);
+                    startActivity(normalwindow);
                 }
             });
 
@@ -85,7 +85,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent veganwindow = new Intent(PreferencesActivity.this, VeganUser.class);
-                   // startActivity(veganwindow);
+                    startActivity(veganwindow);
                 }
             });
 
@@ -95,7 +95,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Intent vegwindow = new Intent(PreferencesActivity.this, VegUser.class);
-                   // startActivity(vegwindow);
+                    startActivity(vegwindow);
                 }
             });
 
