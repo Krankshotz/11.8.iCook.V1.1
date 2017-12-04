@@ -53,7 +53,7 @@ public class ListRecipe extends AppCompatActivity {
             if(pantryC.moveToFirst())
                 do {
                     for (int x = 2; x < 11; x = x + 2)
-                        if (recipeC.getString(x).equals(pantryC.getString(1)));
+                        if (recipeC.getString(x).equals(pantryC.getString(1)) || recipeC.getString(x).isEmpty());
                             RecipeChecks[count]++;  //incrememnts means it found the ingredient
                 }while(pantryC.moveToNext());
             count++;  //increment to next recipe window
@@ -61,6 +61,7 @@ public class ListRecipe extends AppCompatActivity {
     }
 
     private void populateListView() {
+
         Cursor cur = myDb.getAllData();
         //HEADER
                 String[] groupField = new String[]{DatabaseRecipe.COL_2};

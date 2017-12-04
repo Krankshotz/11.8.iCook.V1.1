@@ -172,7 +172,6 @@ public class ListPantry extends AppCompatActivity {
                 //Toast.makeText(getBaseContext(), "Test1: ", Toast.LENGTH_SHORT).show();
                 myDb.insertData(arrayStr[tester], arrayInt[tester]);  //Re-inserts all data to DB pantry.
             }
-
         }
         cursor.close();
     }
