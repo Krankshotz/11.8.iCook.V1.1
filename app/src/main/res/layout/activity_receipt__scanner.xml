@@ -66,4 +66,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
+    <Button
+        android:id="@+id/infoPantryLoadout"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="32dp"
+        android:background="@android:drawable/ic_dialog_info"
+        android:backgroundTint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

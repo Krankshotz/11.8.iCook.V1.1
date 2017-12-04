@@ -30,7 +30,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
-                    //startActivity(normalwindow);
+                    startActivity(normalwindow);
                 }
             });
 
@@ -63,7 +63,7 @@ public class PreferencesActivity extends AppCompatActivity {
                             "the pre-made loadout wil be added to your pantry. \n\nNote: This is great for first time users.");
                     infoDialog.setCancelable(true);
                     infoDialog.setPositiveButton("OK", null);
-                    infoDialog.setTitle("Pantry Loadouts");
+                    infoDialog.setTitle("Defaults");
                     infoDialog.show();
                 }
             });

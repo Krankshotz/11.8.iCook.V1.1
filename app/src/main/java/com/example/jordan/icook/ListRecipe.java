@@ -28,6 +28,7 @@ public class ListRecipe extends AppCompatActivity {
     private static final String TAG = "ListRecipe";
     DatabaseHelper pantryDb;
     DatabaseRecipe myDb;
+    DatabaseRecipe myDb2; //
     EditText text1;
     int[] RecipeChecks = new int[400]; //create of arry up to 399 if array1 is == 5 show arrray Recipe
     int count = 0; //for Recipe Checks
@@ -44,18 +45,21 @@ public class ListRecipe extends AppCompatActivity {
     }
 
     public void compareRecipesToPantry(){
-        Cursor pantryC = pantryDb.getAllRows();  //Cursor creates a copy of the DTB we can iterate through
+        Cursor pantryC = pantryDb.getAllRows();  //Cursor creates a copy of the DTB we c;an iterate through
         Cursor recipeC = myDb.getAllData();
         count = 0; //reset count every time;
         for(int reset = 0; reset < 399; reset++)  //Loops through entire array
             RecipeChecks[reset] = 0;              //Resets all checked values to 0, as recipe ingredients may have changed.
-        while(recipeC.moveToNext()){  //Goes until end of Recipes
-            if(pantryC.moveToFirst())
-                do {
-                    for (int x = 2; x < 11; x = x + 2)
-                        if (recipeC.getString(x).equals(pantryC.getString(1)) || recipeC.getString(x).isEmpty());
-                            RecipeChecks[count]++;  //incrememnts means it found the ingredient
-                }while(pantryC.moveToNext());
+        while(recipeC.moveToNext()){              //Goes until end of Recipes
+            for (int x = 2; x < 11; x = x + 2) {  //INCREMENTS BY 2 BECAUSE IT IS CHECKING THE THE INGREDIENTS WHICH ARE EVERY OTHER COL
+                if (pantryC.moveToFirst())
+                    do {
+                        if (recipeC.getString(x).equals(pantryC.getString(1)) || recipeC.getString(x).isEmpty()) {
+                            RecipeChecks[count]++;                  //incrememnts means it found the ingredient
+                            break;
+                        }
+                    } while (pantryC.moveToNext());
+            }
             count++;  //increment to next recipe window
         }
     }

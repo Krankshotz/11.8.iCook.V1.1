@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
@@ -56,6 +57,20 @@ public class ListPantry extends AppCompatActivity {
         gestureObject = new GestureDetectorCompat(this, new LearnGesture());
         //End for Gestures
         btnAdd = findViewById(R.id.btn_AddItems);
+
+        Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+        pantryInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.AlertDialog.Builder infoDialog = new android.app.AlertDialog.Builder(ListPantry.this);
+                infoDialog.setMessage("To delete Pantry items: Tap and hold the item you would like to delete.\n\nSwipe left to right " +
+                        "to navigate to the Home Screen.\n\nSwipe right to left to navigate to the Recipe Screen");
+                infoDialog.setCancelable(true);
+                infoDialog.setPositiveButton("OK", null);
+                infoDialog.setTitle("Pantry Loadouts");
+                infoDialog.show();
+            }
+        });
 
 /////////////////////
 /// TEST CASE////////
