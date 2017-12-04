@@ -8,11 +8,26 @@
     tools:layout_editor_absoluteY="25dp"
     tools:layout_editor_absoluteX="0dp">
 
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Ingredient"
+        android:layout_marginTop="8dp"
+        android:layout_toStartOf="@+id/editText_Name"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/spiceswhite" />
+
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="551dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/Name"
@@ -36,67 +51,70 @@
             android:id="@+id/Quantity"
             android:layout_width="150dp"
             android:layout_height="41dp"
-            android:text="QUANTITY:"
-            android:textSize="23sp"
+            android:layout_alignParentEnd="true"
             android:layout_below="@+id/editText_Name"
-            android:layout_alignParentEnd="true" />
+            android:text="QUANTITY:"
+            android:textSize="23sp" />
 
         <TextView
             android:id="@+id/Instruction"
             android:layout_width="170dp"
             android:layout_height="41dp"
-            android:text="INSTRUCTIONS:"
-            android:textSize="23sp"
-            android:layout_below="@+id/editText_Ingredient4"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="42dp" />
+            android:layout_below="@+id/editText_Ingredient4"
+            android:layout_marginTop="42dp"
+            android:text="INSTRUCTIONS:"
+            android:textSize="23sp" />
 
         <EditText
             android:id="@+id/editText_Name"
             android:layout_width="wrap_content"
             android:layout_height="41dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/Name"
             android:ems="10"
             android:inputType="textPersonName"
             tools:layout_editor_absoluteX="158dp"
-            tools:layout_editor_absoluteY="8dp"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/Name" />
+            tools:layout_editor_absoluteY="8dp" />
 
         <EditText
             android:id="@+id/editText_Ingredient1"
             android:layout_width="wrap_content"
             android:layout_height="41dp"
-            android:ems="10"
-            android:inputType="textPersonName"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/Ingredient"
-            android:layout_alignParentStart="true" />
+            android:ems="10"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editText_Quantity1"
             android:layout_width="40dp"
             android:layout_height="41dp"
-            android:ems="10"
-            android:inputType="textPersonName"
+            android:layout_alignStart="@+id/button_View"
             android:layout_below="@+id/Quantity"
-            android:layout_alignEnd="@+id/editText_Name" />
+            android:layout_marginStart="18dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/editText_Ingredient2"
             android:layout_width="wrap_content"
             android:layout_height="41dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/editText_Ingredient1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:layout_below="@+id/editText_Ingredient1"
-            android:layout_alignParentStart="true" />
+            android:visibility="visible" />
 
         <EditText
             android:id="@+id/editText_Quantity2"
             android:layout_width="42dp"
             android:layout_height="41dp"
+            android:layout_alignStart="@+id/editText_Quantity1"
+            android:layout_below="@+id/editText_Quantity1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:layout_below="@+id/editText_Quantity1"
-            android:layout_alignStart="@+id/editText_Quantity1" />
+            android:visibility="visible" />
 
         <EditText
             android:id="@+id/editText_Ingredient3"
@@ -123,16 +141,18 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/editText_Ingredient3"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:visibility="invisible" />
 
         <EditText
             android:id="@+id/editText_Quantity4"
             android:layout_width="42dp"
             android:layout_height="41dp"
+            android:layout_alignStart="@+id/editText_Quantity3"
+            android:layout_below="@+id/editText_Quantity3"
             android:ems="10"
             android:inputType="textPersonName"
-            android:layout_below="@+id/editText_Quantity3"
-            android:layout_alignStart="@+id/editText_Quantity3" />
+            android:visibility="invisible" />
 
         <EditText
             android:id="@+id/editText_Ingredient5"
@@ -141,7 +161,8 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/editText_Ingredient4"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:visibility="invisible" />
 
         <EditText
             android:id="@+id/editText_Quantity5"
@@ -150,7 +171,8 @@
             android:layout_alignEnd="@+id/editText_Instruction"
             android:layout_below="@+id/editText_Ingredient4"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:visibility="invisible" />
 
         <EditText
             android:id="@+id/editText_Instruction"
@@ -164,29 +186,39 @@
 
         <Button
             android:id="@+id/button_Add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="119dp"
-            android:text="ADD RECIPE"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/button_View" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/button_Delete"
+            android:layout_toEndOf="@+id/Ingredient"
+            android:background="@drawable/addbox" />
 
         <Button
             android:id="@+id/button_View"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button_Add"
-            android:layout_alignBottom="@+id/button_Add"
-            android:layout_toEndOf="@+id/Instruction"
+            android:layout_alignBaseline="@+id/button_Delete"
+            android:layout_alignBottom="@+id/button_Delete"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:background="@color/white_Clear"
             android:text="VIEW ALL" />
 
         <Button
             android:id="@+id/button_Delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/button_Add"
-            android:layout_below="@+id/button_View"
-            android:text="DELETE RECIPE" />
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="29dp"
+            android:background="@android:drawable/ic_menu_delete" />
+
+        <Button
+            android:id="@+id/ingredient_btn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_above="@+id/editText_Quantity5"
+            android:layout_alignEnd="@+id/editText_Quantity5"
+            android:background="@drawable/addbox" />
 
     </RelativeLayout>
 

@@ -15,7 +15,9 @@ public class PreferencesActivity extends AppCompatActivity {
 
     private GestureDetectorCompat gestureObject; //for Gestre class
     DatabaseHelper myDb;
-
+    int defaultAmount = 1;
+    static int click = 0; //once you click, you can't click multiple times
+                          // which adds a bunch to the pantry
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +30,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
-                    startActivity(normalwindow);
+                    //startActivity(normalwindow);
                 }
             });
 
@@ -50,6 +52,7 @@ public class PreferencesActivity extends AppCompatActivity {
                     startActivity(vegwindow);
                 }
             });
+
 
             Button pantryInfo = findViewById(R.id.infoPantryLoadout);
             pantryInfo.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +115,7 @@ public class PreferencesActivity extends AppCompatActivity {
         }
     }
 //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
-    @Override
+    /*@Override
     public boolean onTouchEvent(MotionEvent event){
         this.gestureObject.onTouchEvent(event);
         return super.onTouchEvent(event);
@@ -124,18 +127,20 @@ public class PreferencesActivity extends AppCompatActivity {
         public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY){
         if(event2.getX() > event1.getX()){
              //Here is the code for what you want the swipe to do for Left to Right
-            Intent openPantry = new Intent(PreferencesActivity.this, ListPantry.class);
+            Intent openPantry = new Intent(PreferencesActivity.this, MainActivity.class);
             finish(); //Ends current activities Actions
             startActivity(openPantry);
         }
         else
             if(event2.getX() < event1.getX()){
                 //Here is the code for what you want the swipe to do for Right to Left
-
+                Intent openPantry = new Intent(PreferencesActivity.this, ListPantry.class);
+                finish(); //Ends current activities Actions
+                startActivity(openPantry);
             }
             return true;
         }
 
-    }
+    }*/
 
 }

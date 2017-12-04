@@ -6,7 +6,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="#f4f4f4">
+    android:background="@color/inputBackdrop">
 
     <ExpandableListView
         android:id="@+id/lvExp"
@@ -28,7 +28,7 @@
         android:layout_marginStart="6dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="My Recipe"
+        android:text="My Recipes"
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold"
