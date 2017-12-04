@@ -103,11 +103,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return c;
     }
-    boolean isEmpty(){
-        if(COL_1 != NULL)
-            return false;
-        else
-            return true;
+
+    public boolean isEmpty(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor mCursor = db.rawQuery("SELECT * FROM " + TABLE_PANTRY, null);
+        Boolean rowExists;
+
+        if (mCursor.moveToFirst())
+        {
+            // DO SOMETHING WITH CURSOR
+            rowExists = false;
+
+        } else
+        {
+            // I AM EMPTY
+            rowExists = true;
+        }
+        return rowExists;
     }
     /*public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();

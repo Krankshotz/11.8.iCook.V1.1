@@ -50,7 +50,7 @@ public class PantryActivity extends AppCompatActivity {
                                     Integer.parseInt(editQuantity.getText().toString()));
                             editItem.setText("");
                             editQuantity.setText("");
-                            Toast.makeText(PantryActivity.this,"Data Inserted",Toast.LENGTH_LONG).show();
+
 
                         }else{
                             Toast.makeText(PantryActivity.this,"Data Not Inserted",Toast.LENGTH_LONG).show();

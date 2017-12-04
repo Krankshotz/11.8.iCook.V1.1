@@ -21,9 +21,9 @@ public class PreferencesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         myDb = new DatabaseHelper(this);
-
-        Button normalButton = (findViewById(R.id.button));
-        normalButton.setOnClickListener(new View.OnClickListener() {
+        if(myDb.isEmpty()) {
+            Button normalButton = (findViewById(R.id.button));
+            normalButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
@@ -32,17 +32,17 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
 
-        Button veganButton = (findViewById(R.id.button2));
-        veganButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent veganwindow = new Intent(PreferencesActivity.this, VeganUser.class);
-                startActivity(veganwindow);
-            }
-        });
+            Button veganButton = (findViewById(R.id.button2));
+            veganButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent veganwindow = new Intent(PreferencesActivity.this, VeganUser.class);
+                    startActivity(veganwindow);
+                }
+            });
 
-        Button vegButton = (findViewById(R.id.button3));
-        vegButton.setOnClickListener(new View.OnClickListener() {
+            Button vegButton = (findViewById(R.id.button3));
+            vegButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
@@ -51,19 +51,65 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
 
-        Button pantryInfo = findViewById(R.id.infoPantryLoadout);
-        pantryInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder infoDialog = new AlertDialog.Builder(PreferencesActivity.this);
-                infoDialog.setMessage("A default pantry loadout is to help create a pantry.\n\nPlease choose one, " +
-                        "the pre-made loadout wil be added to your pantry. \n\nNote: This is great for first time users.");
-                infoDialog.setCancelable(true);
-                infoDialog.setPositiveButton("OK", null);
-                infoDialog.setTitle("Pantry Loadouts");
-                infoDialog.show();
-            }
-        });
+            Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+            pantryInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder infoDialog = new AlertDialog.Builder(PreferencesActivity.this);
+                    infoDialog.setMessage("A default pantry loadout is to help create a pantry.\n\nPlease choose one, " +
+                            "the pre-made loadout wil be added to your pantry. \n\nNote: This is great for first time users.");
+                    infoDialog.setCancelable(true);
+                    infoDialog.setPositiveButton("OK", null);
+                    infoDialog.setTitle("Pantry Loadouts");
+                    infoDialog.show();
+                }
+            });
+        }
+        else
+        {
+            Button normalButton = (findViewById(R.id.button));
+            normalButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                //upon click, pantry will be filled and list of items will be shown
+                public void onClick(View view) {
+                    Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
+                    //startActivity(normalwindow);
+                }
+            });
+
+            Button veganButton = (findViewById(R.id.button2));
+            veganButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent veganwindow = new Intent(PreferencesActivity.this, VeganUser.class);
+                   // startActivity(veganwindow);
+                }
+            });
+
+            Button vegButton = (findViewById(R.id.button3));
+            vegButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                //upon click, pantry will be filled and list of items will be shown
+                public void onClick(View view) {
+                    Intent vegwindow = new Intent(PreferencesActivity.this, VegUser.class);
+                   // startActivity(vegwindow);
+                }
+            });
+
+            Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+            pantryInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder infoDialog = new AlertDialog.Builder(PreferencesActivity.this);
+                    infoDialog.setMessage("A default pantry loadout is to help create a pantry.\n\nPlease choose one, " +
+                            "the pre-made loadout wil be added to your pantry. \n\nNote: This is great for first time users.");
+                    infoDialog.setCancelable(true);
+                    infoDialog.setPositiveButton("OK", null);
+                    infoDialog.setTitle("Pantry Loadouts");
+                    infoDialog.show();
+                }
+            });
+        }
     }
 //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
     @Override
