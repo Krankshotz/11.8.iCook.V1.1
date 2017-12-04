@@ -47,7 +47,6 @@ public class receipt_Scanner extends AppCompatActivity {
     String fileName="Saved Receipt", stringTotal, itemName="", itemQuant="";
     String[] parts,foods;
     final int RequestCameraPermissionID = 1001;
-    int foodID;
     File path=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     File file=new File(path,fileName);
     public receipt_Scanner() throws FileNotFoundException {}
@@ -151,11 +150,12 @@ public class receipt_Scanner extends AppCompatActivity {
                             try (Scanner scanner=new Scanner(file)){
                                 while (scanner.hasNextLine()) {//while not eof input into pantry db
                                     parts = scanner.nextLine().split("\\s+");//here is where it should check before adding items
+                                    parts[0]=parts[0].replaceAll("[^A-Za-z]+", "").toLowerCase(); //capitalizes first letter and lower rest
                                     if(Arrays.asList(foods).contains(parts[0])) {  //check if in approved foods list
                                         itemName = parts[0];
-                                        itemName=itemName.replaceAll("[^A-Za-z]+", "");//remove all but alpha chars
-                                        itemName=itemName.substring(0, 1).toUpperCase()+itemName.substring(1).toLowerCase(); //capitalizes first letter and lower rest
-                                        itemQuant =  parts[1];
+                                        if(parts.length>1) itemQuant = parts[1];
+                                        else itemQuant="1";
+                                        // if(parts[1]!=null) itemQuant =  parts[1];
                                         myDb.insertUpdate(itemName, Integer.parseInt(itemQuant));
                                     }
                                 }
