@@ -1,18 +1,16 @@
 /*
 Text scanner applet
 Paul Figueroa
-updated: 11/18/17
+updated: 12/1/17
  */
 package com.example.jordan.icook;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.SparseArray;
@@ -22,15 +20,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
+
 import static com.google.android.gms.vision.CameraSource.Builder;
 import static com.google.android.gms.vision.CameraSource.CAMERA_FACING_BACK;
 import static com.google.android.gms.vision.CameraSource.PictureCallback;
@@ -42,9 +44,10 @@ public class receipt_Scanner extends AppCompatActivity {
     SurfaceView cameraView;
     TextView textView;
     CameraSource cameraSource;
-    String fileName="Saved Receipt",stringTotal,itemName, itemQuant;
-    String[] parts;
+    String fileName="Saved Receipt", stringTotal, itemName="", itemQuant="";
+    String[] parts,foods;
     final int RequestCameraPermissionID = 1001;
+    int foodID;
     File path=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     File file=new File(path,fileName);
     public receipt_Scanner() throws FileNotFoundException {}
@@ -54,12 +57,24 @@ public class receipt_Scanner extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipt__scanner);
-        cameraView = (SurfaceView) findViewById(R.id.surface_view);
-        textView = (TextView) findViewById(R.id.text_view);
-        final Button takePicButt = (Button) findViewById(R.id.picButt);
+        cameraView = findViewById(R.id.surface_view);
+        textView =  findViewById(R.id.text_view);
+        final Button takePicButt =  findViewById(R.id.picButt);
         myDb = new DatabaseHelper(this);
+        foods = getResources().getStringArray(R.array.approved_food_list); //creates food list to check for pantry input
+
+//Shortcut to Enter Manually Brings to PAntry acitiviyy
+        Button addMan = findViewById(R.id.button_additem);
+        addMan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pantrywindow = new Intent(receipt_Scanner.this, PantryActivity.class);
+                startActivity(pantrywindow);
+            }
+        });
+
         //show path of downloads for testing purposes
-        Toast.makeText(getBaseContext(), path.toString()+"hello",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Save path: "+path.toString(),Toast.LENGTH_SHORT).show();
 
         final CameraSource.ShutterCallback shutter = new ShutterCallback() {
             @Override
@@ -102,6 +117,7 @@ public class receipt_Scanner extends AppCompatActivity {
                 }
             });
             //updates screen on detections
+
             textRecognizer.setProcessor(new Detector.Processor<TextBlock>() {
                 @Override
                 public void release(){}
@@ -134,13 +150,17 @@ public class receipt_Scanner extends AppCompatActivity {
                             //try inputting file to scanner for parsing
                             try (Scanner scanner=new Scanner(file)){
                                 while (scanner.hasNextLine()) {//while not eof input into pantry db
-                                    parts = scanner.nextLine().split(" ");//here is where it should check before adding items
-                                    itemName = parts[0];
-                                    itemQuant = parts[1];
-                                    myDb.insertData(itemName, Integer.parseInt(itemQuant));
+                                    parts = scanner.nextLine().split("\\s+");//here is where it should check before adding items
+                                    if(Arrays.asList(foods).contains(parts[0])) {  //check if in approved foods list
+                                        itemName = parts[0];
+                                        itemName=itemName.replaceAll("[^A-Za-z]+", "");//remove all but alpha chars
+                                        itemName=itemName.substring(0, 1).toUpperCase()+itemName.substring(1).toLowerCase(); //capitalizes first letter and lower rest
+                                        itemQuant =  parts[1];
+                                        myDb.insertUpdate(itemName, Integer.parseInt(itemQuant));
+                                    }
                                 }
                             } catch (FileNotFoundException e){e.printStackTrace();}
-                            //Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getBaseContext(),"Items Captured!",Toast.LENGTH_SHORT).show();
 
                         }
                     }

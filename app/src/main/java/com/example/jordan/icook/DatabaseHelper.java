@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.Objects;
+
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 
@@ -19,6 +21,7 @@ import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.N
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     //DB info: name and table
+    private static DatabaseHelper sInstance;
     public static final String PANTRY_DB = "D.db";
     public static final String TABLE_PANTRY = "pantry_table";
 
@@ -52,7 +55,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, PANTRY_DB, null, 1);
 
     }
-
+    @Override
+    protected void finalize() throws Throwable { //explicitly close db
+        this.close();
+        super.finalize();
+    }
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATA_CREATE_SQL);
@@ -75,10 +82,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.insert(TABLE_PANTRY, null, contentValues);
     }
 
+    public int insertUpdate(String item, int quantity){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(COL_1, item); //get values ready to insert
+        initialValues.put(COL_2, quantity);
+
+        int id = db.update(TABLE_PANTRY, initialValues, "ITEM=?", new String[] {item}); //try doing an update on values
+        if (id == 0) { //if update not successful ==0 then do an insert
+            db.insertWithOnConflict(TABLE_PANTRY, null, initialValues, SQLiteDatabase.CONFLICT_IGNORE);
+            return 1;
+        }
+        else return 0;
+    }
+
     public boolean deleteRow(long rowId){
         SQLiteDatabase db = this.getWritableDatabase();
         String where = ROW_ID + "=" + rowId;
-        return db.delete(TABLE_PANTRY, where, null)!= 0;
+        return db.delete(TABLE_PANTRY, where, null) != 1;
+    }
+
+    public int deleteDuplicates(String string, int idposition){     //Delete matching name, insert another name at the bottom
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = getAllRows();
+        String where =  COL_1 + "=" + string;
+        //int check = 0; //if db.delete passes back a number we will return if it deletes 0;
+        if (c.moveToPosition(idposition+1)) {
+            do{
+                db.delete(TABLE_PANTRY, where, null);  //deletes matching strings
+            }while (c.moveToNext());
+        return 0;
+        }
+        c.close();
+        return 999;
+
+
     }
 
     public void deleteAll(){
@@ -107,16 +145,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean isEmpty(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor mCursor = db.rawQuery("SELECT * FROM " + TABLE_PANTRY, null);
+        Boolean rowExists;
 
         if (mCursor.moveToFirst())
         {
-            // Not empty
-             return false;
-        }
-        else {
+            // DO SOMETHING WITH CURSOR
+            rowExists = false;
+
+        } else
+        {
             // I AM EMPTY
-            return true;
+            rowExists = true;
         }
+        return rowExists;
+
     }
     /*public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
