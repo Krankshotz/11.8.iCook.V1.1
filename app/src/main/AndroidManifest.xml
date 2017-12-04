@@ -41,6 +41,12 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".PreferencesActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".NormalUser"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".VeganUser"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".VegUser"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
