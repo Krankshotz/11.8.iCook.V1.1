@@ -1,7 +1,7 @@
 /*
 Text scanner applet
 Paul Figueroa
-updated: 12/1/17
+updated: 12/4/17
  */
 package com.example.jordan.icook;
 
