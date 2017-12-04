@@ -6,6 +6,7 @@ updated: 12/1/17
 package com.example.jordan.icook;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -69,6 +70,22 @@ public class receipt_Scanner extends AppCompatActivity {
             public void onClick(View view) {
                 Intent pantrywindow = new Intent(receipt_Scanner.this, PantryActivity.class);
                 startActivity(pantrywindow);
+            }
+        });
+        //Popup window for help menu
+        Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+        pantryInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder infoDialog = new AlertDialog.Builder(receipt_Scanner.this);
+                infoDialog.setMessage("Capturing your Receipt:\n\nMake sure the image is centered, and evironment is well lit.\n\n" +
+                        "Ensure the text that appears on the screen matches the receipt. Then click the shutter button to import the text.\n\n\nNote:" +
+                        " don't worry about scanning the same receipt multiple times, or importing garbage text, the receipt scanner only imports " +
+                        "proper pantry items.");
+                infoDialog.setCancelable(true);
+                infoDialog.setPositiveButton("OK", null);
+                infoDialog.setTitle("Using the Reciept Scanner");
+                infoDialog.show();
             }
         });
 

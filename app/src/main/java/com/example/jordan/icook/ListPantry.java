@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
@@ -34,7 +35,8 @@ public class ListPantry extends AppCompatActivity {
     DatabaseHelper myDb;
     EditText text1;
     EditText text2;
-    EditText editQuantity;  //copied from pantryActivity to edit quanity of Pantry
+    EditText editQuantity;  //copied from pantryActivity to edit quanity of
+    int items = 400; //for pantryCompare function, easy to manipulate the size of pantry array.
 
     FloatingActionButton btnAdd;
     private GestureDetectorCompat gestureObject; //for Gestre class
@@ -49,19 +51,26 @@ public class ListPantry extends AppCompatActivity {
         text2.setEnabled(false);
         editQuantity = findViewById(R.id.editText_Quantity);  //copied from pantryActivity
         myDb = new DatabaseHelper(this);
-        /*int jmpTo = 0;
-        boolean flagg = false;
-        while(flagg == false){//this deletes duplicates in DB pantry
-            flagg = pantryCompare(jmpTo);  //returns false if something is changed else true, means all duplicates are gone.
-            jmpTo++;
-        }
-        jmpTo = 0;
-        //The above code is for the pantry compare to remove duplicates
-        */
+
+
         //For Gestures
         gestureObject = new GestureDetectorCompat(this, new LearnGesture());
         //End for Gestures
         btnAdd = findViewById(R.id.btn_AddItems);
+
+        Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+        pantryInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.AlertDialog.Builder infoDialog = new android.app.AlertDialog.Builder(ListPantry.this);
+                infoDialog.setMessage("To delete Pantry items: Tap and hold the item you would like to delete.\n\nSwipe left to right " +
+                        "to navigate to the Home Screen.\n\nSwipe right to left to navigate to the Recipe Screen");
+                infoDialog.setCancelable(true);
+                infoDialog.setPositiveButton("OK", null);
+                infoDialog.setTitle("Pantry Loadouts");
+                infoDialog.show();
+            }
+        });
 
 /////////////////////
 /// TEST CASE////////
@@ -73,6 +82,7 @@ public class ListPantry extends AppCompatActivity {
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
         addItem();
+        pantryCompare();
         populateListViewFromDB();
 
         listViewItemLongClick();
@@ -131,22 +141,54 @@ public class ListPantry extends AppCompatActivity {
     }
 
 
+
     //Creates Pantry Comparisons, if items have == Names, merge the quantity
-    private boolean pantryCompare(int jmpTo) {
-        int flag = 0;
-        Cursor cursor = myDb.getAllRows();  //creates a placement to iterate through all pantry items
-        if (cursor.moveToPosition(jmpTo));       //jumps to last position
-            flag = myDb.deleteDuplicates(cursor.getString(1), cursor.getInt(2)); //if array
-        if(flag == 999)  //if 999 we have reached the end of the array
+    private void pantryCompare() {
+        int x = 0;          //iteration uses for array
+        int tempQty = 0;    //holds temp pantry quantity and adds to previious pantry arrays if strings of = values are found
+        String pantryTemp;        //holds temp pantry item
+        String arrayStr[] = new String[items];  //Holds all Pantry Items temporarily and then reprints.
+        int arrayInt[] = new int[items];        //temp pantry Qty item
+        for(int reset = 0; reset < items; reset++) //resets, may not necessary
         {
-            jmpTo = 0; //reset jumping for delete duplicates
-             cursor.close();
-            return true;
+            arrayInt[reset] = 0;
+            arrayStr[reset] = "";
         }
-        else{
-            //cursor.close();
-            return false;
+
+        Cursor cursor = myDb.getAllRows();  //creates a placement to iterate through all pantry items
+        if(cursor.moveToFirst())            //test to make sure data is present
+            do {
+                //Toast.makeText(getBaseContext(), "Test2: ",Toast.LENGTH_SHORT).show();
+                pantryTemp = cursor.getString(1);     //gets string Pantry item
+                tempQty = cursor.getInt(2);     //gets Pantry Qty
+                int flag = 0;                     //flag flips to 1 in the for loop if the value grabbed is a duplicate, therefore doesnt incremenet the array
+                for(int xx = 0; xx < x; xx++) {
+                    if (pantryTemp.contentEquals(arrayStr[xx])) {
+                        //Toast.makeText(getBaseContext(), "Test3: ", Toast.LENGTH_SHORT).show();
+                        //  arrayStr[x] = temp;
+                        arrayInt[xx] = tempQty + arrayInt[xx];  //add Qtys together
+                        flag = 1;                               //Flag, dont create another array because the item was a duplicate
+                    }
+                }
+                if (flag == 0) {
+                    //Toast.makeText(getBaseContext(), "Test2: ",Toast.LENGTH_SHORT).show();
+                    arrayStr[x] = pantryTemp;      //Insert Pantry item
+                    arrayInt[x] = tempQty;  //insert
+                    x++;                    //Move to next array element
+                }
+                flag = 0;
+            }while(cursor.moveToNext());
+
+        myDb.deleteAll();    //Deletes all data from DB
+        for(int tester = 0; tester <= x; tester++)
+        {
+            if(arrayInt[tester] == 0);  //Some values are set to 0 with no real data, so we don't want to print that.
+            else {
+                //Toast.makeText(getBaseContext(), "Test1: ", Toast.LENGTH_SHORT).show();
+                myDb.insertData(arrayStr[tester], arrayInt[tester]);  //Re-inserts all data to DB pantry.
+            }
         }
+        cursor.close();
     }
     //--------------End of Pantry Comparison-------------------------------
 
