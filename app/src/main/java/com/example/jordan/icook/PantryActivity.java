@@ -17,7 +17,6 @@ import android.widget.Toast;
 public class PantryActivity extends AppCompatActivity {
     private static final String TAG = "PantryMain";
     DatabaseHelper myDb;
-    private GestureDetectorCompat gestureObject; //for Gestre class
     EditText editItem, editQuantity;
     Button btnAddData;
     Button btnViewAll;
@@ -42,7 +41,7 @@ public class PantryActivity extends AppCompatActivity {
             }
         });*/
         //click preference button to open preference activity
-        final ImageButton scanRe = findViewById(R.id.scanReceipt_button);
+        ImageButton scanRe = findViewById(R.id.scanReceipt_button);
         scanRe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,9 +58,24 @@ public class PantryActivity extends AppCompatActivity {
                 startActivity(prefwindow);
             }
         });
-        //For Gestures
-        gestureObject = new GestureDetectorCompat(this, new PantryActivity.LearnGesture());
-        //Class File
+        //Creates Listener to Open new Activity, this is the top right button for home PA = pantry activity
+        ImageButton ButtonhomePA = findViewById(R.id.homeButtonPA);
+        ButtonhomePA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonhomePA = new Intent(PantryActivity.this, MainActivity.class);
+                startActivity(ButtonhomePA);
+            }
+        });
+        //Creates Listener to Open new Activity, this is the top left button for recipe
+        ImageButton ButtonrecipePA = findViewById(R.id.recipeButtonPA);
+        ButtonrecipePA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonrecipePA = new Intent(PantryActivity.this, ListRecipe.class);
+                startActivity(ButtonrecipePA);
+            }
+        });
     }
     public void addData(){
         btnAddData.setOnClickListener(
@@ -115,34 +129,5 @@ public class PantryActivity extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
-    }
-
-    //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
-    @Override
-    public boolean onTouchEvent(MotionEvent event){
-        this.gestureObject.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-    //For Gesture Object Class
-    class LearnGesture extends GestureDetector.SimpleOnGestureListener{
-        //Simple Gesture Listener for what we want to do, this opens the pantry
-        @Override
-        public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY){
-            if(event2.getX() > event1.getX()){
-                //Here is the code for what you want the swipe to do for Left to Right
-                Intent openPantry = new Intent(PantryActivity.this, MainActivity.class);
-                finish(); //Ends current activities Actions
-                startActivity(openPantry);
-            }
-            else
-            if(event2.getX() < event1.getX()){
-                //Here is the code for what you want the swipe to do for Right to Left
-                Intent openPantry = new Intent(PantryActivity.this, ListRecipe.class);
-                finish(); //Ends current activities Actions
-                startActivity(openPantry);
-            }
-            return true;
-        }
-
     }
 }

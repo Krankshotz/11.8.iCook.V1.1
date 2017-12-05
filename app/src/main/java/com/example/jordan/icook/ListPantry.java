@@ -39,7 +39,6 @@ public class ListPantry extends AppCompatActivity {
     int items = 400; //for pantryCompare function, easy to manipulate the size of pantry array.
 
     FloatingActionButton btnAdd;
-    private GestureDetectorCompat gestureObject; //for Gestre class
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,23 +51,37 @@ public class ListPantry extends AppCompatActivity {
         editQuantity = findViewById(R.id.editText_Quantity);  //copied from pantryActivity
         myDb = new DatabaseHelper(this);
 
-
-        //For Gestures
-        gestureObject = new GestureDetectorCompat(this, new LearnGesture());
-        //End for Gestures
         btnAdd = findViewById(R.id.btn_AddItems);
 
-        Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+        Button pantryInfo = findViewById(R.id.infoPantrybutton4);
         pantryInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 android.app.AlertDialog.Builder infoDialog = new android.app.AlertDialog.Builder(ListPantry.this);
-                infoDialog.setMessage("To delete Pantry items: Tap and hold the item you would like to delete.\n\nSwipe left to right " +
-                        "to navigate to the Home Screen.\n\nSwipe right to left to navigate to the Recipe Screen");
+                infoDialog.setMessage("To delete Pantry items: Tap and hold the item you would like to delete.");
                 infoDialog.setCancelable(true);
                 infoDialog.setPositiveButton("OK", null);
                 infoDialog.setTitle("Pantry Loadouts");
                 infoDialog.show();
+            }
+        });
+
+        //Creates Listener to Open new Activity, this is the top right button for home PA = pantry activity
+        ImageButton ButtonhomePL = findViewById(R.id.homeButtonPL);
+        ButtonhomePL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonhomePL = new Intent(ListPantry.this, MainActivity.class);
+                startActivity(ButtonhomePL);
+            }
+        });
+        //Creates Listener to Open new Activity, this is the top left button for recipe
+        ImageButton ButtonrecipePL = findViewById(R.id.recipeButtonPL);
+        ButtonrecipePL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonrecipePL = new Intent(ListPantry.this, ListRecipe.class);
+                startActivity(ButtonrecipePL);
             }
         });
 
@@ -193,7 +206,7 @@ public class ListPantry extends AppCompatActivity {
     //--------------End of Pantry Comparison-------------------------------
 
     //FOR GESTURES, So Swipes Open New Activites. Shortcuts :)
-    @Override
+   /* @Override
     public boolean onTouchEvent(MotionEvent event){
         this.gestureObject.onTouchEvent(event);
         return super.onTouchEvent(event);
@@ -219,5 +232,5 @@ public class ListPantry extends AppCompatActivity {
             return true;
         }
 
-    }
+    }*/
 }

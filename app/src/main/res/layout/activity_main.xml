@@ -27,56 +27,56 @@
 
     <ImageButton
         android:id="@+id/preferencesButton4"
-        android:contentDescription="pref button image"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="336dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
+        android:contentDescription="pref button image"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btton41" />
+        app:srcCompat="@drawable/btton4p1" />
 
     <ImageButton
         android:id="@+id/recipesButton3"
-        android:contentDescription="recipe button image"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="336dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
+        android:contentDescription="recipe button image"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btton31" />
+        app:srcCompat="@drawable/btton3p1" />
 
     <ImageButton
         android:id="@+id/receiptButton1"
-        android:contentDescription="recipt image"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="196dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
+        android:contentDescription="recipt image"
         android:scaleType="fitCenter"
         android:tint="@android:color/transparent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btton11" />
+        app:srcCompat="@drawable/btton1p1" />
 
     <ImageButton
         android:id="@+id/pantryButton2"
-        android:contentDescription="pantry image"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="196dp"
         android:adjustViewBounds="true"
         android:background="@android:color/transparent"
+        android:contentDescription="pantry image"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btton21"
+        app:srcCompat="@drawable/btton2p1"
         tools:ignore="ContentDescription" />
 
     <ImageView

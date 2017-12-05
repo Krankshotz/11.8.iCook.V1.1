@@ -1,15 +1,19 @@
 package com.example.jordan.icook;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorTreeAdapter;
@@ -28,7 +32,8 @@ public class ListRecipe extends AppCompatActivity {
     private static final String TAG = "ListRecipe";
     DatabaseHelper pantryDb;
     DatabaseRecipe myDb;
-    DatabaseRecipe myDb2; //
+    FloatingActionButton btnAddRecipe;
+
     EditText text1;
     int[] RecipeChecks = new int[400]; //create of arry up to 399 if array1 is == 5 show arrray Recipe
     int count = 0; //for Recipe Checks
@@ -40,8 +45,39 @@ public class ListRecipe extends AppCompatActivity {
         text1.setEnabled(false);
         myDb = new DatabaseRecipe(this);
         pantryDb = new DatabaseHelper(this);
+        btnAddRecipe = findViewById(R.id.btn_AddItemsRL);
+        //Creates Listener to Open new Activity, this is the top right button for home PA = pantry activity
+        ImageButton ButtonhomeRL = findViewById(R.id.homeButtonRL);
+        ButtonhomeRL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonhomeRL = new Intent(ListRecipe.this, MainActivity.class);
+                startActivity(ButtonhomeRL);
+            }
+        });
+        //Creates Listener to Open new Activity, this is the top left button for recipe
+        ImageButton ButtonPantryRL = findViewById(R.id.recipeButtonRL);
+        ButtonPantryRL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonPantryRL = new Intent(ListRecipe.this, ListPantry.class);
+                startActivity(ButtonPantryRL);
+            }
+        });
+        addRecipe(); //Floating Button to Add another recupe, brings up new activity
         compareRecipesToPantry();
         populateListView();
+    }
+
+    //the floating add button will to a different screen that let you add items.
+    public void addRecipe(){
+        btnAddRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent PantryAdd = new Intent(ListRecipe.this, RecipeActivity.class);
+                startActivity(PantryAdd);
+            }
+        });
     }
 
     public void compareRecipesToPantry(){
