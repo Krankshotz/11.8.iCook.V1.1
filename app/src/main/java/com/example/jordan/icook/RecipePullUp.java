@@ -3,7 +3,10 @@ package com.example.jordan.icook;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by edske on 12/4/2017.
@@ -11,11 +14,14 @@ import android.widget.TextView;
 
 public class RecipePullUp extends AppCompatActivity {
     TextView name, i1, q1, i2, q2, i3, q3, i4, q4, i5, qu5, ins;
+    DatabaseRecipe myDb;
+    Button btnDelete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_childrenlist);
         Intent identify = getIntent();
+        myDb = new DatabaseRecipe(this);
         String d1 = identify.getStringExtra("COL_2");
         String d2 = identify.getStringExtra("COL_3");
         String d3 = identify.getStringExtra("COL_4");
@@ -52,5 +58,6 @@ public class RecipePullUp extends AppCompatActivity {
         i5.setText(d10);
         qu5.setText(d11);
         ins.setText(d12);
+        
     }
 }

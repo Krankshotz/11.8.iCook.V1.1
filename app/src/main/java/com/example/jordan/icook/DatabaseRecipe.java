@@ -87,6 +87,12 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
         return db.delete(TABLE_NAME, "NAME = ?", new String[] {name});
     }
 
+    public boolean deleteRow(long rowId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String where = COL_1 + "=" + rowId;
+        return db.delete(TABLE_NAME, where, null) != 1;
+    }
+
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         String where = null;

@@ -9,20 +9,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorTreeAdapter;
-import android.widget.TextView;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by edske on 11/17/2017.
@@ -30,6 +20,7 @@ import java.util.List;
 
 public class ListRecipe extends AppCompatActivity {
     private static final String TAG = "ListRecipe";
+    private Cursor cur;
     DatabaseHelper pantryDb;
     DatabaseRecipe myDb;
     EditText text1;
@@ -125,7 +116,6 @@ public class ListRecipe extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 detail(i);
-
             }
         });
     }
@@ -138,7 +128,7 @@ public class ListRecipe extends AppCompatActivity {
         builder.show();
     }
     public void detail(int i){
-        Cursor cur = myDb.fetchGroup();
+        cur = myDb.getAllData();
         String id = "";
         String name = "";
         String i1 = "";
@@ -152,21 +142,21 @@ public class ListRecipe extends AppCompatActivity {
         String i5 = "";
         String q5 = "";
         String ins = "";
-        if (cur.moveToFirst()){
+        if (cur!=null && cur.getCount()>0 && cur.moveToFirst()){
             cur.moveToPosition(i);
-            id = cur.getString(cur.getColumnIndex("COL_1"));
-            name = cur.getString(cur.getColumnIndex("COL_2"));
-            i1 = cur.getString(cur.getColumnIndex("COL_3"));
-            q1 = cur.getString(cur.getColumnIndex("COL_4"));
-            i2 = cur.getString(cur.getColumnIndex("COL_5"));
-            q2 = cur.getString(cur.getColumnIndex("COL_6"));
-            i3 = cur.getString(cur.getColumnIndex("COL_7"));
-            q3 = cur.getString(cur.getColumnIndex("COL_8"));
-            i4 = cur.getString(cur.getColumnIndex("COL_9"));
-            q4 = cur.getString(cur.getColumnIndex("COL_10"));
-            i5 = cur.getString(cur.getColumnIndex("COL_11"));
-            q5 = cur.getString(cur.getColumnIndex("COL_12"));
-            ins = cur.getString(cur.getColumnIndex("COL_13"));
+            id = cur.getString(0);
+            name = cur.getString(1);
+            i1 = cur.getString(2);
+            q1 = cur.getString(3);
+            i2 = cur.getString(4);
+            q2 = cur.getString(5);
+            i3 = cur.getString(6);
+            q3 = cur.getString(7);
+            i4 = cur.getString(8);
+            q4 = cur.getString(9);
+            i5 = cur.getString(10);
+            q5 = cur.getString(11);
+            ins = cur.getString(12);
         }
         Intent iIntent = new Intent(this, RecipePullUp.class);
         iIntent.putExtra("COL_1", id);

@@ -35,6 +35,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".RecipeActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".RecipePullUp"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ListRecipe"
             android:screenOrientation="portrait"/>
         <activity android:name=".ListPantry"
