@@ -1,17 +1,21 @@
 package com.example.jordan.icook;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorTreeAdapter;
 import android.widget.TextView;
 
@@ -29,6 +33,7 @@ public class ListRecipe extends AppCompatActivity {
     DatabaseHelper pantryDb;
     DatabaseRecipe myDb;
     EditText text1;
+    FloatingActionButton btnAdd;
     int[] RecipeChecks = new int[400]; //create of arry up to 399 if array1 is == 5 show arrray Recipe
     int count = 0; //for Recipe Checks
     @Override
@@ -37,10 +42,13 @@ public class ListRecipe extends AppCompatActivity {
         setContentView(R.layout.content_recipe);
         text1 = findViewById(R.id.myRecipe);
         text1.setEnabled(false);
+        btnAdd = findViewById(R.id.btn_AddRecipe);
         myDb = new DatabaseRecipe(this);
         pantryDb = new DatabaseHelper(this);
         compareRecipesToPantry();
         populateListView();
+        addItem();
+        ListViewItemClick();
     }
 
     public void compareRecipesToPantry(){
@@ -60,7 +68,39 @@ public class ListRecipe extends AppCompatActivity {
         }
     }
 
-    private void populateListView() {
+    private void populateListView(){
+        Cursor cursor = myDb.getAllData();
+
+        //Setup mapping from cursor to view fields:
+        String[] fromFieldNames = new String[]
+                {DatabaseRecipe.COL_2};
+        int[] toViewIDs = new int[]
+                {R.id.listHeader};
+        // Create Adapter to column of the DB onto element in the UI
+        SimpleCursorAdapter myCursorAdaptor = new SimpleCursorAdapter(
+                this,     //Context
+                R.layout.recipe_group,    //Row Layout template
+                cursor,                  //cursor
+                fromFieldNames,          // DB col names
+                toViewIDs                // View IDs to put data in
+        );
+        ListView myList = findViewById(R.id.ListViewRecipe);
+        myList.setAdapter(myCursorAdaptor);
+        //ListViewItemClick();
+        /*public void ListViewItemClick(){
+            ListView myList =findViewById(R.id.ListViewRecipe);
+            myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    detail(i);
+
+                }
+            });
+        }*/
+
+    }
+
+    /*private void populateListView() {
         Cursor cur = myDb.getAllData();
         //HEADER
                 String[] groupField = new String[]{DatabaseRecipe.COL_2};
@@ -78,6 +118,16 @@ public class ListRecipe extends AppCompatActivity {
                         groupField, toGroup, childField, toChild);
                 ExpandableListView expandableListView = findViewById(R.id.lvExp);
                 expandableListView.setAdapter(setAdapter);
+    }*/
+   public void ListViewItemClick(){
+        ListView myList =findViewById(R.id.ListViewRecipe);
+        myList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                detail(i);
+
+            }
+        });
     }
 
     public void showMessage(String title, String message){
@@ -86,6 +136,54 @@ public class ListRecipe extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
+    }
+    public void detail(int i){
+        Cursor cur = myDb.fetchGroup();
+        String id = "";
+        String name = "";
+        String i1 = "";
+        String q1= "";
+        String i2 = "";
+        String q2 = "";
+        String i3 = "";
+        String q3 = "";
+        String i4 = "";
+        String q4 = "";
+        String i5 = "";
+        String q5 = "";
+        String ins = "";
+        if (cur.moveToFirst()){
+            cur.moveToPosition(i);
+            id = cur.getString(cur.getColumnIndex("COL_1"));
+            name = cur.getString(cur.getColumnIndex("COL_2"));
+            i1 = cur.getString(cur.getColumnIndex("COL_3"));
+            q1 = cur.getString(cur.getColumnIndex("COL_4"));
+            i2 = cur.getString(cur.getColumnIndex("COL_5"));
+            q2 = cur.getString(cur.getColumnIndex("COL_6"));
+            i3 = cur.getString(cur.getColumnIndex("COL_7"));
+            q3 = cur.getString(cur.getColumnIndex("COL_8"));
+            i4 = cur.getString(cur.getColumnIndex("COL_9"));
+            q4 = cur.getString(cur.getColumnIndex("COL_10"));
+            i5 = cur.getString(cur.getColumnIndex("COL_11"));
+            q5 = cur.getString(cur.getColumnIndex("COL_12"));
+            ins = cur.getString(cur.getColumnIndex("COL_13"));
+        }
+        Intent iIntent = new Intent(this, RecipePullUp.class);
+        iIntent.putExtra("COL_1", id);
+        iIntent.putExtra("COL_2", name);
+        iIntent.putExtra("COL_3", i1);
+        iIntent.putExtra("COL_4", q1);
+        iIntent.putExtra("COL_5", i2);
+        iIntent.putExtra("COL_6", q2);
+        iIntent.putExtra("COL_7", i3);
+        iIntent.putExtra("COL_8", q3);
+        iIntent.putExtra("COL_9", i4);
+        iIntent.putExtra("COL_10", q4);
+        iIntent.putExtra("COL_11", i5);
+        iIntent.putExtra("COL_12", q5);
+        iIntent.putExtra("COL_13", ins);
+        setResult(RESULT_OK, iIntent);
+        startActivity(iIntent);
     }
 ///////////////////////////////////////////
 /// Adapter that makes the list expands  //
@@ -107,7 +205,14 @@ public class ListRecipe extends AppCompatActivity {
 
 
     }
-
-
+    public void addItem(){
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent RecipeAdd = new Intent(ListRecipe.this, RecipeActivity.class);
+                startActivity(RecipeAdd);
+            }
+        });
+    }
 
 }

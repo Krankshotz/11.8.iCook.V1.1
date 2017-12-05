@@ -7,11 +7,24 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textname"
+        android:layout_width="335dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/ig1"
         android:layout_width="141dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="89dp"
         android:paddingBottom="5dp"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="5dp"
@@ -20,7 +33,6 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/ig2"
         app:layout_constraintEnd_toStartOf="@+id/qu1"
-        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,8 +40,8 @@
         android:id="@+id/qu1"
         android:layout_width="141dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="94dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginTop="89dp"
         android:paddingBottom="5dp"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="5dp"
@@ -52,24 +64,24 @@
         android:text="TextView"
         android:textColor="@color/Cucumber"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ig3"
         app:layout_constraintEnd_toStartOf="@+id/qu2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ig1" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/qu2"
         android:layout_width="141dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="94dp"
+        android:layout_marginEnd="102dp"
         android:paddingBottom="5dp"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="5dp"
         android:text="TextView"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ig3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ig2"
-        app:layout_constraintTop_toBottomOf="@+id/qu1" />
+        app:layout_constraintStart_toEndOf="@+id/ig2" />
 
     <TextView
         android:id="@+id/ig3"
@@ -82,24 +94,24 @@
         android:text="TextView"
         android:textColor="@color/Cucumber"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ig4"
         app:layout_constraintEnd_toStartOf="@+id/qu3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ig2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/qu3"
         android:layout_width="141dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="94dp"
+        android:layout_marginEnd="102dp"
         android:paddingBottom="5dp"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="5dp"
         android:text="TextView"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ig4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ig3"
-        app:layout_constraintTop_toBottomOf="@+id/qu2" />
+        app:layout_constraintStart_toEndOf="@+id/ig3" />
 
     <TextView
         android:id="@+id/ig4"
@@ -112,24 +124,24 @@
         android:text="TextView"
         android:textColor="@color/Cucumber"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ig5"
         app:layout_constraintEnd_toStartOf="@+id/qu4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ig3" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/qu4"
         android:layout_width="141dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="94dp"
+        android:layout_marginEnd="102dp"
         android:paddingBottom="5dp"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="5dp"
         android:text="TextView"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ig5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ig4"
-        app:layout_constraintTop_toBottomOf="@+id/qu3" />
+        app:layout_constraintStart_toEndOf="@+id/ig4" />
 
     <TextView
         android:id="@+id/ig5"
@@ -144,13 +156,13 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/qu5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ig4" />
+        tools:layout_editor_absoluteY="229dp" />
 
     <TextView
         android:id="@+id/qu5"
         android:layout_width="141dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="94dp"
+        android:layout_marginEnd="102dp"
         android:paddingBottom="5dp"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="5dp"
@@ -159,20 +171,21 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ig5"
-        app:layout_constraintTop_toBottomOf="@+id/qu4" />
+        tools:layout_editor_absoluteY="229dp" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="351dp"
-        android:layout_height="346dp"
+        android:layout_height="236dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ig5"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"

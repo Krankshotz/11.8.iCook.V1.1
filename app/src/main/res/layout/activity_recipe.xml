@@ -94,7 +94,7 @@
             android:layout_below="@+id/Quantity"
             android:layout_marginStart="18dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/editText_Ingredient2"
@@ -113,7 +113,7 @@
             android:layout_alignStart="@+id/editText_Quantity1"
             android:layout_below="@+id/editText_Quantity1"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:visibility="visible" />
 
         <EditText
@@ -132,7 +132,7 @@
             android:layout_alignEnd="@+id/editText_Quantity2"
             android:layout_below="@+id/editText_Ingredient2"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/editText_Ingredient4"
@@ -151,7 +151,7 @@
             android:layout_alignStart="@+id/editText_Quantity3"
             android:layout_below="@+id/editText_Quantity3"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:visibility="invisible" />
 
         <EditText
@@ -171,7 +171,7 @@
             android:layout_alignEnd="@+id/editText_Instruction"
             android:layout_below="@+id/editText_Ingredient4"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:visibility="invisible" />
 
         <EditText
