@@ -145,7 +145,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean isEmpty(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor mCursor = db.rawQuery("SELECT * FROM " + TABLE_PANTRY, null);
-        Boolean rowExists;
 
         if (mCursor.moveToFirst())
         {
