@@ -94,15 +94,15 @@ public class RecipeActivity extends AppCompatActivity {
                         // Will insert data if there is data input in the text fields
                         boolean isInserted = myDb.insertData(editName.getText().toString(),
                                 editIngredient1.getText().toString(),
-                                Integer.parseInt(editQuantity1.getText().toString()),
+                                editQuantity1.getText().toString(),
                                 editIngredient2.getText().toString(),
-                                Integer.parseInt(editQuantity2.getText().toString()),
+                                editQuantity2.getText().toString(),
                                 editIngredient3.getText().toString(),
-                                Integer.parseInt(editQuantity3.getText().toString()),
+                                editQuantity3.getText().toString(),
                                 editIngredient4.getText().toString(),
-                                Integer.parseInt(editQuantity4.getText().toString()),
+                                editQuantity4.getText().toString(),
                                 editIngredient5.getText().toString(),
-                                Integer.parseInt(editQuantity5.getText().toString()),
+                                editQuantity5.getText().toString(),
                                 editInstruction.getText().toString());
                         if (isInserted = true) {
                             Toast.makeText(RecipeActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();

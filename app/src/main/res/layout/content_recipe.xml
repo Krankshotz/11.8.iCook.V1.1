@@ -8,22 +8,17 @@
     android:orientation="vertical"
     android:background="@android:color/white">
 
-    <ExpandableListView
-        android:id="@+id/lvExp"
+    <ListView
+        android:id="@+id/ListViewRecipe"
         android:layout_width="match_parent"
-        android:layout_height="501dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="7dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myRecipe" />
+        android:layout_height="500dp"
+        tools:layout_editor_absoluteY="67dp" />
 
     <EditText
         android:id="@+id/myRecipe"
         android:layout_width="366dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="6dp"
         android:ems="10"
@@ -33,7 +28,7 @@
         android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lvExp"
+        app:layout_constraintBottom_toTopOf="@+id/ListViewRecipe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homeButtonRL" />
@@ -78,5 +73,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/swipespantry" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_AddRecipe"
+        android:layout_width="46dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:clickable="true"
+        android:tint="@android:color/background_light"
+        app:backgroundTint="@color/Cucumber"
+        app:fabSize="mini"
+        app:layout_anchor="@id/viewA"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
 </android.support.constraint.ConstraintLayout>
