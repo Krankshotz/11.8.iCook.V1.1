@@ -23,6 +23,8 @@ public class ListRecipe extends AppCompatActivity {
     private Cursor cur;
     DatabaseHelper pantryDb;
     DatabaseRecipe myDb;
+    FloatingActionButton btnAddRecipe;
+
     EditText text1;
     FloatingActionButton btnAdd;
     int[] RecipeChecks = new int[400]; //create of arry up to 399 if array1 is == 5 show arrray Recipe
@@ -36,25 +38,59 @@ public class ListRecipe extends AppCompatActivity {
         btnAdd = findViewById(R.id.btn_AddRecipe);
         myDb = new DatabaseRecipe(this);
         pantryDb = new DatabaseHelper(this);
+        btnAddRecipe = findViewById(R.id.btn_AddItemsRL);
+        //Creates Listener to Open new Activity, this is the top right button for home PA = pantry activity
+        ImageButton ButtonhomeRL = findViewById(R.id.homeButtonRL);
+        ButtonhomeRL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonhomeRL = new Intent(ListRecipe.this, MainActivity.class);
+                startActivity(ButtonhomeRL);
+            }
+        });
+        //Creates Listener to Open new Activity, this is the top left button for recipe
+        ImageButton ButtonPantryRL = findViewById(R.id.recipeButtonRL);
+        ButtonPantryRL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonPantryRL = new Intent(ListRecipe.this, ListPantry.class);
+                startActivity(ButtonPantryRL);
+            }
+        });
+        addRecipe(); //Floating Button to Add another recupe, brings up new activity
         compareRecipesToPantry();
         populateListView();
         addItem();
         ListViewItemClick();
     }
 
+    //the floating add button will to a different screen that let you add items.
+    public void addRecipe(){
+        btnAddRecipe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent PantryAdd = new Intent(ListRecipe.this, RecipeActivity.class);
+                startActivity(PantryAdd);
+            }
+        });
+    }
+
     public void compareRecipesToPantry(){
-        Cursor pantryC = pantryDb.getAllRows();  //Cursor creates a copy of the DTB we can iterate through
+        Cursor pantryC = pantryDb.getAllRows();  //Cursor creates a copy of the DTB we c;an iterate through
         Cursor recipeC = myDb.getAllData();
         count = 0; //reset count every time;
         for(int reset = 0; reset < 399; reset++)  //Loops through entire array
             RecipeChecks[reset] = 0;              //Resets all checked values to 0, as recipe ingredients may have changed.
-        while(recipeC.moveToNext()){  //Goes until end of Recipes
-            if(pantryC.moveToFirst())
-                do {
-                    for (int x = 2; x < 11; x = x + 2)
-                        if (recipeC.getString(x).equals(pantryC.getString(1)));
-                            RecipeChecks[count]++;  //incrememnts means it found the ingredient
-                }while(pantryC.moveToNext());
+        while(recipeC.moveToNext()){              //Goes until end of Recipes
+            for (int x = 2; x < 11; x = x + 2) {  //INCREMENTS BY 2 BECAUSE IT IS CHECKING THE THE INGREDIENTS WHICH ARE EVERY OTHER COL
+                if (pantryC.moveToFirst())
+                    do {
+                        if (recipeC.getString(x).equals(pantryC.getString(1)) || recipeC.getString(x).isEmpty()) {
+                            RecipeChecks[count]++;                  //incrememnts means it found the ingredient
+                            break;
+                        }
+                    } while (pantryC.moveToNext());
+            }
             count++;  //increment to next recipe window
         }
     }

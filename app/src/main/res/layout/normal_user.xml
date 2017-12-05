@@ -16,16 +16,20 @@
             android:layout_height="wrap_content"
             android:text="Olive Oil"
             android:onClick="onCheckboxClicked"/>
-        <CheckBox android:id="@+id/CB1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Garlic"
-            android:onClick="onCheckboxClicked"/>
+
         <CheckBox android:id="@+id/CB2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Beef"
             android:onClick="onCheckboxClicked"/>
+
+        <CheckBox
+            android:id="@+id/CB1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCheckboxClicked"
+            android:text="Garlic" />
+
         <CheckBox android:id="@+id/CB3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

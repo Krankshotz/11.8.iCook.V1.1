@@ -8,26 +8,30 @@ import com.ms.square.android.expandabletextview.ExpandableTextView;
 public class HelpActivity extends AppCompatActivity {
 
     ExpandableTextView expandableTextView;
-    String longText = "Press -SCAN RECEIPT- button to capture your receipt and automatically add the items in Icook pantry\n"
-            + "(Make Sure you give the permission to use your phone camera)\n" + "\n"
-            + "Press -MY PANTRY- button to manually add items in the Icook pantry and check your Icook pantry\n"
+    String longText = "Welcome to iCook.\nWe are glad you are here.\n\nClick to Get Started\n" +
+            "1. For new users we recommend importing a default Pantry layout located in our Preference Page\n\n" +
+            "2. To Import Receipts:\nPress -SCAN RECEIPT- button to capture your receipt and automatically add the items in Icook pantry\n"
+            + "(Make Sure you give the permission to use your phone camera)\n\n"
+            + "3. Too Add Pantry Items Manuall:\nPress -MY PANTRY- button"
             + "- Enter the name of the item and its amount\n"
-            + "- Press -ADD ITEM- to add it in Icook pantry\n"
-            + "- Press -VIEW ALL- to see your Icook pantry list\n" + "\n"
-            + "Press -RECIPES- button to add your own recipes, check the recipes list and delete any recipe\n"
+            + "- Press + to add it in iCook pantry\n"
+            + "- Press -VIEW PANTRY- to see your iCook pantry list\n\n"
+            + "4. To delete any pantry items: Click and hold the item you wish to delete\n\n"
+            + "5. To Add Recipes:\nPress -RECIPES- button to add your own recipes, check the recipes list and delete any recipe\n"
             + "- Enter the title, ingredients, their quatities and the instructions for the recipe you want to add\n"
-            + "- Press -ADD RECIPE- button to enter this recipe to the Icook recipes list\n"
-            + "- Press -VIEW ALL- button to see your Icook recipes list\n"
-            + "- Press -DELETE RECIPE- to delete a recipe\n" + "\n"
-            + "Press -PREFERENCES- to check out additional Icook options\n" + "\n"
-            + "Good Luck using Icook!";
+            + "- Press + button to enter this recipe to the iCook recipes list\n"
+            + "- Press -RECIPES- button to see your iCook recipes list\n\n"
+            + "6. Have questions how to do something? Most pages have an information icon\n\n"
+            + "7. Use the shortcuts:\nMost pages have quick access buttons located at the top right and left. The left will"
+            + " always take you to the main menu.\n\n"
+            + "Good Luck using iCook!";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
-        expandableTextView = (ExpandableTextView)findViewById(R.id.expandable_text_view);
+        expandableTextView = findViewById(R.id.expandable_text_view);
         expandableTextView.setText(longText);
 
     }
