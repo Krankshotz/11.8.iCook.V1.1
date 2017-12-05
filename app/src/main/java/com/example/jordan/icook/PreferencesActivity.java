@@ -54,7 +54,14 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
 
-
+            Button delAll = findViewById(R.id.deleteAll);
+            delAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myDb.deleteAll();
+                    Toast.makeText(PreferencesActivity.this,"Your Pantry has been deleted",Toast.LENGTH_LONG).show();
+                }
+            });
             Button pantryInfo = findViewById(R.id.infoPantryLoadout);
             pantryInfo.setOnClickListener(new View.OnClickListener() {
                 @Override

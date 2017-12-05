@@ -149,16 +149,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (mCursor.moveToFirst())
         {
-            // DO SOMETHING WITH CURSOR
-            rowExists = false;
+            // I AM FULL
+            return false;
 
         } else
         {
             // I AM EMPTY
-            rowExists = true;
+            return true;
         }
-        return rowExists;
-
     }
     /*public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
