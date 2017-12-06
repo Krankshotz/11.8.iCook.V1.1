@@ -87,6 +87,7 @@ public class ListRecipe extends AppCompatActivity {
                 startActivity(ButtonhomePA);
             }
         });
+
         //Creates Listener to Open new Activity, this is the top left button for recipe
         ImageButton ButtonrecipeRA = findViewById(R.id.recipeButtonRL);
         ButtonrecipeRA.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +99,7 @@ public class ListRecipe extends AppCompatActivity {
         });
 
     }
+
 
 
 
@@ -171,6 +173,7 @@ public class ListRecipe extends AppCompatActivity {
             i5 = cur.getString(10);
             q5 = cur.getString(11);
             ins = cur.getString(12);
+
         }
         Intent iIntent = new Intent(this, RecipePullUp.class);
         iIntent.putExtra("COL_1", id);
@@ -214,6 +217,7 @@ public class ListRecipe extends AppCompatActivity {
             }
         });
     }
+
 
 
 }

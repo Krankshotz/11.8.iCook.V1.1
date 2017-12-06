@@ -89,10 +89,6 @@ public class receipt_Scanner extends AppCompatActivity {
                 infoDialog.show();
             }
         });
-
-        //show path of downloads for testing purposes
-        Toast.makeText(getBaseContext(), "Save path: "+path.toString(),Toast.LENGTH_SHORT).show();
-
         final CameraSource.ShutterCallback shutter = new ShutterCallback() {
             @Override
             public void onShutter() {}

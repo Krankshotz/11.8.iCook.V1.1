@@ -1,80 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootRL"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/jordansgirlfriendleaked">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="411dp"
+                android:layout_height="39dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Please check what is true and then back out"
+                android:textSize="20dp" />
         <CheckBox android:id="@+id/CB0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:text="Olive Oil"
             android:onClick="onCheckboxClicked"/>
 
-        <CheckBox android:id="@+id/CB2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Beef"
-            android:onClick="onCheckboxClicked"/>
+            <CheckBox
+                android:id="@+id/CB1"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:onClick="onCheckboxClicked"
+                android:text="Garlic" />
 
-        <CheckBox
-            android:id="@+id/CB1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onCheckboxClicked"
-            android:text="Garlic" />
+            <CheckBox
+                android:id="@+id/CB2"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:onClick="onCheckboxClicked"
+                android:text="Beef" />
 
-        <CheckBox android:id="@+id/CB3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Eggs"
-            android:onClick="onCheckboxClicked"/>
+            <CheckBox
+                android:id="@+id/CB3"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:onClick="onCheckboxClicked"
+                android:text="Eggs" />
         <CheckBox
             android:id="@+id/CB4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:onClick="onCheckboxClicked"
             android:text="Salt" />
         <CheckBox android:id="@+id/CB5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:text="Oatmeal"
             android:onClick="onCheckboxClicked"/>
         <CheckBox android:id="@+id/CB6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:text="Chicken"
             android:onClick="onCheckboxClicked"/>
         <CheckBox android:id="@+id/CB7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:text="Cilantro"
             android:onClick="onCheckboxClicked"/>
         <CheckBox android:id="@+id/CB8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:text="Basil"
             android:onClick="onCheckboxClicked"/>
         <CheckBox android:id="@+id/CB9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:text="Rosemary"
             android:onClick="onCheckboxClicked"/>
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Please check what is accurate" />
-    </LinearLayout>
+        </LinearLayout>
 
 
 </RelativeLayout>

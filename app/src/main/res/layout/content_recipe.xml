@@ -8,6 +8,8 @@
     android:orientation="vertical"
     android:background="@android:color/white">
 
+
+
     <EditText
         android:id="@+id/myRecipe"
         android:layout_width="366dp"
