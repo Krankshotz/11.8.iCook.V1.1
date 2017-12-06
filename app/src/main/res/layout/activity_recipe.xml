@@ -5,27 +5,230 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.jordan.icook.RecipeActivity"
-    tools:layout_editor_absoluteY="25dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
 
     <ImageView
         android:id="@+id/background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/Ingredient"
-        android:layout_marginTop="8dp"
         android:layout_toStartOf="@+id/editText_Name"
+        android:background="@android:color/white"
         android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/spiceswhite" />
+        app:srcCompat="@drawable/kitcheb_blur" />
 
-    <RelativeLayout
+    <ImageView
+        android:id="@+id/backdroptext"
         android:layout_width="0dp"
-        android:layout_height="551dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeButtonRA"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@color/CustomBackdropText" />
+
+    <Button
+        android:id="@+id/button_Add"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="72dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/Ingredient"
+        android:background="@drawable/addbox"
+        android:backgroundTint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backdroptext"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editText_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/Name"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/Name"
+        app:layout_constraintTop_toBottomOf="@+id/recipeButtonRA" />
+
+    <EditText
+        android:id="@+id/editText_Ingredient1"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Ingredient"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Ingredient" />
+
+    <EditText
+        android:id="@+id/editText_Quantity1"
+        android:layout_width="40dp"
+        android:layout_height="41dp"
+        android:layout_below="@+id/Quantity"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/editText_Ingredient1"
+        app:layout_constraintTop_toBottomOf="@+id/Quantity" />
+
+    <EditText
+        android:id="@+id/editText_Ingredient2"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText_Ingredient1"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Ingredient1" />
+
+    <EditText
+        android:id="@+id/editText_Quantity2"
+        android:layout_width="42dp"
+        android:layout_height="41dp"
+        android:layout_alignStart="@+id/editText_Quantity1"
+        android:layout_below="@+id/editText_Quantity1"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/editText_Ingredient2"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Quantity1" />
+
+    <EditText
+        android:id="@+id/editText_Ingredient3"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText_Ingredient2"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Ingredient2" />
+
+    <EditText
+        android:id="@+id/editText_Quantity3"
+        android:layout_width="42dp"
+        android:layout_height="41dp"
+        android:layout_alignEnd="@+id/editText_Quantity2"
+        android:layout_below="@+id/editText_Ingredient2"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/editText_Ingredient3"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Quantity2" />
+
+    <EditText
+        android:id="@+id/editText_Ingredient4"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText_Ingredient3"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Ingredient3" />
+
+    <EditText
+        android:id="@+id/editText_Quantity4"
+        android:layout_width="42dp"
+        android:layout_height="41dp"
+        android:layout_alignStart="@+id/editText_Quantity3"
+        android:layout_below="@+id/editText_Quantity3"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/editText_Ingredient4"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Quantity3" />
+
+    <EditText
+        android:id="@+id/editText_Quantity5"
+        android:layout_width="41dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText_Instruction"
+        android:layout_below="@+id/editText_Ingredient4"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/editText_Ingredient5"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Quantity4" />
+
+    <EditText
+        android:id="@+id/editText_Ingredient5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText_Ingredient4"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Ingredient4" />
+
+    <EditText
+        android:id="@+id/editText_Instruction"
+        android:layout_width="347dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText_Quantity1"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Instruction"
+        android:layout_marginStart="4dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -94,7 +297,7 @@
             android:layout_below="@+id/Quantity"
             android:layout_marginStart="18dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/editText_Ingredient2"
@@ -113,7 +316,7 @@
             android:layout_alignStart="@+id/editText_Quantity1"
             android:layout_below="@+id/editText_Quantity1"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:visibility="visible" />
 
         <EditText
@@ -132,7 +335,7 @@
             android:layout_alignEnd="@+id/editText_Quantity2"
             android:layout_below="@+id/editText_Ingredient2"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/editText_Ingredient4"
@@ -151,7 +354,7 @@
             android:layout_alignStart="@+id/editText_Quantity3"
             android:layout_below="@+id/editText_Quantity3"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:visibility="invisible" />
 
         <EditText
@@ -171,7 +374,7 @@
             android:layout_alignEnd="@+id/editText_Instruction"
             android:layout_below="@+id/editText_Ingredient4"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:visibility="invisible" />
 
         <EditText

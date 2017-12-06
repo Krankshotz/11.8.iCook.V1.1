@@ -1,11 +1,13 @@
 /*
 Text scanner applet
 Paul Figueroa
-updated: 12/1/17
+updated: 12/4/17
+temp
  */
 package com.example.jordan.icook;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -47,7 +49,6 @@ public class receipt_Scanner extends AppCompatActivity {
     String fileName="Saved Receipt", stringTotal, itemName="", itemQuant="";
     String[] parts,foods;
     final int RequestCameraPermissionID = 1001;
-    int foodID;
     File path=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
     File file=new File(path,fileName);
     public receipt_Scanner() throws FileNotFoundException {}
@@ -70,6 +71,22 @@ public class receipt_Scanner extends AppCompatActivity {
             public void onClick(View view) {
                 Intent pantrywindow = new Intent(receipt_Scanner.this, PantryActivity.class);
                 startActivity(pantrywindow);
+            }
+        });
+        //Popup window for help menu
+        Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+        pantryInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder infoDialog = new AlertDialog.Builder(receipt_Scanner.this);
+                infoDialog.setMessage("Capturing your Receipt:\n\nMake sure the image is centered, and evironment is well lit.\n\n" +
+                        "Ensure the text that appears on the screen matches the receipt. Then click the shutter button to import the text.\n\n\nNote:" +
+                        " don't worry about scanning the same receipt multiple times, or importing garbage text, the receipt scanner only imports " +
+                        "proper pantry items.");
+                infoDialog.setCancelable(true);
+                infoDialog.setPositiveButton("OK", null);
+                infoDialog.setTitle("Using the Reciept Scanner");
+                infoDialog.show();
             }
         });
 
@@ -151,11 +168,12 @@ public class receipt_Scanner extends AppCompatActivity {
                             try (Scanner scanner=new Scanner(file)){
                                 while (scanner.hasNextLine()) {//while not eof input into pantry db
                                     parts = scanner.nextLine().split("\\s+");//here is where it should check before adding items
+                                    parts[0]=parts[0].replaceAll("[^A-Za-z]+", "").toLowerCase(); //capitalizes first letter and lower rest
                                     if(Arrays.asList(foods).contains(parts[0])) {  //check if in approved foods list
                                         itemName = parts[0];
-                                        itemName=itemName.replaceAll("[^A-Za-z]+", "");//remove all but alpha chars
-                                        itemName=itemName.substring(0, 1).toUpperCase()+itemName.substring(1).toLowerCase(); //capitalizes first letter and lower rest
-                                        itemQuant =  parts[1];
+                                        if(parts.length>1) itemQuant = parts[1];
+                                        else itemQuant="1";
+                                        // if(parts[1]!=null) itemQuant =  parts[1];
                                         myDb.insertUpdate(itemName, Integer.parseInt(itemQuant));
                                     }
                                 }
