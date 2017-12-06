@@ -22,7 +22,7 @@
         android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ListReadyRecipe"
+        app:layout_constraintBottom_toTopOf="@+id/ListViewRecipe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homeButtonRL" />
@@ -31,8 +31,7 @@
         android:id="@+id/ListReadyRecipe"
         android:layout_width="0dp"
         android:layout_height="446dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        tools:layout_editor_absoluteY="121dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_AddItemsRL"
@@ -91,14 +90,5 @@
         app:srcCompat="@android:drawable/ic_input_add"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintRight_creator="1" />
-
-    <Button
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="1dp" />
 
 </android.support.constraint.ConstraintLayout>
