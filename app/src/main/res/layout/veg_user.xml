@@ -66,7 +66,7 @@
             android:onClick="onCheckboxClicked"/>
         <CheckBox android:id="@+id/CB9"
             android:layout_width="100dp"
-            android:layout_height="40dp"  
+            android:layout_height="40dp"
             android:text="Carrots"
             android:onClick="onCheckboxClicked"/>
 
