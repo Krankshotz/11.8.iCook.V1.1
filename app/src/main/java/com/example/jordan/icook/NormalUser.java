@@ -76,7 +76,7 @@ public class NormalUser extends Activity {
             case R.id.CB8:
                 if (checked) {
                     myDb.insertData("basil", defaultAmount);
-                    Toast.makeText(NormalUser.this,"Basil",Toast.LENGTH_LONG).show();
+                    Toast.makeText(NormalUser.this,"Basil Inserted",Toast.LENGTH_LONG).show();
                     break;
             }
             case R.id.CB9:
