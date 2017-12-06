@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         recipesButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent recipewindow = new Intent(MainActivity.this, RecipeActivity.class);
+                Intent recipewindow = new Intent(MainActivity.this, ListRecipe.class);
                 startActivity(recipewindow);
 
             }

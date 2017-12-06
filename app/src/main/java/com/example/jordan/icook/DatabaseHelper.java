@@ -143,6 +143,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return rowExists;
 
     }
+    public boolean updateData(String id, String quantity)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ROW_ID, id);
+        contentValues.put(COL_2, quantity);
+        db.update(TABLE_PANTRY,contentValues,"_id=?", new String[] { id });
+        return true;
+    }
+
     /*public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+ TABLE_PANTRY,null);

@@ -16,9 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
-
+//THIS CLASS ALLOWS THE USER TO CREATE RECIPE
 public class RecipeActivity extends AppCompatActivity {
     DatabaseRecipe myDb;
+    DatabaseHelper myPb;
     EditText editName, editIngredient1, editQuantity1,
             editIngredient2, editQuantity2,
             editIngredient3, editQuantity3,
@@ -32,6 +33,7 @@ public class RecipeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_recipe);
         myDb = new DatabaseRecipe(this);
+        myPb = new DatabaseHelper(this);
 
         editName = findViewById(R.id.editText_Name);
         editIngredient1 = findViewById(R.id.editText_Ingredient1);
@@ -46,8 +48,25 @@ public class RecipeActivity extends AppCompatActivity {
         editQuantity5 = findViewById(R.id.editText_Quantity5);
         editInstruction = findViewById(R.id.editText_Instruction);
         btnAdd = findViewById(R.id.button_Add);
+        viewAll();
+        whatICanCook();
+
+        //listener to add more ingredients
+        final Button showMoreIng = findViewById(R.id.ingredient_btn);
+        showMoreIng.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editIngredient4.setVisibility(View.VISIBLE);
+                editIngredient5.setVisibility(View.VISIBLE);
+                editQuantity4.setVisibility(View.VISIBLE);
+                editQuantity5.setVisibility(View.VISIBLE);
+                showMoreIng.setVisibility(View.INVISIBLE);
+            }
+        });
+        //End of hides ingredients until needed
+
         //MEssageBox HelpWindow
-        Button pantryInfo = findViewById(R.id.infoPantrybuttonRA);
+        /*Button pantryInfo = findViewById(R.id.infoPantrybuttonRL);
         pantryInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +81,7 @@ public class RecipeActivity extends AppCompatActivity {
         });
 
         //Creates Listener to Open new Activity, this is the top right button for home PA = pantry activity
-        ImageButton ButtonhomeRA = findViewById(R.id.homeButtonRA);
+        ImageButton ButtonhomeRA = findViewById(R.id.homeButtonRL);
         ButtonhomeRA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,14 +90,14 @@ public class RecipeActivity extends AppCompatActivity {
             }
         });
         //Creates Listener to Open new Activity, this is the top left button for recipe
-        ImageButton ButtonrecipeRA = findViewById(R.id.recipeButtonRA);
+        ImageButton ButtonrecipeRA = findViewById(R.id.recipeButtonRL);
         ButtonrecipeRA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent ButtonrecipeRA = new Intent(RecipeActivity.this, ListRecipe.class);
                 startActivity(ButtonrecipeRA);
             }
-        });
+        });*/
         //listener to add more ingredients
 
         AddData();
@@ -94,15 +113,15 @@ public class RecipeActivity extends AppCompatActivity {
                         // Will insert data if there is data input in the text fields
                         boolean isInserted = myDb.insertData(editName.getText().toString(),
                                 editIngredient1.getText().toString(),
-                                Integer.parseInt(editQuantity1.getText().toString()),
+                                editQuantity1.getText().toString(),
                                 editIngredient2.getText().toString(),
-                                Integer.parseInt(editQuantity2.getText().toString()),
+                                editQuantity2.getText().toString(),
                                 editIngredient3.getText().toString(),
-                                Integer.parseInt(editQuantity3.getText().toString()),
+                                editQuantity3.getText().toString(),
                                 editIngredient4.getText().toString(),
-                                Integer.parseInt(editQuantity4.getText().toString()),
+                                editQuantity4.getText().toString(),
                                 editIngredient5.getText().toString(),
-                                Integer.parseInt(editQuantity5.getText().toString()),
+                                editQuantity5.getText().toString(),
                                 editInstruction.getText().toString());
                         if (isInserted = true) {
                             Toast.makeText(RecipeActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
@@ -130,6 +149,26 @@ public class RecipeActivity extends AppCompatActivity {
 
 
     }
+    private void viewAll() {
+        Button btView = findViewById(R.id.button_View);
+        btView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent btView = new Intent(RecipeActivity.this, ListRecipe.class);
+                startActivity(btView);
+            }
+        });
+    }
+    private void whatICanCook() {
+        Button btView = findViewById(R.id.whaticancook);
+        btView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent btView = new Intent(RecipeActivity.this, what_i_can_cook.class);
+                startActivity(btView);
+            }
+        });
+    }
 
 
    /* public void DeleteData(){ //NOT IN USE
@@ -149,7 +188,6 @@ public class RecipeActivity extends AppCompatActivity {
                 }
         );
     }*/
-
     public void showMessage (String title, String Message){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);

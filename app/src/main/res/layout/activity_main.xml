@@ -36,7 +36,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btton4p1" />
+        app:srcCompat="@drawable/btton4" />
 
     <ImageButton
         android:id="@+id/recipesButton3"
@@ -49,7 +49,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btton3p1" />
+        app:srcCompat="@drawable/btton3" />
 
     <ImageButton
         android:id="@+id/receiptButton1"
@@ -63,7 +63,7 @@
         android:tint="@android:color/transparent"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btton1p1" />
+        app:srcCompat="@drawable/btton1" />
 
     <ImageButton
         android:id="@+id/pantryButton2"
@@ -76,7 +76,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btton2p1"
+        app:srcCompat="@drawable/btton2"
         tools:ignore="ContentDescription" />
 
     <ImageView

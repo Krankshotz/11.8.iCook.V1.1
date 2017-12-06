@@ -35,6 +35,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".RecipeActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".RecipePullUp"
+            android:screenOrientation="portrait"/>
         <activity android:name=".ListRecipe"
             android:screenOrientation="portrait"/>
         <activity android:name=".ListPantry"
@@ -46,6 +48,8 @@
         <activity android:name=".VeganUser"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".VegUser"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".what_i_can_cook"
             android:screenOrientation="portrait"></activity>
     </application>
 

@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class DatabaseRecipe extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME= "ha.db";
+    public static final String DATABASE_NAME= "new.db";
     public static final String TABLE_NAME = "recipe_table";
     public static final String COL_1 = "_id";
     public static final String COL_2 = "NAME";
@@ -39,11 +39,11 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+ TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, INGREDIENT1 TEXT, QUANTITY1 INTEGER, " +
-                "INGREDIENT2 TEXT, QUANTITY2 INTEGER," +
-                "INGREDIENT3 TEXT, QUANTITY3 INTEGER," +
-                "INGREDIENT4 TEXT, QUANTITY4 INTEGER," +
-                "INGREDIENT5 TEXT, QUANTITY5 INTEGER," +
+        db.execSQL("create table "+ TABLE_NAME + " (_id INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, INGREDIENT1 TEXT, QUANTITY1 TEXT, " +
+                "INGREDIENT2 TEXT, QUANTITY2 TEXT," +
+                "INGREDIENT3 TEXT, QUANTITY3 TEXT," +
+                "INGREDIENT4 TEXT, QUANTITY4 TEXT," +
+                "INGREDIENT5 TEXT, QUANTITY5 TEXT," +
                 "INSTRUCTION TEXT)");
     }
 
@@ -54,11 +54,11 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
     }
 
     // Inserts data into specified columns
-    public boolean insertData(String name, String ingredient1, int quantity1,
-                              String ingredient2, int quantity2,
-                              String ingredient3, int quantity3,
-                              String ingredient4, int quantity4,
-                              String ingredient5, int quantity5,
+    public boolean insertData(String name, String ingredient1, String quantity1,
+                              String ingredient2, String quantity2,
+                              String ingredient3, String quantity3,
+                              String ingredient4, String quantity4,
+                              String ingredient5, String quantity5,
                               String instruction){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -87,6 +87,12 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
         return db.delete(TABLE_NAME, "NAME = ?", new String[] {name});
     }
 
+    public boolean deleteRow(long rowId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String where = COL_1 + "=" + rowId;
+        return db.delete(TABLE_NAME, where, null) != 1;
+    }
+
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         String where = null;
@@ -98,15 +104,9 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
 
         return res;
     }
-    public Cursor fetchGroup() {
+    public Cursor fetchRow(String rowId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * from" + TABLE_NAME;
-        return db.rawQuery(query, null);
+        return db.query(TABLE_NAME, All_Keys,"_id=?", new String[] {rowId}, null,null,null);
     }
 
-    public Cursor fetchChildren(String Site_Name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * from " + Site_Name + "'";
-        return db.rawQuery(query, null);
-    }
 }
