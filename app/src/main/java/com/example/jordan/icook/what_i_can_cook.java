@@ -37,9 +37,9 @@ public class what_i_can_cook extends AppCompatActivity {
         btnAdd = findViewById(R.id.btn_AddRecipe);
         myDb = new DatabaseRecipe(this);
         pantryDb = new DatabaseHelper(this);
-        compareRecipesToPantry();
         MenuButtons();
         addItem();
+        compareRecipesToPantry();
         ListViewItemClick();
         deleteLongClick();
     }
@@ -52,21 +52,18 @@ public class what_i_can_cook extends AppCompatActivity {
                 if (pantryC.moveToFirst())
                     do {
                         for (int x = 2; x < 11; x = x + 2) {
-                            if(recipeC.getString(x).equals(" "))
+                            if(recipeC.getString(x).equals(""))
                             {
                                 igCount++;
-                                break;
                             }
                             if (recipeC.getString(x).equals(pantryC.getString(1))){
                                 igCount++;  //incrememnts means it found the ingredient
-                                break;
                             }
                         }
                     } while (pantryC.moveToNext());
                 populateListView(recipeC.getString(0));
                 if (igCount == 5) {
                     populateListView(recipeC.getString(0));
-                    detail(Integer.parseInt(recipeC.getString(0)));
                 }
                 igCount = 0;
             }
@@ -126,7 +123,7 @@ public class what_i_can_cook extends AppCompatActivity {
 
 
     private void populateListView(String i) {
-        Cursor cursor = myDb.getAllData();
+        Cursor cursor = myDb.fetchRow(i);
 
         //Setup mapping from cursor to view fields:
         String[] fromFieldNames = new String[]

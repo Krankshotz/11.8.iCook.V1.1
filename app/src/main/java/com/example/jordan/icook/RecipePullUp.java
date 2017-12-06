@@ -111,43 +111,43 @@ public class RecipePullUp extends AppCompatActivity {
                         break A;
 
                      }else {
-                         if (ig[i].equals(pantryC.getString(1))) {
+                         if (ig[i].equalsIgnoreCase(pantryC.getString(1))) {
                              switch (i) {                                      ////////////////////////////////////////////////////////////////////////////
-                                 case 0:    i1.setTextColor(Color.RED);        //if i = (any of the cases) switch the text to red, and break out of loop.//
+                                 case 0:    i1.setTextColor(Color.GREEN);        //if i = (any of the cases) switch the text to red, and break out of loop.//
                                             cookIg++;                          ////////////////////////////////////////////////////////////////////////////
                                             if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                q1.setTextColor(Color.RED);
+                                                q1.setTextColor(Color.GREEN);
                                                 cookQu++;
                                             }
                                             break A;
 
-                                 case 1:    i2.setTextColor(Color.RED);
+                                 case 1:    i2.setTextColor(Color.GREEN);
                                             cookIg++;
                                             if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                q2.setTextColor(Color.RED);
+                                                q2.setTextColor(Color.GREEN);
                                                 cookQu++;
                                             }
                                             break A;
 
-                                 case 2:    i3.setTextColor(Color.RED);
+                                 case 2:    i3.setTextColor(Color.GREEN);
                                             cookIg++;
                                             if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                q3.setTextColor(Color.RED);
+                                                q3.setTextColor(Color.GREEN);
                                                 cookQu++;
                                             }
                                             break A;
 
-                                 case 3:    i4.setTextColor(Color.RED);
+                                 case 3:    i4.setTextColor(Color.GREEN);
                                             cookIg++;
                                             if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                q4.setTextColor(Color.RED);
+                                                q4.setTextColor(Color.GREEN);
                                                 cookQu++;
                                             }
                                             break A;
-                                 case 4:    i5.setTextColor(Color.RED);
+                                 case 4:    i5.setTextColor(Color.GREEN);
                                             cookIg++;
                                             if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                qu5.setTextColor(Color.RED);
+                                                qu5.setTextColor(Color.GREEN);
                                                 cookQu++;
                                             }
                                             break A;
@@ -200,7 +200,7 @@ public class RecipePullUp extends AppCompatActivity {
                                 if(pantryData.moveToFirst())
                                 {
                                     do{
-                                        if(ingredients[i].equals(pantryData.getString(1))) //looks for the ingredients in the Pantry
+                                        if(ingredients[i].equalsIgnoreCase(pantryData.getString(1))) //looks for the ingredients in the Pantry
                                         {
                                             newQu = Integer.parseInt(pantryData.getString(2)) -Integer.parseInt(quantitys[i]); //gets new quantity
                                             if(newQu==0)

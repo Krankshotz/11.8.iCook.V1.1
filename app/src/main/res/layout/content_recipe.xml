@@ -12,9 +12,9 @@
         android:id="@+id/myRecipe"
         android:layout_width="366dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="12dp"
         android:layout_marginStart="6dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="My Recipes"
@@ -25,13 +25,16 @@
         app:layout_constraintBottom_toTopOf="@+id/ListViewRecipe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeButtonRL" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/ListViewRecipe"
         android:layout_width="0dp"
         android:layout_height="446dp"
-        tools:layout_editor_absoluteY="121dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRecipe" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_AddItemsRL"
