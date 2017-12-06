@@ -20,12 +20,16 @@
         android:layout_height="0dp"
         android:layout_marginBottom="-15dp"
         android:layout_marginEnd="4dp"
+        android:layout_marginRight="16dp"
         android:layout_marginStart="4dp"
         android:src="@color/inputBackdrop"
         app:layout_constraintBottom_toBottomOf="@+id/btn_Add"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoadDefaults" />
+        app:layout_constraintTop_toBottomOf="@+id/LoadDefaults"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/Item"
@@ -52,7 +56,7 @@
         android:id="@+id/LoadDefaults"
         android:layout_width="0dp"
         android:layout_height="31dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="75dp"
         android:background="@color/CustomBackdropText"
         android:text="Add Grocery item to Pantry"
         android:textAlignment="center"
@@ -219,24 +223,29 @@
         app:layout_constraintTop_toBottomOf="@+id/button_viewPantry"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/swipehome"
-        android:layout_width="90dp"
+    <ImageButton
+        android:id="@+id/homeButtonPA"
+        android:layout_width="80dp"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         android:src="@drawable/swipehome"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/swipepantry"
-        android:layout_width="90dp"
+    <ImageButton
+        android:id="@+id/recipeButtonPA"
+        android:layout_width="80dp"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
         android:src="@drawable/swipesrecipes"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+
+
 
 
 
@@ -245,6 +254,7 @@
     "
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 
 

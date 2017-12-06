@@ -99,24 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean deleteRow(long rowId){
         SQLiteDatabase db = this.getWritableDatabase();
         String where = ROW_ID + "=" + rowId;
-        return db.delete(TABLE_PANTRY, where, null) != 1;
-    }
-
-    public int deleteDuplicates(String string, int idposition){     //Delete matching name, insert another name at the bottom
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c = getAllRows();
-        String where =  COL_1 + "=" + string;
-        //int check = 0; //if db.delete passes back a number we will return if it deletes 0;
-        if (c.moveToPosition(idposition+1)) {
-            do{
-                db.delete(TABLE_PANTRY, where, null);  //deletes matching strings
-            }while (c.moveToNext());
-        return 0;
-        }
-        c.close();
-        return 999;
-
-
+        return db.delete(TABLE_PANTRY, where, null) != 0;
     }
 
     public void deleteAll(){

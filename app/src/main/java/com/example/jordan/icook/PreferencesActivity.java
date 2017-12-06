@@ -73,7 +73,7 @@ public class PreferencesActivity extends AppCompatActivity {
                             "the pre-made loadout wil be added to your pantry. \n\nNote: This is great for first time users.");
                     infoDialog.setCancelable(true);
                     infoDialog.setPositiveButton("OK", null);
-                    infoDialog.setTitle("Pantry Loadouts");
+                    infoDialog.setTitle("Defaults");
                     infoDialog.show();
                 }
             });
@@ -85,6 +85,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
+
                 }
             });
 
@@ -93,6 +94,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
+
                 }
             });
 
@@ -102,6 +104,7 @@ public class PreferencesActivity extends AppCompatActivity {
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
                     Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
+
                 }
             });
 
