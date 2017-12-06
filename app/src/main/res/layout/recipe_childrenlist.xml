@@ -6,71 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="1dp"
-        android:text="Delete"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Instructions"
-        app:layout_constraintTop_toBottomOf="@+id/qu5" />
-
-    <TextView
-        android:id="@+id/Instructions"
-        android:layout_width="181dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="195dp"
-        android:layout_marginStart="8dp"
-        android:text="Instructions"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ig5" />
-
-    <TextView
-        android:id="@+id/Quantity"
-        android:layout_width="135dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginStart="6dp"
-        android:text="Quantity"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/qu1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Ingredients"
-        app:layout_constraintTop_toBottomOf="@+id/textname" />
-
-    <TextView
-        android:id="@+id/textname"
-        android:layout_width="285dp"
-        android:layout_height="104dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginTop="33dp"
-        android:text="TextView"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/Quantity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/Ingredients"
-        android:layout_width="120dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="14dp"
-        android:text="Ingredients"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/ig1"
-        app:layout_constraintEnd_toStartOf="@+id/Quantity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textname" />
-
     <TextView
         android:id="@+id/header_ins"
         android:layout_width="181dp"
@@ -86,15 +21,13 @@
         android:layout_width="127dp"
         android:layout_height="42dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
         android:text="Quantity"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/qu1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textname" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textname"
+        android:id="@+id/name"
         android:layout_width="362dp"
         android:layout_height="45dp"
         android:layout_marginTop="24dp"
@@ -115,13 +48,11 @@
         android:layout_width="222dp"
         android:layout_height="42dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:text="Ingredients"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/ig1"
         app:layout_constraintEnd_toStartOf="@+id/header_qu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textname" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/ig1"

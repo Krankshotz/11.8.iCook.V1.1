@@ -9,9 +9,6 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.UnderlineSpan;
 
 import android.view.View;
 import android.widget.Button;
@@ -67,7 +64,7 @@ public class RecipePullUp extends AppCompatActivity {
 
         //Initializes the global TextViews.
 
-        name = (TextView) findViewById(R.id.textname);
+        name = (TextView) findViewById(R.id.name);
         i1 = (TextView) findViewById(R.id.ig1);
         q1 = (TextView) findViewById(R.id.qu1);
         i2 = (TextView) findViewById(R.id.ig2);
