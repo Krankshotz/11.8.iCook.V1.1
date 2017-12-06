@@ -14,7 +14,7 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="411dp"
-            android:layout_height="39dp"
+            android:layout_height="174dp"
             android:fontFamily="sans-serif-medium"
             android:text="Please check what is true and then back out"
             android:textSize="20dp" />
@@ -66,9 +66,13 @@
             android:onClick="onCheckboxClicked"/>
         <CheckBox android:id="@+id/CB9"
             android:layout_width="100dp"
-            android:layout_height="40dp"  
+            android:layout_height="40dp"
             android:text="Carrots"
             android:onClick="onCheckboxClicked"/>
-
+        <Button
+            android:id="@+id/finishButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Finished" />
     </LinearLayout>
 </RelativeLayout>

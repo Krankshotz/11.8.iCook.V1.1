@@ -114,6 +114,8 @@ public class PreferencesActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     myDb.deleteAll();
                     Toast.makeText(PreferencesActivity.this,"Your Pantry has been deleted",Toast.LENGTH_LONG).show();
+                    Intent goHome = new Intent(PreferencesActivity.this, MainActivity.class);
+                    startActivity(goHome);
                 }
             });
             pantryInfo = findViewById(R.id.infoPantryLoadout);

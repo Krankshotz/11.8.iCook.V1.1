@@ -1,8 +1,10 @@
 package com.example.jordan.icook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ public class NormalUser extends Activity {
         // Get the view from new_activity.xml
         setContentView(R.layout.normal_user);
     }
+    Button finishedButton;
     // Whatever is checked goes to pantry
     public void onCheckboxClicked(View view) {
         myDb = new DatabaseHelper(this);
@@ -88,8 +91,14 @@ public class NormalUser extends Activity {
 
 
         }
-
-
+        finishedButton = findViewById(R.id.finishButton);
+        finishedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            //upon click, pantry will be filled and list of items will be shown
+            public void onClick(View view) {
+                Intent goToPantry = new Intent(NormalUser.this, ListPantry.class);
+                startActivity(goToPantry);
+            }
+        });
     }
-
 }
