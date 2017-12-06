@@ -104,15 +104,9 @@ public class DatabaseRecipe extends SQLiteOpenHelper {
 
         return res;
     }
-    public Cursor fetchGroup() {
+    public Cursor fetchRow(String rowId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * from "+ TABLE_NAME;
-        return db.rawQuery(query, null);
+        return db.query(TABLE_NAME, All_Keys,"_id=?", new String[] {rowId}, null,null,null);
     }
 
-    public Cursor fetchChildren(String Site_Name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * from " + Site_Name + "'";
-        return db.rawQuery(query, null);
-    }
 }
