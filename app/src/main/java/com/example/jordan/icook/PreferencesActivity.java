@@ -1,6 +1,6 @@
 package com.example.jordan.icook;
 
-//Updated on 11.24.17
+//Updated on 12.5.17
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v4.view.GestureDetectorCompat;
@@ -10,51 +10,61 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class PreferencesActivity extends AppCompatActivity {
 
-    private GestureDetectorCompat gestureObject; //for Gestre class
+    //private GestureDetectorCompat gestureObject; //for Gestre class
     DatabaseHelper myDb;
-    int defaultAmount = 1;
-    static int click = 0; //once you click, you can't click multiple times
-                          // which adds a bunch to the pantry
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
         myDb = new DatabaseHelper(this);
+        Button normalButton;
+        Button veganButton;
+        Button vegButton;
+        Button delAll;
+        Button pantryInfo;
         if(myDb.isEmpty()) {
-            Button normalButton = (findViewById(R.id.button));
+            normalButton = (findViewById(R.id.button));
             normalButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
-                    Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
-                    startActivity(normalwindow);
+                    Intent normalWindow = new Intent(PreferencesActivity.this, NormalUser.class);
+                    startActivity(normalWindow);
                 }
             });
 
-            Button veganButton = (findViewById(R.id.button2));
+            veganButton = (findViewById(R.id.button2));
             veganButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent veganwindow = new Intent(PreferencesActivity.this, VeganUser.class);
-                    startActivity(veganwindow);
+                    Intent veganWindow = new Intent(PreferencesActivity.this, VeganUser.class);
+                    startActivity(veganWindow);
                 }
             });
 
-            Button vegButton = (findViewById(R.id.button3));
+            vegButton = (findViewById(R.id.button3));
             vegButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
-                    Intent vegwindow = new Intent(PreferencesActivity.this, VegUser.class);
-                    startActivity(vegwindow);
+                    Intent vegWindow = new Intent(PreferencesActivity.this, VegUser.class);
+                    startActivity(vegWindow);
                 }
             });
 
-
-            Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+            delAll = findViewById(R.id.deleteAll);
+            delAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(PreferencesActivity.this,"Your Pantry is Empty",Toast.LENGTH_LONG).show();
+                }
+            });
+            pantryInfo = findViewById(R.id.infoPantryLoadout);
             pantryInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -68,38 +78,45 @@ public class PreferencesActivity extends AppCompatActivity {
                 }
             });
         }
-        else
-        {
-            Button normalButton = (findViewById(R.id.button));
+        else {
+            normalButton = (findViewById(R.id.button));
             normalButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
-                    Intent normalwindow = new Intent(PreferencesActivity.this, NormalUser.class);
-                    startActivity(normalwindow);
+                    Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
+
                 }
             });
 
-            Button veganButton = (findViewById(R.id.button2));
+            veganButton = (findViewById(R.id.button2));
             veganButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent veganwindow = new Intent(PreferencesActivity.this, VeganUser.class);
-                    startActivity(veganwindow);
+                    Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
+
                 }
             });
 
-            Button vegButton = (findViewById(R.id.button3));
+            vegButton = (findViewById(R.id.button3));
             vegButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 //upon click, pantry will be filled and list of items will be shown
                 public void onClick(View view) {
-                    Intent vegwindow = new Intent(PreferencesActivity.this, VegUser.class);
-                    startActivity(vegwindow);
+                    Toast.makeText(PreferencesActivity.this,"This is only available on initial setup",Toast.LENGTH_LONG).show();
+
                 }
             });
 
-            Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+            delAll = findViewById(R.id.deleteAll);
+            delAll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myDb.deleteAll();
+                    Toast.makeText(PreferencesActivity.this,"Your Pantry has been deleted",Toast.LENGTH_LONG).show();
+                }
+            });
+            pantryInfo = findViewById(R.id.infoPantryLoadout);
             pantryInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

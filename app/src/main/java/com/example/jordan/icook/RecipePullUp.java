@@ -1,5 +1,6 @@
 package com.example.jordan.icook;
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -31,6 +33,7 @@ public class RecipePullUp extends AppCompatActivity {
     String[] quantitys;
     int[] cook = new int[2];
     Button btnCook;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,7 @@ public class RecipePullUp extends AppCompatActivity {
         Intent identify = getIntent();
         myDb = new DatabaseRecipe(this);
         //grabs that data that was pushed into the iIntent in ListRecipe.java and puts it into string
+
         String d1 = identify.getStringExtra("COL_2");
         String d2 = identify.getStringExtra("COL_3");
         String d3 = identify.getStringExtra("COL_4");
@@ -60,7 +64,9 @@ public class RecipePullUp extends AppCompatActivity {
         String d11 = identify.getStringExtra("COL_12");
         String d12 = identify.getStringExtra("COL_13");
 
+
         //Initializes the global TextViews.
+
         name = (TextView) findViewById(R.id.textname);
         i1 = (TextView) findViewById(R.id.ig1);
         q1 = (TextView) findViewById(R.id.qu1);
@@ -75,6 +81,7 @@ public class RecipePullUp extends AppCompatActivity {
         ins = (TextView) findViewById(R.id.instruction);
 
         //Set Strings to the the global TextViews
+
         name.setText(d1);
         i1.setText(d2);
         q1.setText(d3);
