@@ -88,8 +88,8 @@ public class ListPantry extends AppCompatActivity {
         ApprovedFoodList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent helpwindow = new Intent(ListPantry.this, ApprovedFoodListActivity.class);
-                startActivity(helpwindow);
+                Intent ApprovedFoodList = new Intent(ListPantry.this, ApprovedFoodListActivity.class);
+                startActivity(ApprovedFoodList);
             }
         });
 /////////////////////
