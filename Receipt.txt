@@ -1,15 +1,22 @@
+
 banana 2
 apple 5
 milk 2
-eggs 12
+egg 12
 bread 6
-onion 3
+onion 2
 tuna 1
+wasabi 89
 cereal 4
+feet 2
 salt 3
 chicken 5
 tiger 1
-cilantro
-hat 8
-beef 4
-souvenir coins
+souvenir coin 600
+cilantro 6
+potato
+shoes
+soap
+beer 12
+garlic 3
+cheese 3
