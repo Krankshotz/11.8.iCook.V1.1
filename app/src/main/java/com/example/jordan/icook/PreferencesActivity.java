@@ -49,8 +49,7 @@ public class PreferencesActivity extends AppCompatActivity {
         if (myDb.isEmpty()) { //if empty then user can choose from default preferences
             normalButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                //upon click, pantry will be filled and list of items will be shown
-                public void onClick(View view) {
+                public void onClick(View view) { // takes you to screen that lets you choose
                     Intent normalWindow = new Intent(PreferencesActivity.this, NormalUser.class);
                     startActivity(normalWindow);
                 }
@@ -58,7 +57,7 @@ public class PreferencesActivity extends AppCompatActivity {
 
             veganButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View view) { // takes you to screen that lets you choose
                     Intent veganWindow = new Intent(PreferencesActivity.this, VeganUser.class);
                     startActivity(veganWindow);
                 }
@@ -66,14 +65,13 @@ public class PreferencesActivity extends AppCompatActivity {
 
             vegButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                //upon click, pantry will be filled and list of items will be shown
-                public void onClick(View view) {
+                public void onClick(View view) { // takes you to screen that lets you choose
                     Intent vegWindow = new Intent(PreferencesActivity.this, VegUser.class);
                     startActivity(vegWindow);
                 }
             });
 
-            delAll.setOnClickListener(new View.OnClickListener() {
+            delAll.setOnClickListener(new View.OnClickListener() { //will do nothing
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(PreferencesActivity.this, "Your Pantry is Empty", Toast.LENGTH_LONG).show();
@@ -83,23 +81,21 @@ public class PreferencesActivity extends AppCompatActivity {
         else {
             normalButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                //upon click, pantry will be filled and list of items will be shown
-                public void onClick(View view) {
+                public void onClick(View view) { 
                     Toast.makeText(PreferencesActivity.this, "This is only available on initial setup", Toast.LENGTH_LONG).show();
                 }
             });
 
             veganButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View view) { 
                     Toast.makeText(PreferencesActivity.this, "This is only available on initial setup", Toast.LENGTH_LONG).show();
                 }
             });
 
             vegButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                //upon click, pantry will be filled and list of items will be shown
-                public void onClick(View view) {
+                public void onClick(View view) { 
                     Toast.makeText(PreferencesActivity.this, "This is only available on initial setup", Toast.LENGTH_LONG).show();
                 }
             });
@@ -109,12 +105,10 @@ public class PreferencesActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     myDb.deleteAll();
                     Toast.makeText(PreferencesActivity.this, "Your Pantry has been deleted", Toast.LENGTH_LONG).show();
-                    Intent goHome = new Intent(PreferencesActivity.this, MainActivity.class);
+                    Intent goHome = new Intent(PreferencesActivity.this, MainActivity.class); //needs to home to refresh preference
                     startActivity(goHome);
                 }
-            });
-
-            
+            });            
         }
     }
 }
