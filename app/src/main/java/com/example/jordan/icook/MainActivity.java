@@ -2,13 +2,14 @@ package com.example.jordan.icook;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-
-
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,10 +22,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //check if first run
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        String pref_previously_started="";
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        boolean previouslyStarted = prefs.getBoolean(pref_previously_started, false);
+        if(!previouslyStarted) {
             requestPermissions(new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             requestPermissions(new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             requestPermissions(new String[]{android.Manifest.permission.CAMERA}, 1001);
+            SharedPreferences.Editor edit = prefs.edit();
+            edit.putBoolean(pref_previously_started, Boolean.TRUE);
+            edit.commit();
+            Toast.makeText(MainActivity.this,"First-time users click on the ?",Toast.LENGTH_LONG).show();
         }
 
         ImageButton receiptButton1 = (ImageButton)(findViewById(R.id.receiptButton1));
