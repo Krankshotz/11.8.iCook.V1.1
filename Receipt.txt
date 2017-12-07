@@ -1,10 +1,15 @@
-bananas 2
-apples 5
+banana 2
+apple 5
 milk 2
 eggs 12
 bread 6
-onions 3
+onion 3
 tuna 1
 cereal 4
 salt 3
 chicken 5
+tiger 1
+cilantro
+hat 8
+beef 4
+souvenir coins
