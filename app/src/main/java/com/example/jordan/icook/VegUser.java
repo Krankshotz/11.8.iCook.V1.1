@@ -8,12 +8,13 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 /**
- * Created by Oscar Esparza on 11/19/2017.
- * Last Updated 12.3.17
+ * Created by Oscar Esparza on 11.19.17
+ * Last Updated 12.6.17
  */
 
 public class VegUser extends Activity {
     int defaultAmount = 999;
+    Button finishedButton;
     DatabaseHelper myDb;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,12 @@ public class VegUser extends Activity {
         // Get the view from new_activity.xml
         setContentView(R.layout.veg_user);
     }
-    Button finishedButton;
+
     //Whatever is checked goes in database
     public void onCheckboxClicked(View view) {
         myDb = new DatabaseHelper(this);
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
+        boolean checked = ((CheckBox) view).isChecked(); // Is the view now checked?
+
         switch (view.getId()) {
             case R.id.CB0:
                 if (checked) {
@@ -89,13 +90,13 @@ public class VegUser extends Activity {
                     break;
                 }
         }
+
         finishedButton = findViewById(R.id.finishButton);
         finishedButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            //upon click, pantry will be filled and list of items will be shown
-            public void onClick(View view) {
+            public void onClick(View view) { //upon click, pantry will be filled and list of items will be shown
                 Intent goToPantry = new Intent(VegUser.this, ListPantry.class);
-                startActivity(goToPantry);
+                startActivity(goToPantry); //needs to go to pantry so preference activity refreshes
             }
         });
     }
