@@ -111,18 +111,19 @@ public class RecipeActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         // Will insert data if there is data input in the text fields
-                        boolean isInserted = myDb.insertData(editName.getText().toString(),
-                                editIngredient1.getText().toString(),
+                        boolean isInserted = myDb.insertData(
+                                editName.getText().toString(),  //add remove all spaces and non alpha chars
+                                editIngredient1.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
                                 editQuantity1.getText().toString(),
-                                editIngredient2.getText().toString(),
+                                editIngredient2.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
                                 editQuantity2.getText().toString(),
-                                editIngredient3.getText().toString(),
+                                editIngredient3.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
                                 editQuantity3.getText().toString(),
-                                editIngredient4.getText().toString(),
+                                editIngredient4.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
                                 editQuantity4.getText().toString(),
-                                editIngredient5.getText().toString(),
+                                editIngredient5.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
                                 editQuantity5.getText().toString(),
-                                editInstruction.getText().toString());
+                                editInstruction.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase());
                         if (isInserted = true) {
                             Toast.makeText(RecipeActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
 

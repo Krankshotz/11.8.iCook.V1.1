@@ -12,9 +12,7 @@
         android:id="@+id/background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Ingredient"
         android:layout_marginTop="8dp"
-        android:layout_toStartOf="@+id/editText_Name"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/spiceswhite" />

@@ -62,29 +62,30 @@
     <string-array
         name="approved_food_list">
         <item>almonds</item>
-        <item>bananas</item>
+        <item>banana</item>
         <item>basil</item>
         <item>beef</item>
         <item>beer</item>
         <item>bread</item>
-        <item>carrots</item>
-        <item>cashews</item>
+        <item>carrot</item>
+        <item>cashew</item>
         <item>cheese</item>
         <item>chicken</item>
         <item>cilantro</item>
         <item>cornmeal</item>
-        <item>eggs</item>
+        <item>egg</item>
+        <item>fish</item>
         <item>garlic</item>
         <item>legumes</item>
         <item>lettuce</item>
         <item>milk</item>
         <item>millet</item>
         <item>oatmeal</item>
-        <item>olives</item>
+        <item>olive</item>
         <item>onion</item>
         <item>paprika</item>
         <item>pasta</item>
-        <item>peanuts</item>
+        <item>peanut</item>
         <item>pepperoni</item>
         <item>rosemary</item>
         <item>salt</item>
