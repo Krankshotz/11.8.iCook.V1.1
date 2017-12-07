@@ -9,25 +9,24 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 /**
- * Created by Oscar Esparza on 11/19/2017.
- * Last Updated on 12/3/17
+ * Created by Oscar Esparza on 11.19.17
+ * Last Updated on 12.6.17
  */
 
 public class VeganUser extends Activity {
     int defaultAmount = 999;
     DatabaseHelper myDb;
+    Button finishedButton;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Get the view from new_activity.xml
-        setContentView(R.layout.vegan_user);
+        setContentView(R.layout.vegan_user); // Get the view from new_activity.xml
     }
-    Button finishedButton;
-    // Whatever is checked goes on the Pantry
-    public void onCheckboxClicked(View view) {
+
+    public void onCheckboxClicked(View view) {     // Whatever is checked goes on the Pantry
         myDb = new DatabaseHelper(this);
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
+        boolean checked = ((CheckBox) view).isChecked(); // Is the view now checked?
+
         switch (view.getId()) {
             case R.id.CB0:
                 if (checked) {
@@ -59,7 +58,6 @@ public class VeganUser extends Activity {
                     Toast.makeText(VeganUser.this,"Peanuts Inserted",Toast.LENGTH_LONG).show();
                     break;
                 }
-
             case R.id.CB5:
                 if (checked) {
                     myDb.insertData("cashews", defaultAmount);
@@ -91,13 +89,13 @@ public class VeganUser extends Activity {
                     break;
                 }
         }
+
         finishedButton = findViewById(R.id.finishButton);
         finishedButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            //upon click, pantry will be filled and list of items will be shown
-            public void onClick(View view) {
+            public void onClick(View view) {  //upon click, pantry will be filled and list of items will be shown
                 Intent goToPantry = new Intent(VeganUser.this, ListPantry.class);
-                startActivity(goToPantry);
+                startActivity(goToPantry); //needs to go to pantry so preference activity refreshes
             }
         });
     }
