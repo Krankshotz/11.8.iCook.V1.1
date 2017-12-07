@@ -32,7 +32,6 @@
         <activity
             android:name=".PantryActivity"
             android:label="@string/title_activity_pantry"
-            android:windowSoftInputMode="stateHidden"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HelpActivity"
             android:screenOrientation="portrait"/>
