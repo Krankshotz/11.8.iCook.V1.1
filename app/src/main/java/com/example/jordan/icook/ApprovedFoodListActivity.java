@@ -3,6 +3,7 @@ package com.example.jordan.icook;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.ms.square.android.expandabletextview.ExpandableTextView;
 
@@ -10,7 +11,7 @@ import java.util.Arrays;
 
 public class ApprovedFoodListActivity extends AppCompatActivity {
 
-    ExpandableTextView expandableTextView;
+    TextView textview;
 
 
     @Override
@@ -19,8 +20,8 @@ public class ApprovedFoodListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_food_list);
         Resources res = getResources();
         String[] foodList = res.getStringArray(R.array.approved_food_list);
-        expandableTextView = findViewById(R.id.expandable_text_view);
-        expandableTextView.setText(Arrays.toString(foodList));
+        textview = findViewById(R.id.food_list_text);
+        textview.setText("FOOD APPROVED LIST\n\n"+Arrays.toString(foodList));
 
     }
 }
