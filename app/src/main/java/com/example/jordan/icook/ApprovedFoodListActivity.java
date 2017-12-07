@@ -1,5 +1,6 @@
 package com.example.jordan.icook;
 //Paul Figueroa 12/6/17
+
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
