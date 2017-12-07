@@ -113,17 +113,17 @@ public class RecipeActivity extends AppCompatActivity {
                         // Will insert data if there is data input in the text fields
                         boolean isInserted = myDb.insertData(
                                 editName.getText().toString(),  //add remove all spaces and non alpha chars
-                                editIngredient1.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
+                                editIngredient1.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase().replaceAll("\\s+",""),
                                 editQuantity1.getText().toString(),
-                                editIngredient2.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
+                                editIngredient2.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase().replaceAll("\\s+",""),
                                 editQuantity2.getText().toString(),
-                                editIngredient3.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
+                                editIngredient3.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase().replaceAll("\\s+",""),
                                 editQuantity3.getText().toString(),
-                                editIngredient4.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
+                                editIngredient4.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase().replaceAll("\\s+",""),
                                 editQuantity4.getText().toString(),
-                                editIngredient5.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase(),
+                                editIngredient5.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase().replaceAll("\\s+",""),
                                 editQuantity5.getText().toString(),
-                                editInstruction.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase());
+                                editInstruction.getText().toString().replaceAll("[^A-Za-z]+", "").toLowerCase().replaceAll("\\s+",""));
                         if (isInserted = true) {
                             Toast.makeText(RecipeActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
 
