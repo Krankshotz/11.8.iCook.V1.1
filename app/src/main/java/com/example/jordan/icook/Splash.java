@@ -13,17 +13,15 @@ import android.widget.TextView;
  */
 
 public class Splash extends AppCompatActivity{
-    private TextView tv;
     private ImageView iv;
     @Override
     protected void onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_splash);
-        tv = (TextView) findViewById(R.id.welcome);
-        iv = (ImageView) findViewById(R.id.welcomeImage);
+
+        iv = findViewById(R.id.loadingBanner);
         Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mytransition);
-        tv.startAnimation(myanim);
         iv.startAnimation(myanim);
         final Intent intent = new Intent(this,MainActivity.class);
         Thread timer = new Thread(){

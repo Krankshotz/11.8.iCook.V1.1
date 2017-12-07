@@ -193,26 +193,6 @@
             android:background="@drawable/addbox" />
 
         <Button
-            android:id="@+id/button_View"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button_Delete"
-            android:layout_alignBottom="@+id/button_Delete"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp"
-            android:background="@color/white_Clear"
-            android:text="VIEW ALL" />
-
-        <Button
-            android:id="@+id/button_Delete"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="29dp"
-            android:background="@android:drawable/ic_menu_delete" />
-
-        <Button
             android:id="@+id/ingredient_btn"
             android:layout_width="30dp"
             android:layout_height="30dp"
