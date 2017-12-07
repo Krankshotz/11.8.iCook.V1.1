@@ -50,10 +50,12 @@ public class ListPantry extends AppCompatActivity {
         text2.setEnabled(false);
         editQuantity = findViewById(R.id.editText_Quantity);  //copied from pantryActivity
         myDb = new DatabaseHelper(this);
-
+        ImageButton ButtonrecipePL = findViewById(R.id.recipeButtonPL);
         btnAdd = findViewById(R.id.btn_AddItems);
-
+        Button ApprovedFoodList = findViewById(R.id.Food_List);
+        ImageButton ButtonhomePL = findViewById(R.id.homeButtonPL);
         Button pantryInfo = findViewById(R.id.infoPantrybutton4);
+
         pantryInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +69,6 @@ public class ListPantry extends AppCompatActivity {
         });
 
         //Creates Listener to Open new Activity, this is the top right button for home PA = pantry activity
-        ImageButton ButtonhomePL = findViewById(R.id.homeButtonPL);
         ButtonhomePL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +77,6 @@ public class ListPantry extends AppCompatActivity {
             }
         });
         //Creates Listener to Open new Activity, this is the top left button for recipe
-        ImageButton ButtonrecipePL = findViewById(R.id.recipeButtonPL);
         ButtonrecipePL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +84,14 @@ public class ListPantry extends AppCompatActivity {
                 startActivity(ButtonrecipePL);
             }
         });
-
+        //creates listener to open Approved Food List center bottom of pantry list
+        ApprovedFoodList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent helpwindow = new Intent(ListPantry.this, ApprovedFoodListActivity.class);
+                startActivity(helpwindow);
+            }
+        });
 /////////////////////
 /// TEST CASE////////
 /////////////////////
