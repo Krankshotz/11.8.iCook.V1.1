@@ -83,12 +83,15 @@
         <item>oatmeal</item>
         <item>olive</item>
         <item>onion</item>
+        <item>orange</item>
         <item>paprika</item>
         <item>pasta</item>
         <item>peanut</item>
+        <item>pepper</item>
         <item>pepperoni</item>
         <item>rosemary</item>
         <item>salt</item>
+        <item>strawberry</item>
         <item>tuna</item>
         <item>tomato</item>
     </string-array>

@@ -15,10 +15,11 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "";
     public static int test = 1;
-
+    DatabaseRecipe myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        myDb = new DatabaseRecipe(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //check if first run
@@ -32,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor edit = prefs.edit();
             edit.putBoolean(pref_previously_started, Boolean.TRUE);
             edit.commit();
+            myDb.insertData("Tuna Sandwhich","tuna","1","bread","2",
+                    "","","","","","","Mix all ingredients in a bowl\nServe hot");
+            myDb.insertData("Fruit Salad","apple","2","banana","3",
+                    "orange","2","strawberry","8","","",
+                    "Cut all ingredients into quarters\nMix in bowl");
+            myDb.insertData("Seasoned Chicken","chicken","1","salt","1",
+                    "basil","1","garlic","1","pepper","1",
+                    "Season chicken with salt and pepper\ndice basil and garlic\nRub basil and garlic on chicken\nCook until ready");
             Toast.makeText(MainActivity.this,"First-time users click on the ?",Toast.LENGTH_LONG).show();
         }
 

@@ -83,7 +83,7 @@ public class PantryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v){
                         if((!TextUtils.isEmpty(editItem.getText().toString())) && (!TextUtils.isEmpty(editQuantity.getText().toString()))){
-                            myDb.insertData(editItem.getText().toString().toLowerCase(),
+                            myDb.insertData(editItem.getText().toString().toLowerCase().replaceAll("\\s+",""),
                                     Integer.parseInt(editQuantity.getText().toString()));
                             editItem.setText("");
                             editQuantity.setText("");
