@@ -40,6 +40,7 @@
         <activity android:name=".RecipePullUp"
             android:screenOrientation="portrait"/>
         <activity android:name=".ListRecipe"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="portrait"/>
         <activity android:name=".ListPantry"
             android:screenOrientation="portrait"/>

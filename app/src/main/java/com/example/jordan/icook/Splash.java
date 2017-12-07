@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class Splash extends AppCompatActivity{
     private ImageView iv;
+
     @Override
     protected void onCreate(Bundle saveInstanceState)
     {
@@ -27,7 +28,7 @@ public class Splash extends AppCompatActivity{
         Thread timer = new Thread(){
             public void run(){
                 try{
-                    sleep(5000);
+                    sleep(4000);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -37,6 +38,23 @@ public class Splash extends AppCompatActivity{
                 }
             }
         };
+       /* ic = findViewById(R.id.icook);
+        Animation myanim2 = AnimationUtils.loadAnimation(this,R.anim.mytransition);
+        ic.startAnimation(myanim);
+        final Intent intent2 = new Intent(this,MainActivity.class);
+        Thread timer2 = new Thread(){
+            public void run(){
+                try{
+                    sleep(300);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                finally{
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };*/
             timer.start();
 
     }
